@@ -1,0 +1,931 @@
+2026-08-19 17:41:59,068 [toolkit.py] => config: configs/splitlorav6/domain_seed=1993_R=50_ro=0.1.json
+2026-08-19 17:41:59,068 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-08-19 17:41:59,068 [toolkit.py] => debug: False
+2026-08-19 17:41:59,068 [toolkit.py] => save_ckp: False
+2026-08-19 17:41:59,068 [toolkit.py] => moe_list: None
+2026-08-19 17:41:59,068 [toolkit.py] => seed: 1993
+2026-08-19 17:41:59,068 [toolkit.py] => dataset: domainnet
+2026-08-19 17:41:59,068 [toolkit.py] => data_path: data/domainnet
+2026-08-19 17:41:59,068 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-08-19 17:41:59,068 [toolkit.py] => init_cls: 69
+2026-08-19 17:41:59,068 [toolkit.py] => increment: 69
+2026-08-19 17:41:59,068 [toolkit.py] => sessions: 5
+2026-08-19 17:41:59,068 [toolkit.py] => shuffle: False
+2026-08-19 17:41:59,068 [toolkit.py] => method: splitlorav6
+2026-08-19 17:41:59,068 [toolkit.py] => optimizer: adamw
+2026-08-19 17:41:59,068 [toolkit.py] => scheduler: steplr
+2026-08-19 17:41:59,069 [toolkit.py] => ema_type: EMA
+2026-08-19 17:41:59,069 [toolkit.py] => epochs: 10
+2026-08-19 17:41:59,069 [toolkit.py] => lrate: 0.001
+2026-08-19 17:41:59,069 [toolkit.py] => lrate_head: 0.01
+2026-08-19 17:41:59,069 [toolkit.py] => weight_decay: 5e-05
+2026-08-19 17:41:59,069 [toolkit.py] => batch_size: 256
+2026-08-19 17:41:59,069 [toolkit.py] => rank: 10
+2026-08-19 17:41:59,069 [toolkit.py] => num_workers: 16
+2026-08-19 17:41:59,069 [toolkit.py] => lamb: 0.95
+2026-08-19 17:41:59,069 [toolkit.py] => lame: 1.0
+2026-08-19 17:41:59,069 [toolkit.py] => in_dim: 768
+2026-08-19 17:41:59,069 [toolkit.py] => alpha: 20
+2026-08-19 17:41:59,069 [toolkit.py] => ema_decay: 0
+2026-08-19 17:41:59,069 [toolkit.py] => ema_decay2: 0
+2026-08-19 17:41:59,069 [toolkit.py] => R: 0.5
+2026-08-19 17:41:59,069 [toolkit.py] => ortho_loss_type: True
+2026-08-19 17:41:59,069 [toolkit.py] => ortho_loss_weight: 0.1
+2026-08-19 17:41:59,069 [toolkit.py] => logdir: logs/splitlorav6/domainnet/t5
+2026-08-19 17:41:59,069 [toolkit.py] => logfilename: logs/splitlorav6/domainnet/t5/seed1993
+2026-08-19 17:41:59,296 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 340, 341, 342, 343, 344
+2026-08-19 17:42:03,804 [trainer.py] => ================================================================================
+2026-08-19 17:42:03,804 [trainer.py] => Dataset Information
+2026-08-19 17:42:03,804 [trainer.py] => ================================================================================
+2026-08-19 17:42:03,804 [trainer.py] =>   Dataset name     : domainnet
+2026-08-19 17:42:03,804 [trainer.py] =>   Data path        : data/domainnet
+2026-08-19 17:42:03,804 [trainer.py] =>   Total classes    : 345
+2026-08-19 17:42:03,804 [trainer.py] =>   Total tasks      : 5
+2026-08-19 17:42:03,804 [trainer.py] =>   Task increments  : [69, 69, 69, 69, 69]
+2026-08-19 17:42:03,804 [trainer.py] =>   Init classes     : 69
+2026-08-19 17:42:03,805 [trainer.py] =>   Increment per task: 69
+2026-08-19 17:42:03,805 [trainer.py] =>   Shuffle          : False
+2026-08-19 17:42:03,805 [trainer.py] =>   Seed             : 1993
+2026-08-19 17:42:03,805 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-19 17:42:03,805 [trainer.py] => Task split:
+2026-08-19 17:42:03,891 [trainer.py] =>   Task 0: classes 0-68 (69 classes) | Train: 67628 images (265 batches), Test: 17009 images (67 batches)
+2026-08-19 17:42:03,954 [trainer.py] =>   Task 1: classes 69-137 (69 classes) | Train: 65335 images (256 batches), Test: 16374 images (64 batches)
+2026-08-19 17:42:04,017 [trainer.py] =>   Task 2: classes 138-206 (69 classes) | Train: 70512 images (276 batches), Test: 17747 images (70 batches)
+2026-08-19 17:42:04,079 [trainer.py] =>   Task 3: classes 207-275 (69 classes) | Train: 68362 images (268 batches), Test: 16831 images (66 batches)
+2026-08-19 17:42:04,138 [trainer.py] =>   Task 4: classes 276-344 (69 classes) | Train: 66967 images (262 batches), Test: 16741 images (66 batches)
+2026-08-19 17:42:04,139 [trainer.py] => ================================================================================
+2026-08-19 17:42:04,139 [trainer.py] => ================================================================================
+2026-08-19 17:42:04,188 [splitlorav6.py] => Task 0 learning on class 0-69
+Parameters to be updated:
+[Trainable] image_encoder.blocks.0.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_k.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_v.0.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_k.0.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_v.0.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_k.0.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_v.0.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] classifier_pool.0.weight                                     (69, 768) | 52992
+[Trainable] classifier_pool.0.bias                                       (69,) | 69
+2026-08-19 17:42:04,970 [toolkit.py] => Total params:     105,073,068
+2026-08-19 17:42:04,970 [toolkit.py] => Trainable params: 606,021
+2026-08-19 17:42:04,970 [toolkit.py] => Trainable ratio:  0.5768%
+✅ Requires_grad parameters and optimizer parameters are consistent.
+  0%|          | 0/10 [00:00<?, ?it/s]
+
+cur_task 0, Epoch 0: Head LR=0.010000, Backbone LR=0.001000
+Task 0, Epoch 1/10 => Loss 0.942, Train_accy 78.00:   0%|          | 0/10 [08:45<?, ?it/s]Task 0, Epoch 1/10 => Loss 0.942, Train_accy 78.00:  10%|█         | 1/10 [08:45<1:18:47, 525.32s/it]
+
+cur_task 0, Epoch 1: Head LR=0.010000, Backbone LR=0.001000
+Task 0, Epoch 2/10 => Loss 0.742, Train_accy 81.80:  10%|█         | 1/10 [17:31<1:18:47, 525.32s/it]Task 0, Epoch 2/10 => Loss 0.742, Train_accy 81.80:  20%|██        | 2/10 [17:31<1:10:08, 526.07s/it]
+
+cur_task 0, Epoch 2: Head LR=0.010000, Backbone LR=0.001000
+Task 0, Epoch 3/10 => Loss 0.688, Train_accy 82.98:  20%|██        | 2/10 [26:19<1:10:08, 526.07s/it]Task 0, Epoch 3/10 => Loss 0.688, Train_accy 82.98:  30%|███       | 3/10 [26:19<1:01:28, 526.90s/it]
+
+cur_task 0, Epoch 3: Head LR=0.010000, Backbone LR=0.001000
+Task 0, Epoch 4/10 => Loss 0.648, Train_accy 83.75:  30%|███       | 3/10 [35:07<1:01:28, 526.90s/it]Task 0, Epoch 4/10 => Loss 0.648, Train_accy 83.75:  40%|████      | 4/10 [35:07<52:42, 527.06s/it]  
+
+cur_task 0, Epoch 4: Head LR=0.010000, Backbone LR=0.001000
+Task 0, Epoch 5/10 => Loss 0.630, Train_accy 84.08:  40%|████      | 4/10 [43:53<52:42, 527.06s/it]Task 0, Epoch 5/10 => Loss 0.630, Train_accy 84.08:  50%|█████     | 5/10 [43:53<43:54, 526.97s/it]
+
+cur_task 0, Epoch 5: Head LR=0.001000, Backbone LR=0.000100
+Task 0, Epoch 6/10 => Loss 0.516, Train_accy 86.61:  50%|█████     | 5/10 [52:41<43:54, 526.97s/it]Task 0, Epoch 6/10 => Loss 0.516, Train_accy 86.61:  60%|██████    | 6/10 [52:41<35:08, 527.06s/it]
+
+cur_task 0, Epoch 6: Head LR=0.001000, Backbone LR=0.000100
+Task 0, Epoch 7/10 => Loss 0.486, Train_accy 87.28:  60%|██████    | 6/10 [1:01:28<35:08, 527.06s/it]Task 0, Epoch 7/10 => Loss 0.486, Train_accy 87.28:  70%|███████   | 7/10 [1:01:28<26:21, 527.30s/it]
+
+cur_task 0, Epoch 7: Head LR=0.001000, Backbone LR=0.000100
+Task 0, Epoch 8/10 => Loss 0.475, Train_accy 87.66:  70%|███████   | 7/10 [1:10:16<26:21, 527.30s/it]Task 0, Epoch 8/10 => Loss 0.475, Train_accy 87.66:  80%|████████  | 8/10 [1:10:16<17:34, 527.33s/it]
+
+cur_task 0, Epoch 8: Head LR=0.000100, Backbone LR=0.000010
+Task 0, Epoch 9/10 => Loss 0.459, Train_accy 87.97:  80%|████████  | 8/10 [1:19:04<17:34, 527.33s/it]Task 0, Epoch 9/10 => Loss 0.459, Train_accy 87.97:  90%|█████████ | 9/10 [1:19:04<08:47, 527.58s/it]
+
+cur_task 0, Epoch 9: Head LR=0.000100, Backbone LR=0.000010
+Task 0, Epoch 10/10 => Loss 0.456, Train_accy 88.01:  90%|█████████ | 9/10 [1:27:53<08:47, 527.58s/it]Task 0, Epoch 10/10 => Loss 0.456, Train_accy 88.01: 100%|██████████| 10/10 [1:27:53<00:00, 528.11s/it]Task 0, Epoch 10/10 => Loss 0.456, Train_accy 88.01: 100%|██████████| 10/10 [1:27:53<00:00, 527.37s/it]
+2026-08-19 19:09:58,729 [splitlorav6.py] => Task 0, Epoch 10/10 => Loss 0.456, Train_accy 88.01
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+self.n_cur_matrix: 13322716
+2026-08-19 19:14:14,110 [trainer.py] => Training time: 1h 32m 9s
+2026-08-19 19:15:23,371 [trainer.py] => Evaluation time: 0h 1m 9s
+2026-08-19 19:15:23,371 [trainer.py] => Accuracy: {'total': 87.79, '00-68': 87.79, 'old': 0, 'new': 87.79}
+2026-08-19 19:15:23,371 [trainer.py] => (curve) top1 Acc: [87.79]
+2026-08-19 19:15:23,371 [trainer.py] => Avergae Acc: 87.79
+2026-08-19 19:15:23,371 [trainer.py] => (curve) top1 Acc with task: [87.79]
+2026-08-19 19:15:23,371 [trainer.py] => Avergae Acc: 87.79
+2026-08-19 19:15:23,371 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-08-19 19:15:23,372 [trainer.py] => Avergae Acc: 100.00
+2026-08-19 19:15:23,372 [trainer.py] => ================================================================================
+2026-08-19 19:15:23,372 [trainer.py] => ================================================================================
+2026-08-19 19:15:23,433 [splitlorav6.py] => Task 1 learning on class 69-138
+Parameters to be updated:
+[Trainable] image_encoder.blocks.0.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_k.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_v.1.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_k.1.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_v.1.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_k.1.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_v.1.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] classifier_pool.1.weight                                     (69, 768) | 52992
+[Trainable] classifier_pool.1.bias                                       (69,) | 69
+2026-08-19 19:15:23,440 [toolkit.py] => Total params:     105,073,068
+2026-08-19 19:15:23,441 [toolkit.py] => Trainable params: 606,021
+2026-08-19 19:15:23,441 [toolkit.py] => Trainable ratio:  0.5768%
+Using SplitLora Initialization for Task t(t>=1)
+✅ Requires_grad parameters and optimizer parameters are consistent.
+curent task 1, ema decay 0.9997292760349417
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_B_v.weight
+  0%|          | 0/10 [00:00<?, ?it/s]
+
+cur_task 1, Epoch 0: Head LR=0.010000, Backbone LR=0.001000
+Task 1, Epoch 1/10 => Loss 0.946, Train_accy 78.23, Ortho 0.3900:   0%|          | 0/10 [08:37<?, ?it/s]Task 1, Epoch 1/10 => Loss 0.946, Train_accy 78.23, Ortho 0.3900:  10%|█         | 1/10 [08:37<1:17:40, 517.84s/it]
+
+cur_task 1, Epoch 1: Head LR=0.010000, Backbone LR=0.001000
+Task 1, Epoch 2/10 => Loss 0.740, Train_accy 81.88, Ortho 0.0953:  10%|█         | 1/10 [17:10<1:17:40, 517.84s/it]Task 1, Epoch 2/10 => Loss 0.740, Train_accy 81.88, Ortho 0.0953:  20%|██        | 2/10 [17:10<1:08:37, 514.67s/it]
+
+cur_task 1, Epoch 2: Head LR=0.010000, Backbone LR=0.001000
+Task 1, Epoch 3/10 => Loss 0.690, Train_accy 82.82, Ortho 0.0570:  20%|██        | 2/10 [25:43<1:08:37, 514.67s/it]Task 1, Epoch 3/10 => Loss 0.690, Train_accy 82.82, Ortho 0.0570:  30%|███       | 3/10 [25:43<59:59, 514.20s/it]  
+
+cur_task 1, Epoch 3: Head LR=0.010000, Backbone LR=0.001000
+Task 1, Epoch 4/10 => Loss 0.650, Train_accy 83.55, Ortho 0.0428:  30%|███       | 3/10 [34:17<59:59, 514.20s/it]Task 1, Epoch 4/10 => Loss 0.650, Train_accy 83.55, Ortho 0.0428:  40%|████      | 4/10 [34:17<51:22, 513.82s/it]
+
+cur_task 1, Epoch 4: Head LR=0.010000, Backbone LR=0.001000
+Task 1, Epoch 5/10 => Loss 0.632, Train_accy 84.05, Ortho 0.0360:  40%|████      | 4/10 [42:48<51:22, 513.82s/it]Task 1, Epoch 5/10 => Loss 0.632, Train_accy 84.05, Ortho 0.0360:  50%|█████     | 5/10 [42:48<42:44, 513.00s/it]
+
+cur_task 1, Epoch 5: Head LR=0.001000, Backbone LR=0.000100
+Task 1, Epoch 6/10 => Loss 0.520, Train_accy 86.49, Ortho 0.0315:  50%|█████     | 5/10 [51:20<42:44, 513.00s/it]Task 1, Epoch 6/10 => Loss 0.520, Train_accy 86.49, Ortho 0.0315:  60%|██████    | 6/10 [51:20<34:10, 512.72s/it]
+
+cur_task 1, Epoch 6: Head LR=0.001000, Backbone LR=0.000100
+Task 1, Epoch 7/10 => Loss 0.498, Train_accy 87.10, Ortho 0.0274:  60%|██████    | 6/10 [59:54<34:10, 512.72s/it]Task 1, Epoch 7/10 => Loss 0.498, Train_accy 87.10, Ortho 0.0274:  70%|███████   | 7/10 [59:54<25:39, 513.06s/it]
+
+cur_task 1, Epoch 7: Head LR=0.001000, Backbone LR=0.000100
+Task 1, Epoch 8/10 => Loss 0.490, Train_accy 87.30, Ortho 0.0249:  70%|███████   | 7/10 [1:08:26<25:39, 513.06s/it]Task 1, Epoch 8/10 => Loss 0.490, Train_accy 87.30, Ortho 0.0249:  80%|████████  | 8/10 [1:08:26<17:05, 512.82s/it]
+
+cur_task 1, Epoch 8: Head LR=0.000100, Backbone LR=0.000010
+Task 1, Epoch 9/10 => Loss 0.471, Train_accy 87.80, Ortho 0.0237:  80%|████████  | 8/10 [1:17:00<17:05, 512.82s/it]Task 1, Epoch 9/10 => Loss 0.471, Train_accy 87.80, Ortho 0.0237:  90%|█████████ | 9/10 [1:17:00<08:33, 513.10s/it]
+
+cur_task 1, Epoch 9: Head LR=0.000100, Backbone LR=0.000010
+Task 1, Epoch 10/10 => Loss 0.470, Train_accy 87.72, Ortho 0.0235:  90%|█████████ | 9/10 [1:25:34<08:33, 513.10s/it]Task 1, Epoch 10/10 => Loss 0.470, Train_accy 87.72, Ortho 0.0235: 100%|██████████| 10/10 [1:25:34<00:00, 513.46s/it]Task 1, Epoch 10/10 => Loss 0.470, Train_accy 87.72, Ortho 0.0235: 100%|██████████| 10/10 [1:25:34<00:00, 513.49s/it]
+2026-08-19 20:40:58,419 [splitlorav6.py] => Task 1, Epoch 10/10 => Loss 0.470, Train_accy 87.72, Ortho 0.0235
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+self.n_cur_matrix: 12870995
+2026-08-19 20:45:14,967 [trainer.py] => Training time: 1h 29m 51s
+2026-08-19 20:47:18,817 [trainer.py] => Evaluation time: 0h 2m 3s
+2026-08-19 20:47:18,817 [trainer.py] => Accuracy: {'total': 81.78, '00-68': 79.44, '69-137': 84.21, 'old': 79.44, 'new': 84.21}
+2026-08-19 20:47:18,818 [trainer.py] => (curve) top1 Acc: [87.79, 81.78]
+2026-08-19 20:47:18,818 [trainer.py] => Avergae Acc: 84.78
+2026-08-19 20:47:18,818 [trainer.py] => (curve) top1 Acc with task: [87.79, 87.5]
+2026-08-19 20:47:18,818 [trainer.py] => Avergae Acc: 87.65
+2026-08-19 20:47:18,818 [trainer.py] => (curve) top1 Acc task: [100.0, 89.01]
+2026-08-19 20:47:18,818 [trainer.py] => Avergae Acc: 94.50
+2026-08-19 20:47:18,818 [trainer.py] => ================================================================================
+2026-08-19 20:47:18,819 [trainer.py] => ================================================================================
+2026-08-19 20:47:18,911 [splitlorav6.py] => Task 2 learning on class 138-207
+Parameters to be updated:
+[Trainable] image_encoder.blocks.0.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_k.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_v.2.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_k.2.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_v.2.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_k.2.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_v.2.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] classifier_pool.2.weight                                     (69, 768) | 52992
+[Trainable] classifier_pool.2.bias                                       (69,) | 69
+2026-08-19 20:47:18,921 [toolkit.py] => Total params:     105,073,068
+2026-08-19 20:47:18,922 [toolkit.py] => Trainable params: 606,021
+2026-08-19 20:47:18,922 [toolkit.py] => Trainable ratio:  0.5768%
+Using SplitLora Initialization for Task t(t>=1)
+✅ Requires_grad parameters and optimizer parameters are consistent.
+curent task 2, ema decay 0.9997488912502694
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_B_v.weight
+  0%|          | 0/10 [00:00<?, ?it/s]
+
+cur_task 2, Epoch 0: Head LR=0.010000, Backbone LR=0.001000
+Task 2, Epoch 1/10 => Loss 0.947, Train_accy 77.29, Ortho 0.1170:   0%|          | 0/10 [09:16<?, ?it/s]Task 2, Epoch 1/10 => Loss 0.947, Train_accy 77.29, Ortho 0.1170:  10%|█         | 1/10 [09:16<1:23:24, 556.02s/it]
+
+cur_task 2, Epoch 1: Head LR=0.010000, Backbone LR=0.001000
+Task 2, Epoch 2/10 => Loss 0.780, Train_accy 80.57, Ortho 0.0508:  10%|█         | 1/10 [18:31<1:23:24, 556.02s/it]Task 2, Epoch 2/10 => Loss 0.780, Train_accy 80.57, Ortho 0.0508:  20%|██        | 2/10 [18:31<1:14:04, 555.60s/it]
+
+cur_task 2, Epoch 2: Head LR=0.010000, Backbone LR=0.001000
+Task 2, Epoch 3/10 => Loss 0.738, Train_accy 81.37, Ortho 0.0433:  20%|██        | 2/10 [27:48<1:14:04, 555.60s/it]Task 2, Epoch 3/10 => Loss 0.738, Train_accy 81.37, Ortho 0.0433:  30%|███       | 3/10 [27:48<1:04:54, 556.34s/it]
+
+cur_task 2, Epoch 3: Head LR=0.010000, Backbone LR=0.001000
+Task 2, Epoch 4/10 => Loss 0.708, Train_accy 82.09, Ortho 0.0390:  30%|███       | 3/10 [37:08<1:04:54, 556.34s/it]Task 2, Epoch 4/10 => Loss 0.708, Train_accy 82.09, Ortho 0.0390:  40%|████      | 4/10 [37:08<55:45, 557.64s/it]  
+
+cur_task 2, Epoch 4: Head LR=0.010000, Backbone LR=0.001000
+Task 2, Epoch 5/10 => Loss 0.677, Train_accy 82.74, Ortho 0.0373:  40%|████      | 4/10 [46:30<55:45, 557.64s/it]Task 2, Epoch 5/10 => Loss 0.677, Train_accy 82.74, Ortho 0.0373:  50%|█████     | 5/10 [46:30<46:36, 559.40s/it]
+
+cur_task 2, Epoch 5: Head LR=0.001000, Backbone LR=0.000100
+Task 2, Epoch 6/10 => Loss 0.563, Train_accy 85.37, Ortho 0.0333:  50%|█████     | 5/10 [55:48<46:36, 559.40s/it]Task 2, Epoch 6/10 => Loss 0.563, Train_accy 85.37, Ortho 0.0333:  60%|██████    | 6/10 [55:48<37:15, 558.90s/it]
+
+cur_task 2, Epoch 6: Head LR=0.001000, Backbone LR=0.000100
+Task 2, Epoch 7/10 => Loss 0.539, Train_accy 85.91, Ortho 0.0296:  60%|██████    | 6/10 [1:05:05<37:15, 558.90s/it]Task 2, Epoch 7/10 => Loss 0.539, Train_accy 85.91, Ortho 0.0296:  70%|███████   | 7/10 [1:05:05<27:55, 558.37s/it]
+
+cur_task 2, Epoch 7: Head LR=0.001000, Backbone LR=0.000100
+Task 2, Epoch 8/10 => Loss 0.528, Train_accy 86.23, Ortho 0.0273:  70%|███████   | 7/10 [1:14:21<27:55, 558.37s/it]Task 2, Epoch 8/10 => Loss 0.528, Train_accy 86.23, Ortho 0.0273:  80%|████████  | 8/10 [1:14:21<18:35, 557.57s/it]
+
+cur_task 2, Epoch 8: Head LR=0.000100, Backbone LR=0.000010
+Task 2, Epoch 9/10 => Loss 0.516, Train_accy 86.55, Ortho 0.0262:  80%|████████  | 8/10 [1:23:38<18:35, 557.57s/it]Task 2, Epoch 9/10 => Loss 0.516, Train_accy 86.55, Ortho 0.0262:  90%|█████████ | 9/10 [1:23:38<09:17, 557.39s/it]
+
+cur_task 2, Epoch 9: Head LR=0.000100, Backbone LR=0.000010
+Task 2, Epoch 10/10 => Loss 0.513, Train_accy 86.45, Ortho 0.0259:  90%|█████████ | 9/10 [1:32:54<09:17, 557.39s/it]Task 2, Epoch 10/10 => Loss 0.513, Train_accy 86.45, Ortho 0.0259: 100%|██████████| 10/10 [1:32:54<00:00, 556.85s/it]Task 2, Epoch 10/10 => Loss 0.513, Train_accy 86.45, Ortho 0.0259: 100%|██████████| 10/10 [1:32:54<00:00, 557.44s/it]
+2026-08-19 22:20:13,325 [splitlorav6.py] => Task 2, Epoch 10/10 => Loss 0.513, Train_accy 86.45, Ortho 0.0259
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+self.n_cur_matrix: 13890864
+2026-08-19 22:24:40,726 [trainer.py] => Training time: 1h 37m 21s
+2026-08-19 22:27:50,086 [trainer.py] => Evaluation time: 0h 3m 9s
+2026-08-19 22:27:50,086 [trainer.py] => Accuracy: {'total': 77.55, '00-68': 71.66, '69-137': 79.06, '138-206': 81.79, 'old': 75.29, 'new': 81.79}
+2026-08-19 22:27:50,086 [trainer.py] => (curve) top1 Acc: [87.79, 81.78, 77.55]
+2026-08-19 22:27:50,086 [trainer.py] => Avergae Acc: 82.37
+2026-08-19 22:27:50,086 [trainer.py] => (curve) top1 Acc with task: [87.79, 87.5, 86.91]
+2026-08-19 22:27:50,087 [trainer.py] => Avergae Acc: 87.40
+2026-08-19 22:27:50,087 [trainer.py] => (curve) top1 Acc task: [100.0, 89.01, 83.18]
+2026-08-19 22:27:50,087 [trainer.py] => Avergae Acc: 90.73
+2026-08-19 22:27:50,087 [trainer.py] => ================================================================================
+2026-08-19 22:27:50,087 [trainer.py] => ================================================================================
+2026-08-19 22:27:50,154 [splitlorav6.py] => Task 3 learning on class 207-276
+Parameters to be updated:
+[Trainable] image_encoder.blocks.0.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_k.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_v.3.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_k.3.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_v.3.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_k.3.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_v.3.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] classifier_pool.3.weight                                     (69, 768) | 52992
+[Trainable] classifier_pool.3.bias                                       (69,) | 69
+2026-08-19 22:27:50,162 [toolkit.py] => Total params:     105,073,068
+2026-08-19 22:27:50,163 [toolkit.py] => Trainable params: 606,021
+2026-08-19 22:27:50,163 [toolkit.py] => Trainable ratio:  0.5768%
+Using SplitLora Initialization for Task t(t>=1)
+✅ Requires_grad parameters and optimizer parameters are consistent.
+curent task 3, ema decay 0.9997413964359959
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_B_v.weight
+  0%|          | 0/10 [00:00<?, ?it/s]
+
+cur_task 3, Epoch 0: Head LR=0.010000, Backbone LR=0.001000
+Task 3, Epoch 1/10 => Loss 0.884, Train_accy 78.88, Ortho 0.0601:   0%|          | 0/10 [09:01<?, ?it/s]Task 3, Epoch 1/10 => Loss 0.884, Train_accy 78.88, Ortho 0.0601:  10%|█         | 1/10 [09:01<1:21:09, 541.03s/it]
+
+cur_task 3, Epoch 1: Head LR=0.010000, Backbone LR=0.001000
+Task 3, Epoch 2/10 => Loss 0.717, Train_accy 82.18, Ortho 0.0438:  10%|█         | 1/10 [18:01<1:21:09, 541.03s/it]Task 3, Epoch 2/10 => Loss 0.717, Train_accy 82.18, Ortho 0.0438:  20%|██        | 2/10 [18:01<1:12:06, 540.83s/it]
+
+cur_task 3, Epoch 2: Head LR=0.010000, Backbone LR=0.001000
+Task 3, Epoch 3/10 => Loss 0.683, Train_accy 82.80, Ortho 0.0433:  20%|██        | 2/10 [27:02<1:12:06, 540.83s/it]Task 3, Epoch 3/10 => Loss 0.683, Train_accy 82.80, Ortho 0.0433:  30%|███       | 3/10 [27:02<1:03:04, 540.70s/it]
+
+cur_task 3, Epoch 3: Head LR=0.010000, Backbone LR=0.001000
+Task 3, Epoch 4/10 => Loss 0.646, Train_accy 83.64, Ortho 0.0429:  30%|███       | 3/10 [36:03<1:03:04, 540.70s/it]Task 3, Epoch 4/10 => Loss 0.646, Train_accy 83.64, Ortho 0.0429:  40%|████      | 4/10 [36:03<54:05, 540.96s/it]  
+
+cur_task 3, Epoch 4: Head LR=0.010000, Backbone LR=0.001000
+Task 3, Epoch 5/10 => Loss 0.634, Train_accy 83.95, Ortho 0.0440:  40%|████      | 4/10 [45:03<54:05, 540.96s/it]Task 3, Epoch 5/10 => Loss 0.634, Train_accy 83.95, Ortho 0.0440:  50%|█████     | 5/10 [45:03<45:03, 540.66s/it]
+
+cur_task 3, Epoch 5: Head LR=0.001000, Backbone LR=0.000100
+Task 3, Epoch 6/10 => Loss 0.527, Train_accy 86.46, Ortho 0.0397:  50%|█████     | 5/10 [54:04<45:03, 540.66s/it]Task 3, Epoch 6/10 => Loss 0.527, Train_accy 86.46, Ortho 0.0397:  60%|██████    | 6/10 [54:04<36:02, 540.69s/it]
+
+cur_task 3, Epoch 6: Head LR=0.001000, Backbone LR=0.000100
+Task 3, Epoch 7/10 => Loss 0.504, Train_accy 86.73, Ortho 0.0358:  60%|██████    | 6/10 [1:03:04<36:02, 540.69s/it]Task 3, Epoch 7/10 => Loss 0.504, Train_accy 86.73, Ortho 0.0358:  70%|███████   | 7/10 [1:03:04<27:01, 540.63s/it]
+
+cur_task 3, Epoch 7: Head LR=0.001000, Backbone LR=0.000100
+Task 3, Epoch 8/10 => Loss 0.486, Train_accy 87.28, Ortho 0.0330:  70%|███████   | 7/10 [1:12:06<27:01, 540.63s/it]Task 3, Epoch 8/10 => Loss 0.486, Train_accy 87.28, Ortho 0.0330:  80%|████████  | 8/10 [1:12:06<18:01, 540.78s/it]
+
+cur_task 3, Epoch 8: Head LR=0.000100, Backbone LR=0.000010
+Task 3, Epoch 9/10 => Loss 0.477, Train_accy 87.56, Ortho 0.0317:  80%|████████  | 8/10 [1:21:09<18:01, 540.78s/it]Task 3, Epoch 9/10 => Loss 0.477, Train_accy 87.56, Ortho 0.0317:  90%|█████████ | 9/10 [1:21:09<09:01, 541.53s/it]
+
+cur_task 3, Epoch 9: Head LR=0.000100, Backbone LR=0.000010
+Task 3, Epoch 10/10 => Loss 0.470, Train_accy 87.74, Ortho 0.0315:  90%|█████████ | 9/10 [1:30:12<09:01, 541.53s/it]Task 3, Epoch 10/10 => Loss 0.470, Train_accy 87.74, Ortho 0.0315: 100%|██████████| 10/10 [1:30:12<00:00, 542.18s/it]Task 3, Epoch 10/10 => Loss 0.470, Train_accy 87.74, Ortho 0.0315: 100%|██████████| 10/10 [1:30:12<00:00, 541.29s/it]
+2026-08-19 23:58:03,097 [splitlorav6.py] => Task 3, Epoch 10/10 => Loss 0.470, Train_accy 87.74, Ortho 0.0315
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+self.n_cur_matrix: 13467314
+2026-08-20 00:02:27,111 [trainer.py] => Training time: 1h 34m 37s
+2026-08-20 00:06:38,756 [trainer.py] => Evaluation time: 0h 4m 11s
+2026-08-20 00:06:38,756 [trainer.py] => Accuracy: {'total': 74.67, '00-68': 65.34, '69-137': 75.03, '138-206': 78.59, '207-275': 79.64, 'old': 73.04, 'new': 79.64}
+2026-08-20 00:06:38,757 [trainer.py] => (curve) top1 Acc: [87.79, 81.78, 77.55, 74.67]
+2026-08-20 00:06:38,757 [trainer.py] => Avergae Acc: 80.45
+2026-08-20 00:06:38,757 [trainer.py] => (curve) top1 Acc with task: [87.79, 87.5, 86.91, 86.77]
+2026-08-20 00:06:38,757 [trainer.py] => Avergae Acc: 87.24
+2026-08-20 00:06:38,757 [trainer.py] => (curve) top1 Acc task: [100.0, 89.01, 83.18, 79.38]
+2026-08-20 00:06:38,757 [trainer.py] => Avergae Acc: 87.89
+2026-08-20 00:06:38,757 [trainer.py] => ================================================================================
+2026-08-20 00:06:38,757 [trainer.py] => ================================================================================
+2026-08-20 00:06:38,822 [splitlorav6.py] => Task 4 learning on class 276-345
+Parameters to be updated:
+[Trainable] image_encoder.blocks.0.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.0.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.1.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.2.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.3.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.4.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.5.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.6.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.7.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.8.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_k.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.lora_B_v.4.weight                (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_k.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_k.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_A_v.weight           (10, 768) | 7680
+[Trainable] image_encoder.blocks.9.attn.Lora_shared_B_v.weight           (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_k.4.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.lora_B_v.4.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.10.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_k.4.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.lora_B_v.4.weight               (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_k.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_k.weight          (768, 10) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_A_v.weight          (10, 768) | 7680
+[Trainable] image_encoder.blocks.11.attn.Lora_shared_B_v.weight          (768, 10) | 7680
+[Trainable] classifier_pool.4.weight                                     (69, 768) | 52992
+[Trainable] classifier_pool.4.bias                                       (69,) | 69
+2026-08-20 00:06:38,829 [toolkit.py] => Total params:     105,073,068
+2026-08-20 00:06:38,829 [toolkit.py] => Trainable params: 606,021
+2026-08-20 00:06:38,829 [toolkit.py] => Trainable ratio:  0.5768%
+Using SplitLora Initialization for Task t(t>=1)
+✅ Requires_grad parameters and optimizer parameters are consistent.
+curent task 4, ema decay 0.9997354750003288
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.0.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.1.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.2.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.3.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.4.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.5.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.6.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.7.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.8.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.9.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.10.attn.Lora_shared_B_v.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_A_k.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_B_k.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_A_v.weight
+EMA tracking: image_encoder.blocks.11.attn.Lora_shared_B_v.weight
+  0%|          | 0/10 [00:00<?, ?it/s]
+
+cur_task 4, Epoch 0: Head LR=0.010000, Backbone LR=0.001000
+Task 4, Epoch 1/10 => Loss 0.863, Train_accy 79.30, Ortho 0.0469:   0%|          | 0/10 [08:56<?, ?it/s]Task 4, Epoch 1/10 => Loss 0.863, Train_accy 79.30, Ortho 0.0469:  10%|█         | 1/10 [08:56<1:20:29, 536.56s/it]
+
+cur_task 4, Epoch 1: Head LR=0.010000, Backbone LR=0.001000
+Task 4, Epoch 2/10 => Loss 0.694, Train_accy 82.63, Ortho 0.0438:  10%|█         | 1/10 [17:46<1:20:29, 536.56s/it]Task 4, Epoch 2/10 => Loss 0.694, Train_accy 82.63, Ortho 0.0438:  20%|██        | 2/10 [17:46<1:11:01, 532.72s/it]
+
+cur_task 4, Epoch 2: Head LR=0.010000, Backbone LR=0.001000
+Task 4, Epoch 3/10 => Loss 0.657, Train_accy 83.32, Ortho 0.0465:  20%|██        | 2/10 [26:37<1:11:01, 532.72s/it]Task 4, Epoch 3/10 => Loss 0.657, Train_accy 83.32, Ortho 0.0465:  30%|███       | 3/10 [26:37<1:02:01, 531.67s/it]
+
+cur_task 4, Epoch 3: Head LR=0.010000, Backbone LR=0.001000
+Task 4, Epoch 4/10 => Loss 0.625, Train_accy 84.21, Ortho 0.0475:  30%|███       | 3/10 [35:26<1:02:01, 531.67s/it]Task 4, Epoch 4/10 => Loss 0.625, Train_accy 84.21, Ortho 0.0475:  40%|████      | 4/10 [35:26<53:05, 530.94s/it]  
+
+cur_task 4, Epoch 4: Head LR=0.010000, Backbone LR=0.001000
+Task 4, Epoch 5/10 => Loss 0.611, Train_accy 84.32, Ortho 0.0481:  40%|████      | 4/10 [44:16<53:05, 530.94s/it]Task 4, Epoch 5/10 => Loss 0.611, Train_accy 84.32, Ortho 0.0481:  50%|█████     | 5/10 [44:16<44:13, 530.60s/it]
+
+cur_task 4, Epoch 5: Head LR=0.001000, Backbone LR=0.000100
+Task 4, Epoch 6/10 => Loss 0.505, Train_accy 86.90, Ortho 0.0473:  50%|█████     | 5/10 [53:06<44:13, 530.60s/it]Task 4, Epoch 6/10 => Loss 0.505, Train_accy 86.90, Ortho 0.0473:  60%|██████    | 6/10 [53:06<35:20, 530.20s/it]
+
+cur_task 4, Epoch 6: Head LR=0.001000, Backbone LR=0.000100
+Task 4, Epoch 7/10 => Loss 0.490, Train_accy 87.27, Ortho 0.0427:  60%|██████    | 6/10 [1:01:56<35:20, 530.20s/it]Task 4, Epoch 7/10 => Loss 0.490, Train_accy 87.27, Ortho 0.0427:  70%|███████   | 7/10 [1:01:56<26:30, 530.11s/it]
+
+cur_task 4, Epoch 7: Head LR=0.001000, Backbone LR=0.000100
+Task 4, Epoch 8/10 => Loss 0.463, Train_accy 87.89, Ortho 0.0394:  70%|███████   | 7/10 [1:10:45<26:30, 530.11s/it]Task 4, Epoch 8/10 => Loss 0.463, Train_accy 87.89, Ortho 0.0394:  80%|████████  | 8/10 [1:10:45<17:39, 529.81s/it]
+
+cur_task 4, Epoch 8: Head LR=0.000100, Backbone LR=0.000010
+Task 4, Epoch 9/10 => Loss 0.454, Train_accy 88.18, Ortho 0.0378:  80%|████████  | 8/10 [1:19:33<17:39, 529.81s/it]Task 4, Epoch 9/10 => Loss 0.454, Train_accy 88.18, Ortho 0.0378:  90%|█████████ | 9/10 [1:19:33<08:49, 529.23s/it]
+
+cur_task 4, Epoch 9: Head LR=0.000100, Backbone LR=0.000010
+Task 4, Epoch 10/10 => Loss 0.451, Train_accy 88.14, Ortho 0.0376:  90%|█████████ | 9/10 [1:28:21<08:49, 529.23s/it]Task 4, Epoch 10/10 => Loss 0.451, Train_accy 88.14, Ortho 0.0376: 100%|██████████| 10/10 [1:28:21<00:00, 528.88s/it]Task 4, Epoch 10/10 => Loss 0.451, Train_accy 88.14, Ortho 0.0376: 100%|██████████| 10/10 [1:28:21<00:00, 530.14s/it]
+2026-08-20 01:35:00,239 [splitlorav6.py] => Task 4, Epoch 10/10 => Loss 0.451, Train_accy 88.14, Ortho 0.0376
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+self.n_cur_matrix: 13192499
+2026-08-20 01:39:15,058 [trainer.py] => Training time: 1h 32m 36s
+2026-08-20 01:44:23,611 [trainer.py] => Evaluation time: 0h 5m 8s
+2026-08-20 01:44:23,611 [trainer.py] => Accuracy: {'total': 72.33, '00-68': 61.6, '69-137': 70.89, '138-206': 75.27, '207-275': 75.98, '276-344': 77.86, 'old': 70.97, 'new': 77.86}
+2026-08-20 01:44:23,611 [trainer.py] => (curve) top1 Acc: [87.79, 81.78, 77.55, 74.67, 72.33]
+2026-08-20 01:44:23,611 [trainer.py] => Avergae Acc: 78.82
+2026-08-20 01:44:23,611 [trainer.py] => (curve) top1 Acc with task: [87.79, 87.5, 86.91, 86.77, 86.66]
+2026-08-20 01:44:23,611 [trainer.py] => Avergae Acc: 87.13
+2026-08-20 01:44:23,611 [trainer.py] => (curve) top1 Acc task: [100.0, 89.01, 83.18, 79.38, 76.37]
+2026-08-20 01:44:23,612 [trainer.py] => Avergae Acc: 85.59
+2026-08-20 01:44:23,612 [trainer.py] => ================================================================================

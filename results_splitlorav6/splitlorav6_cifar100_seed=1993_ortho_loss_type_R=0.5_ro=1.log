@@ -1,0 +1,56 @@
+2026-09-02 15:33:26,764 [toolkit.py] => config: configs/splitlorav6/cifar100_seed=1993_ortho_loss_type_R=0.5_ro=1.json
+2026-09-02 15:33:26,801 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-09-02 15:33:26,801 [toolkit.py] => debug: False
+2026-09-02 15:33:26,801 [toolkit.py] => save_ckp: False
+2026-09-02 15:33:26,801 [toolkit.py] => moe_list: None
+2026-09-02 15:33:26,802 [toolkit.py] => seed: 1993
+2026-09-02 15:33:26,802 [toolkit.py] => dataset: cifar100
+2026-09-02 15:33:26,802 [toolkit.py] => data_path: data/cifar100
+2026-09-02 15:33:26,802 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-09-02 15:33:26,802 [toolkit.py] => init_cls: 10
+2026-09-02 15:33:26,802 [toolkit.py] => increment: 10
+2026-09-02 15:33:26,802 [toolkit.py] => sessions: 10
+2026-09-02 15:33:26,802 [toolkit.py] => shuffle: False
+2026-09-02 15:33:26,802 [toolkit.py] => ema_type: EMA
+2026-09-02 15:33:26,802 [toolkit.py] => method: splitlorav6
+2026-09-02 15:33:26,802 [toolkit.py] => optimizer: adamw
+2026-09-02 15:33:26,802 [toolkit.py] => scheduler: steplr
+2026-09-02 15:33:26,802 [toolkit.py] => epochs: 10
+2026-09-02 15:33:26,802 [toolkit.py] => lrate: 0.001
+2026-09-02 15:33:26,802 [toolkit.py] => lrate_head: 0.01
+2026-09-02 15:33:26,802 [toolkit.py] => weight_decay: 5e-05
+2026-09-02 15:33:26,802 [toolkit.py] => batch_size: 256
+2026-09-02 15:33:26,802 [toolkit.py] => rank: 10
+2026-09-02 15:33:26,802 [toolkit.py] => num_workers: 16
+2026-09-02 15:33:26,802 [toolkit.py] => lamb: 0.95
+2026-09-02 15:33:26,802 [toolkit.py] => lame: 1.0
+2026-09-02 15:33:26,802 [toolkit.py] => in_dim: 768
+2026-09-02 15:33:26,802 [toolkit.py] => alpha: 20
+2026-09-02 15:33:26,802 [toolkit.py] => ema_decay: 0
+2026-09-02 15:33:26,802 [toolkit.py] => ema_decay2: 0
+2026-09-02 15:33:26,802 [toolkit.py] => ortho_loss_type: True
+2026-09-02 15:33:26,802 [toolkit.py] => R: 0.5
+2026-09-02 15:33:26,803 [toolkit.py] => ortho_loss_weight: 1
+2026-09-02 15:33:26,803 [toolkit.py] => logdir: logs/splitlorav6/cifar100/t10
+2026-09-02 15:33:26,803 [toolkit.py] => logfilename: logs/splitlorav6/cifar100/t10/seed1993
+2026-09-02 15:33:28,740 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 95, 96, 97, 98, 99
+Traceback (most recent call last):
+  File "/home/zll2025/low-rank-cl-main/main.py", line 57, in <module>
+    main()
+  File "/home/zll2025/low-rank-cl-main/main.py", line 30, in main
+    start(args)
+  File "/home/zll2025/low-rank-cl-main/trainer.py", line 14, in start
+    data_manager, model = initialize(args)
+  File "/home/zll2025/low-rank-cl-main/trainer.py", line 32, in initialize
+    model = get_model(args['method'], args)
+  File "/home/zll2025/low-rank-cl-main/utils/factory.py", line 83, in get_model
+    return SplitLoRAV6(args)
+  File "/home/zll2025/low-rank-cl-main/methods/splitlorav6.py", line 31, in __init__
+    self.network = Net(args)
+  File "/home/zll2025/low-rank-cl-main/models/net_splitlora_R.py", line 88, in __init__
+    module.init_param()
+  File "/home/zll2025/low-rank-cl-main/models/vit_splitlora_R.py", line 280, in init_param
+    nn.init.zeros_(self.Lora_shared_B_q.weight)
+  File "/home/zll2025/anaconda3/envs/low-rank-cl/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1940, in __getattr__
+    raise AttributeError(
+AttributeError: 'Attention_LoRA' object has no attribute 'Lora_shared_B_q'

@@ -1,0 +1,1302 @@
+2026-09-08 00:10:35,825 [toolkit.py] => config: configs/sdlora_ov4/imagenet-r_seed=1993_lo=100_ls_100_mu=100.json
+2026-09-08 00:10:35,826 [toolkit.py] => device: [device(type='cuda', index=3)]
+2026-09-08 00:10:35,826 [toolkit.py] => debug: False
+2026-09-08 00:10:35,826 [toolkit.py] => save_ckp: False
+2026-09-08 00:10:35,826 [toolkit.py] => moe_list: None
+2026-09-08 00:10:35,826 [toolkit.py] => seed: 1997
+2026-09-08 00:10:35,826 [toolkit.py] => dataset: imagenet-r
+2026-09-08 00:10:35,826 [toolkit.py] => data_path: data/imagenet-r
+2026-09-08 00:10:35,826 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-09-08 00:10:35,826 [toolkit.py] => init_cls: 20
+2026-09-08 00:10:35,826 [toolkit.py] => increment: 20
+2026-09-08 00:10:35,826 [toolkit.py] => sessions: 10
+2026-09-08 00:10:35,826 [toolkit.py] => shuffle: False
+2026-09-08 00:10:35,826 [toolkit.py] => method: sdlora_o
+2026-09-08 00:10:35,826 [toolkit.py] => optimizer: adam
+2026-09-08 00:10:35,826 [toolkit.py] => scheduler: cosine
+2026-09-08 00:10:35,826 [toolkit.py] => epochs: 50
+2026-09-08 00:10:35,826 [toolkit.py] => lrate: 0.0005
+2026-09-08 00:10:35,826 [toolkit.py] => fc_lrate: 0.005
+2026-09-08 00:10:35,826 [toolkit.py] => weight_decay: 0.0
+2026-09-08 00:10:35,827 [toolkit.py] => batch_size: 128
+2026-09-08 00:10:35,827 [toolkit.py] => rank: 10
+2026-09-08 00:10:35,827 [toolkit.py] => num_workers: 16
+2026-09-08 00:10:35,827 [toolkit.py] => lrate_head: 0
+2026-09-08 00:10:35,827 [toolkit.py] => R: 0.5
+2026-09-08 00:10:35,827 [toolkit.py] => lambda_o: 100
+2026-09-08 00:10:35,827 [toolkit.py] => lambda_s: 100
+2026-09-08 00:10:35,827 [toolkit.py] => mu: 100
+2026-09-08 00:10:35,827 [toolkit.py] => ortho_loss_typev2: True
+2026-09-08 00:10:35,827 [toolkit.py] => logdir: logs/sdlora_o/imagenet-r/t10
+2026-09-08 00:10:35,827 [toolkit.py] => logfilename: logs/sdlora_o/imagenet-r/t10/seed1997
+2026-09-08 00:10:35,907 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-09-08 00:10:38,830 [trainer.py] => ================================================================================
+2026-09-08 00:10:38,830 [trainer.py] => Dataset Information
+2026-09-08 00:10:38,830 [trainer.py] => ================================================================================
+2026-09-08 00:10:38,830 [trainer.py] =>   Dataset name     : imagenet-r
+2026-09-08 00:10:38,831 [trainer.py] =>   Data path        : data/imagenet-r
+2026-09-08 00:10:38,831 [trainer.py] =>   Total classes    : 200
+2026-09-08 00:10:38,831 [trainer.py] =>   Total tasks      : 10
+2026-09-08 00:10:38,831 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-09-08 00:10:38,831 [trainer.py] =>   Init classes     : 20
+2026-09-08 00:10:38,831 [trainer.py] =>   Increment per task: 20
+2026-09-08 00:10:38,831 [trainer.py] =>   Shuffle          : False
+2026-09-08 00:10:38,831 [trainer.py] =>   Seed             : 1997
+2026-09-08 00:10:38,831 [trainer.py] => --------------------------------------------------------------------------------
+2026-09-08 00:10:38,831 [trainer.py] => Task split:
+2026-09-08 00:10:38,833 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 2585 images (11 batches), Test: 646 images (3 batches)
+2026-09-08 00:10:38,835 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 2886 images (12 batches), Test: 720 images (3 batches)
+2026-09-08 00:10:38,836 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1739 images (7 batches), Test: 436 images (2 batches)
+2026-09-08 00:10:38,837 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 2344 images (10 batches), Test: 589 images (3 batches)
+2026-09-08 00:10:38,839 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 2816 images (11 batches), Test: 703 images (3 batches)
+2026-09-08 00:10:38,840 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 2215 images (9 batches), Test: 555 images (3 batches)
+2026-09-08 00:10:38,842 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 2274 images (9 batches), Test: 568 images (3 batches)
+2026-09-08 00:10:38,843 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 1821 images (8 batches), Test: 456 images (2 batches)
+2026-09-08 00:10:38,845 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 2489 images (10 batches), Test: 621 images (3 batches)
+2026-09-08 00:10:38,847 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 2831 images (12 batches), Test: 706 images (3 batches)
+2026-09-08 00:10:38,847 [trainer.py] => ================================================================================
+2026-09-08 00:10:38,847 [trainer.py] => ================================================================================
+2026-09-08 00:10:38,849 [base.py] => Task 0 learning on class 0-20
+2026-09-08 00:10:39,990 [toolkit.py] => Total params:     106,804,784
+2026-09-08 00:10:39,991 [toolkit.py] => Trainable params: 752,681
+2026-09-08 00:10:39,991 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 00:39:51,153 [sdlora_o.py] => Task 0, Epoch 50/50 => Loss 0.069, Train_accy 97.72
+2026-09-08 00:39:51,163 [trainer.py] => Training time: 0h 29m 12s
+2026-09-08 00:39:57,537 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-09-08 00:39:57,537 [trainer.py] => Accuracy: {'total': 87.77, '00-19': 87.77, 'old': 0, 'new': 87.77}
+2026-09-08 00:39:57,537 [trainer.py] => (curve) top1 Acc: [87.77]
+2026-09-08 00:39:57,537 [trainer.py] => Avergae Acc: 87.77
+2026-09-08 00:39:57,537 [trainer.py] => (curve) top1 Acc with task: [87.77]
+2026-09-08 00:39:57,537 [trainer.py] => Avergae Acc: 87.77
+2026-09-08 00:39:57,537 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-09-08 00:39:57,537 [trainer.py] => Avergae Acc: 100.00
+2026-09-08 00:39:57,537 [trainer.py] => ================================================================================
+2026-09-08 00:39:57,537 [trainer.py] => ================================================================================
+2026-09-08 00:39:57,539 [base.py] => Task 1 learning on class 20-40
+2026-09-08 00:39:57,553 [toolkit.py] => Total params:     106,804,784
+2026-09-08 00:39:57,553 [toolkit.py] => Trainable params: 752,681
+2026-09-08 00:39:57,553 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 01:18:33,335 [sdlora_o.py] => Task 1, Epoch 50/50 => Loss 95.101, Train_accy 95.32
+2026-09-08 01:18:33,341 [trainer.py] => Training time: 0h 38m 35s
+2026-09-08 01:18:44,692 [trainer.py] => Evaluation time: 0h 0m 11s
+2026-09-08 01:18:44,692 [trainer.py] => Accuracy: {'total': 79.87, '00-19': 81.27, '20-39': 78.61, 'old': 81.27, 'new': 78.61}
+2026-09-08 01:18:44,692 [trainer.py] => (curve) top1 Acc: [87.77, 79.87]
+2026-09-08 01:18:44,692 [trainer.py] => Avergae Acc: 83.82
+2026-09-08 01:18:44,692 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94]
+2026-09-08 01:18:44,692 [trainer.py] => Avergae Acc: 86.85
+2026-09-08 01:18:44,692 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21]
+2026-09-08 01:18:44,692 [trainer.py] => Avergae Acc: 94.10
+2026-09-08 01:18:44,692 [trainer.py] => ================================================================================
+2026-09-08 01:18:44,692 [trainer.py] => ================================================================================
+2026-09-08 01:18:44,694 [base.py] => Task 2 learning on class 40-60
+2026-09-08 01:18:44,708 [toolkit.py] => Total params:     106,804,784
+2026-09-08 01:18:44,708 [toolkit.py] => Trainable params: 752,681
+2026-09-08 01:18:44,708 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 01:44:16,282 [sdlora_o.py] => Task 2, Epoch 50/50 => Loss 66.974, Train_accy 95.11
+2026-09-08 01:44:16,290 [trainer.py] => Training time: 0h 25m 31s
+2026-09-08 01:44:28,625 [trainer.py] => Evaluation time: 0h 0m 12s
+2026-09-08 01:44:28,626 [trainer.py] => Accuracy: {'total': 72.25, '00-19': 78.02, '20-39': 76.67, '40-59': 56.42, 'old': 77.31, 'new': 56.42}
+2026-09-08 01:44:28,626 [trainer.py] => (curve) top1 Acc: [87.77, 79.87, 72.25]
+2026-09-08 01:44:28,626 [trainer.py] => Avergae Acc: 79.96
+2026-09-08 01:44:28,626 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94, 82.3]
+2026-09-08 01:44:28,626 [trainer.py] => Avergae Acc: 85.34
+2026-09-08 01:44:28,626 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21, 80.63]
+2026-09-08 01:44:28,626 [trainer.py] => Avergae Acc: 89.61
+2026-09-08 01:44:28,626 [trainer.py] => ================================================================================
+2026-09-08 01:44:28,626 [trainer.py] => ================================================================================
+2026-09-08 01:44:28,628 [base.py] => Task 3 learning on class 60-80
+2026-09-08 01:44:28,642 [toolkit.py] => Total params:     106,804,784
+2026-09-08 01:44:28,642 [toolkit.py] => Trainable params: 752,681
+2026-09-08 01:44:28,642 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 02:16:10,218 [sdlora_o.py] => Task 3, Epoch 50/50 => Loss 45.887, Train_accy 95.69
+2026-09-08 02:16:10,247 [trainer.py] => Training time: 0h 31m 41s
+2026-09-08 02:16:21,317 [trainer.py] => Evaluation time: 0h 0m 11s
+2026-09-08 02:16:21,317 [trainer.py] => Accuracy: {'total': 69.85, '00-19': 77.4, '20-39': 75.42, '40-59': 53.44, '60-79': 66.89, 'old': 70.81, 'new': 66.89}
+2026-09-08 02:16:21,317 [trainer.py] => (curve) top1 Acc: [87.77, 79.87, 72.25, 69.85]
+2026-09-08 02:16:21,318 [trainer.py] => Avergae Acc: 77.44
+2026-09-08 02:16:21,318 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94, 82.3, 82.52]
+2026-09-08 02:16:21,318 [trainer.py] => Avergae Acc: 84.63
+2026-09-08 02:16:21,318 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21, 80.63, 76.16]
+2026-09-08 02:16:21,318 [trainer.py] => Avergae Acc: 86.25
+2026-09-08 02:16:21,318 [trainer.py] => ================================================================================
+2026-09-08 02:16:21,318 [trainer.py] => ================================================================================
+2026-09-08 02:16:21,319 [base.py] => Task 4 learning on class 80-100
+2026-09-08 02:16:21,333 [toolkit.py] => Total params:     106,804,784
+2026-09-08 02:16:21,333 [toolkit.py] => Trainable params: 752,681
+2026-09-08 02:16:21,333 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 02:41:53,229 [sdlora_o.py] => Task 4, Epoch 50/50 => Loss 27.770, Train_accy 95.13
+2026-09-08 02:41:53,235 [trainer.py] => Training time: 0h 25m 31s
+2026-09-08 02:42:07,911 [trainer.py] => Evaluation time: 0h 0m 14s
+2026-09-08 02:42:07,911 [trainer.py] => Accuracy: {'total': 69.65, '00-19': 77.09, '20-39': 73.75, '40-59': 52.98, '60-79': 66.21, '80-99': 71.83, 'old': 69.01, 'new': 71.83}
+2026-09-08 02:42:07,911 [trainer.py] => (curve) top1 Acc: [87.77, 79.87, 72.25, 69.85, 69.65]
+2026-09-08 02:42:07,911 [trainer.py] => Avergae Acc: 75.88
+2026-09-08 02:42:07,911 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94, 82.3, 82.52, 82.97]
+2026-09-08 02:42:07,911 [trainer.py] => Avergae Acc: 84.30
+2026-09-08 02:42:07,912 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21, 80.63, 76.16, 75.34]
+2026-09-08 02:42:07,912 [trainer.py] => Avergae Acc: 84.07
+2026-09-08 02:42:07,912 [trainer.py] => ================================================================================
+2026-09-08 02:42:07,912 [trainer.py] => ================================================================================
+2026-09-08 02:42:07,913 [base.py] => Task 5 learning on class 100-120
+2026-09-08 02:42:07,927 [toolkit.py] => Total params:     106,804,784
+2026-09-08 02:42:07,928 [toolkit.py] => Trainable params: 752,681
+2026-09-08 02:42:07,928 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 03:03:31,555 [sdlora_o.py] => Task 5, Epoch 50/50 => Loss 11.299, Train_accy 95.76
+2026-09-08 03:03:31,563 [trainer.py] => Training time: 0h 21m 23s
+2026-09-08 03:03:49,561 [trainer.py] => Evaluation time: 0h 0m 17s
+2026-09-08 03:03:49,561 [trainer.py] => Accuracy: {'total': 67.96, '00-19': 76.01, '20-39': 72.5, '40-59': 51.83, '60-79': 65.87, '80-99': 69.7, '100-119': 65.41, 'old': 68.42, 'new': 65.41}
+2026-09-08 03:03:49,562 [trainer.py] => (curve) top1 Acc: [87.77, 79.87, 72.25, 69.85, 69.65, 67.96]
+2026-09-08 03:03:49,562 [trainer.py] => Avergae Acc: 74.56
+2026-09-08 03:03:49,562 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94, 82.3, 82.52, 82.97, 82.65]
+2026-09-08 03:03:49,562 [trainer.py] => Avergae Acc: 84.02
+2026-09-08 03:03:49,562 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21, 80.63, 76.16, 75.34, 73.28]
+2026-09-08 03:03:49,562 [trainer.py] => Avergae Acc: 82.27
+2026-09-08 03:03:49,562 [trainer.py] => ================================================================================
+2026-09-08 03:03:49,562 [trainer.py] => ================================================================================
+2026-09-08 03:03:49,563 [base.py] => Task 6 learning on class 120-140
+2026-09-08 03:03:49,578 [toolkit.py] => Total params:     106,804,784
+2026-09-08 03:03:49,578 [toolkit.py] => Trainable params: 752,681
+2026-09-08 03:03:49,578 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 03:26:49,724 [sdlora_o.py] => Task 6, Epoch 50/50 => Loss 3.185, Train_accy 95.25
+2026-09-08 03:26:49,730 [trainer.py] => Training time: 0h 23m 0s
+2026-09-08 03:27:11,473 [trainer.py] => Evaluation time: 0h 0m 21s
+2026-09-08 03:27:11,473 [trainer.py] => Accuracy: {'total': 66.45, '00-19': 76.16, '20-39': 72.36, '40-59': 51.61, '60-79': 66.04, '80-99': 69.13, '100-119': 65.41, '120-139': 57.39, 'old': 67.85, 'new': 57.39}
+2026-09-08 03:27:11,473 [trainer.py] => (curve) top1 Acc: [87.77, 79.87, 72.25, 69.85, 69.65, 67.96, 66.45]
+2026-09-08 03:27:11,473 [trainer.py] => Avergae Acc: 73.40
+2026-09-08 03:27:11,473 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94, 82.3, 82.52, 82.97, 82.65, 82.33]
+2026-09-08 03:27:11,473 [trainer.py] => Avergae Acc: 83.78
+2026-09-08 03:27:11,473 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21, 80.63, 76.16, 75.34, 73.28, 71.47]
+2026-09-08 03:27:11,473 [trainer.py] => Avergae Acc: 80.73
+2026-09-08 03:27:11,473 [trainer.py] => ================================================================================
+2026-09-08 03:27:11,473 [trainer.py] => ================================================================================
+2026-09-08 03:27:11,475 [base.py] => Task 7 learning on class 140-160
+2026-09-08 03:27:11,494 [toolkit.py] => Total params:     106,804,784
+2026-09-08 03:27:11,494 [toolkit.py] => Trainable params: 752,681
+2026-09-08 03:27:11,494 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 03:46:36,096 [sdlora_o.py] => Task 7, Epoch 50/50 => Loss 1.007, Train_accy 95.66
+2026-09-08 03:46:36,103 [trainer.py] => Training time: 0h 19m 24s
+2026-09-08 03:47:00,948 [trainer.py] => Evaluation time: 0h 0m 24s
+2026-09-08 03:47:00,948 [trainer.py] => Accuracy: {'total': 66.27, '00-19': 76.78, '20-39': 72.08, '40-59': 52.52, '60-79': 66.89, '80-99': 68.42, '100-119': 65.59, '120-139': 57.22, '140-159': 63.38, 'old': 66.59, 'new': 63.38}
+2026-09-08 03:47:00,948 [trainer.py] => (curve) top1 Acc: [87.77, 79.87, 72.25, 69.85, 69.65, 67.96, 66.45, 66.27]
+2026-09-08 03:47:00,948 [trainer.py] => Avergae Acc: 72.51
+2026-09-08 03:47:00,948 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94, 82.3, 82.52, 82.97, 82.65, 82.33, 82.43]
+2026-09-08 03:47:00,948 [trainer.py] => Avergae Acc: 83.61
+2026-09-08 03:47:00,949 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21, 80.63, 76.16, 75.34, 73.28, 71.47, 70.9]
+2026-09-08 03:47:00,949 [trainer.py] => Avergae Acc: 79.50
+2026-09-08 03:47:00,949 [trainer.py] => ================================================================================
+2026-09-08 03:47:00,949 [trainer.py] => ================================================================================
+2026-09-08 03:47:00,950 [base.py] => Task 8 learning on class 160-180
+2026-09-08 03:47:00,966 [toolkit.py] => Total params:     106,804,784
+2026-09-08 03:47:00,966 [toolkit.py] => Trainable params: 752,681
+2026-09-08 03:47:00,966 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 04:14:18,564 [sdlora_o.py] => Task 8, Epoch 50/50 => Loss 0.402, Train_accy 96.91
+2026-09-08 04:14:18,573 [trainer.py] => Training time: 0h 27m 17s
+2026-09-08 04:14:47,971 [trainer.py] => Evaluation time: 0h 0m 29s
+2026-09-08 04:14:47,972 [trainer.py] => Accuracy: {'total': 67.26, '00-19': 77.55, '20-39': 71.81, '40-59': 52.29, '60-79': 66.72, '80-99': 68.42, '100-119': 65.23, '120-139': 54.05, '140-159': 59.65, '160-179': 80.52, 'old': 65.5, 'new': 80.52}
+2026-09-08 04:14:47,972 [trainer.py] => (curve) top1 Acc: [87.77, 79.87, 72.25, 69.85, 69.65, 67.96, 66.45, 66.27, 67.26]
+2026-09-08 04:14:47,972 [trainer.py] => Avergae Acc: 71.93
+2026-09-08 04:14:47,972 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94, 82.3, 82.52, 82.97, 82.65, 82.33, 82.43, 83.26]
+2026-09-08 04:14:47,972 [trainer.py] => Avergae Acc: 83.57
+2026-09-08 04:14:47,972 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21, 80.63, 76.16, 75.34, 73.28, 71.47, 70.9, 71.55]
+2026-09-08 04:14:47,972 [trainer.py] => Avergae Acc: 78.62
+2026-09-08 04:14:47,972 [trainer.py] => ================================================================================
+2026-09-08 04:14:47,972 [trainer.py] => ================================================================================
+2026-09-08 04:14:47,976 [base.py] => Task 9 learning on class 180-200
+2026-09-08 04:14:48,005 [toolkit.py] => Total params:     106,804,784
+2026-09-08 04:14:48,005 [toolkit.py] => Trainable params: 752,681
+2026-09-08 04:14:48,005 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 04:47:01,961 [sdlora_o.py] => Task 9, Epoch 50/50 => Loss 0.304, Train_accy 95.20
+2026-09-08 04:47:01,968 [trainer.py] => Training time: 0h 32m 13s
+2026-09-08 04:47:36,449 [trainer.py] => Evaluation time: 0h 0m 34s
+2026-09-08 04:47:36,449 [trainer.py] => Accuracy: {'total': 67.37, '00-19': 76.93, '20-39': 72.64, '40-59': 52.52, '60-79': 66.55, '80-99': 67.85, '100-119': 64.5, '120-139': 54.05, '140-159': 58.77, '160-179': 80.68, '180-199': 69.41, 'old': 67.09, 'new': 69.41}
+2026-09-08 04:47:36,449 [trainer.py] => (curve) top1 Acc: [87.77, 79.87, 72.25, 69.85, 69.65, 67.96, 66.45, 66.27, 67.26, 67.37]
+2026-09-08 04:47:36,449 [trainer.py] => Avergae Acc: 71.47
+2026-09-08 04:47:36,449 [trainer.py] => (curve) top1 Acc with task: [87.77, 85.94, 82.3, 82.52, 82.97, 82.65, 82.33, 82.43, 83.26, 83.75]
+2026-09-08 04:47:36,449 [trainer.py] => Avergae Acc: 83.59
+2026-09-08 04:47:36,449 [trainer.py] => (curve) top1 Acc task: [100.0, 88.21, 80.63, 76.16, 75.34, 73.28, 71.47, 70.9, 71.55, 71.28]
+2026-09-08 04:47:36,449 [trainer.py] => Avergae Acc: 77.88
+2026-09-08 04:47:36,449 [trainer.py] => ================================================================================
+2026-09-08 13:37:58,498 [toolkit.py] => config: configs/sdlora_ov4/imagenet-r_seed=1993_lo=0.00001_ls_0.00001_mu=0.00001.json
+2026-09-08 13:37:58,498 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-09-08 13:37:58,498 [toolkit.py] => debug: False
+2026-09-08 13:37:58,498 [toolkit.py] => save_ckp: False
+2026-09-08 13:37:58,498 [toolkit.py] => moe_list: None
+2026-09-08 13:37:58,498 [toolkit.py] => seed: 1997
+2026-09-08 13:37:58,498 [toolkit.py] => dataset: imagenet-r
+2026-09-08 13:37:58,498 [toolkit.py] => data_path: data/imagenet-r
+2026-09-08 13:37:58,498 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-09-08 13:37:58,498 [toolkit.py] => init_cls: 20
+2026-09-08 13:37:58,498 [toolkit.py] => increment: 20
+2026-09-08 13:37:58,498 [toolkit.py] => sessions: 10
+2026-09-08 13:37:58,499 [toolkit.py] => shuffle: False
+2026-09-08 13:37:58,499 [toolkit.py] => method: sdlora_o
+2026-09-08 13:37:58,499 [toolkit.py] => optimizer: adam
+2026-09-08 13:37:58,499 [toolkit.py] => scheduler: cosine
+2026-09-08 13:37:58,499 [toolkit.py] => epochs: 50
+2026-09-08 13:37:58,499 [toolkit.py] => lrate: 0.0005
+2026-09-08 13:37:58,499 [toolkit.py] => fc_lrate: 0.005
+2026-09-08 13:37:58,499 [toolkit.py] => weight_decay: 0.0
+2026-09-08 13:37:58,499 [toolkit.py] => batch_size: 128
+2026-09-08 13:37:58,499 [toolkit.py] => rank: 10
+2026-09-08 13:37:58,499 [toolkit.py] => num_workers: 16
+2026-09-08 13:37:58,499 [toolkit.py] => lrate_head: 0
+2026-09-08 13:37:58,499 [toolkit.py] => R: 0.5
+2026-09-08 13:37:58,499 [toolkit.py] => lambda_o: 1e-05
+2026-09-08 13:37:58,499 [toolkit.py] => lambda_s: 1e-05
+2026-09-08 13:37:58,499 [toolkit.py] => mu: 1e-05
+2026-09-08 13:37:58,499 [toolkit.py] => ortho_loss_typev2: True
+2026-09-08 13:37:58,499 [toolkit.py] => logdir: logs/sdlora_o/imagenet-r/t10
+2026-09-08 13:37:58,499 [toolkit.py] => logfilename: logs/sdlora_o/imagenet-r/t10/seed1997
+2026-09-08 13:37:58,579 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-09-08 13:38:00,664 [trainer.py] => ================================================================================
+2026-09-08 13:38:00,664 [trainer.py] => Dataset Information
+2026-09-08 13:38:00,664 [trainer.py] => ================================================================================
+2026-09-08 13:38:00,664 [trainer.py] =>   Dataset name     : imagenet-r
+2026-09-08 13:38:00,664 [trainer.py] =>   Data path        : data/imagenet-r
+2026-09-08 13:38:00,664 [trainer.py] =>   Total classes    : 200
+2026-09-08 13:38:00,664 [trainer.py] =>   Total tasks      : 10
+2026-09-08 13:38:00,664 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-09-08 13:38:00,664 [trainer.py] =>   Init classes     : 20
+2026-09-08 13:38:00,664 [trainer.py] =>   Increment per task: 20
+2026-09-08 13:38:00,664 [trainer.py] =>   Shuffle          : False
+2026-09-08 13:38:00,664 [trainer.py] =>   Seed             : 1997
+2026-09-08 13:38:00,664 [trainer.py] => --------------------------------------------------------------------------------
+2026-09-08 13:38:00,664 [trainer.py] => Task split:
+2026-09-08 13:38:00,666 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 2585 images (11 batches), Test: 646 images (3 batches)
+2026-09-08 13:38:00,667 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 2886 images (12 batches), Test: 720 images (3 batches)
+2026-09-08 13:38:00,668 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1739 images (7 batches), Test: 436 images (2 batches)
+2026-09-08 13:38:00,669 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 2344 images (10 batches), Test: 589 images (3 batches)
+2026-09-08 13:38:00,670 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 2816 images (11 batches), Test: 703 images (3 batches)
+2026-09-08 13:38:00,672 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 2215 images (9 batches), Test: 555 images (3 batches)
+2026-09-08 13:38:00,673 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 2274 images (9 batches), Test: 568 images (3 batches)
+2026-09-08 13:38:00,674 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 1821 images (8 batches), Test: 456 images (2 batches)
+2026-09-08 13:38:00,675 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 2489 images (10 batches), Test: 621 images (3 batches)
+2026-09-08 13:38:00,676 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 2831 images (12 batches), Test: 706 images (3 batches)
+2026-09-08 13:38:00,676 [trainer.py] => ================================================================================
+2026-09-08 13:38:00,676 [trainer.py] => ================================================================================
+2026-09-08 13:38:00,677 [base.py] => Task 0 learning on class 0-20
+2026-09-08 13:38:01,130 [toolkit.py] => Total params:     106,804,784
+2026-09-08 13:38:01,130 [toolkit.py] => Trainable params: 752,681
+2026-09-08 13:38:01,130 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 13:56:29,736 [sdlora_o.py] => Task 0, Epoch 50/50 => Loss 0.069, Train_accy 97.72
+2026-09-08 13:56:29,737 [trainer.py] => Training time: 0h 18m 29s
+2026-09-08 13:56:33,020 [trainer.py] => Evaluation time: 0h 0m 3s
+2026-09-08 13:56:33,020 [trainer.py] => Accuracy: {'total': 87.77, '00-19': 87.77, 'old': 0, 'new': 87.77}
+2026-09-08 13:56:33,020 [trainer.py] => (curve) top1 Acc: [87.77]
+2026-09-08 13:56:33,020 [trainer.py] => Avergae Acc: 87.77
+2026-09-08 13:56:33,021 [trainer.py] => (curve) top1 Acc with task: [87.77]
+2026-09-08 13:56:33,021 [trainer.py] => Avergae Acc: 87.77
+2026-09-08 13:56:33,021 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-09-08 13:56:33,021 [trainer.py] => Avergae Acc: 100.00
+2026-09-08 13:56:33,021 [trainer.py] => ================================================================================
+2026-09-08 13:56:33,021 [trainer.py] => ================================================================================
+2026-09-08 13:56:33,022 [base.py] => Task 1 learning on class 20-40
+2026-09-08 13:56:33,035 [toolkit.py] => Total params:     106,804,784
+2026-09-08 13:56:33,035 [toolkit.py] => Trainable params: 752,681
+2026-09-08 13:56:33,035 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 14:18:31,161 [sdlora_o.py] => Task 1, Epoch 50/50 => Loss 0.093, Train_accy 97.19
+2026-09-08 14:18:31,168 [trainer.py] => Training time: 0h 21m 58s
+2026-09-08 14:18:37,323 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-09-08 14:18:37,323 [trainer.py] => Accuracy: {'total': 84.63, '00-19': 82.51, '20-39': 86.53, 'old': 82.51, 'new': 86.53}
+2026-09-08 14:18:37,323 [trainer.py] => (curve) top1 Acc: [87.77, 84.63]
+2026-09-08 14:18:37,323 [trainer.py] => Avergae Acc: 86.20
+2026-09-08 14:18:37,323 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58]
+2026-09-08 14:18:37,323 [trainer.py] => Avergae Acc: 88.17
+2026-09-08 14:18:37,324 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58]
+2026-09-08 14:18:37,324 [trainer.py] => Avergae Acc: 95.79
+2026-09-08 14:18:37,324 [trainer.py] => ================================================================================
+2026-09-08 14:18:37,324 [trainer.py] => ================================================================================
+2026-09-08 14:18:37,326 [base.py] => Task 2 learning on class 40-60
+2026-09-08 14:18:37,342 [toolkit.py] => Total params:     106,804,784
+2026-09-08 14:18:37,342 [toolkit.py] => Trainable params: 752,681
+2026-09-08 14:18:37,342 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 14:33:04,130 [sdlora_o.py] => Task 2, Epoch 50/50 => Loss 0.091, Train_accy 97.24
+2026-09-08 14:33:04,137 [trainer.py] => Training time: 0h 14m 26s
+2026-09-08 14:33:12,307 [trainer.py] => Evaluation time: 0h 0m 8s
+2026-09-08 14:33:12,307 [trainer.py] => Accuracy: {'total': 80.08, '00-19': 81.73, '20-39': 83.33, '40-59': 72.25, 'old': 82.58, 'new': 72.25}
+2026-09-08 14:33:12,307 [trainer.py] => (curve) top1 Acc: [87.77, 84.63, 80.08]
+2026-09-08 14:33:12,307 [trainer.py] => Avergae Acc: 84.16
+2026-09-08 14:33:12,307 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 85.79]
+2026-09-08 14:33:12,307 [trainer.py] => Avergae Acc: 87.38
+2026-09-08 14:33:12,307 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85]
+2026-09-08 14:33:12,307 [trainer.py] => Avergae Acc: 93.14
+2026-09-08 14:33:12,307 [trainer.py] => ================================================================================
+2026-09-08 14:33:12,307 [trainer.py] => ================================================================================
+2026-09-08 14:33:12,309 [base.py] => Task 3 learning on class 60-80
+2026-09-08 14:33:12,324 [toolkit.py] => Total params:     106,804,784
+2026-09-08 14:33:12,324 [toolkit.py] => Trainable params: 752,681
+2026-09-08 14:33:12,324 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 14:53:27,526 [sdlora_o.py] => Task 3, Epoch 50/50 => Loss 0.076, Train_accy 97.44
+2026-09-08 14:53:27,533 [trainer.py] => Training time: 0h 20m 15s
+2026-09-08 14:53:38,644 [trainer.py] => Evaluation time: 0h 0m 11s
+2026-09-08 14:53:38,645 [trainer.py] => Accuracy: {'total': 78.04, '00-19': 79.72, '20-39': 81.67, '40-59': 67.89, '60-79': 79.29, 'old': 77.64, 'new': 79.29}
+2026-09-08 14:53:38,645 [trainer.py] => (curve) top1 Acc: [87.77, 84.63, 80.08, 78.04]
+2026-09-08 14:53:38,645 [trainer.py] => Avergae Acc: 82.63
+2026-09-08 14:53:38,645 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 85.79, 85.99]
+2026-09-08 14:53:38,645 [trainer.py] => Avergae Acc: 87.03
+2026-09-08 14:53:38,645 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.82]
+2026-09-08 14:53:38,645 [trainer.py] => Avergae Acc: 91.06
+2026-09-08 14:53:38,645 [trainer.py] => ================================================================================
+2026-09-08 14:53:38,645 [trainer.py] => ================================================================================
+2026-09-08 14:53:38,647 [base.py] => Task 4 learning on class 80-100
+2026-09-08 14:53:38,661 [toolkit.py] => Total params:     106,804,784
+2026-09-08 14:53:38,661 [toolkit.py] => Trainable params: 752,681
+2026-09-08 14:53:38,661 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 15:19:01,527 [sdlora_o.py] => Task 4, Epoch 50/50 => Loss 0.105, Train_accy 96.84
+2026-09-08 15:19:01,534 [trainer.py] => Training time: 0h 25m 22s
+2026-09-08 15:19:16,334 [trainer.py] => Evaluation time: 0h 0m 14s
+2026-09-08 15:19:16,334 [trainer.py] => Accuracy: {'total': 77.08, '00-19': 78.17, '20-39': 81.39, '40-59': 66.06, '60-79': 74.53, '80-99': 80.65, 'old': 76.04, 'new': 80.65}
+2026-09-08 15:19:16,334 [trainer.py] => (curve) top1 Acc: [87.77, 84.63, 80.08, 78.04, 77.08]
+2026-09-08 15:19:16,334 [trainer.py] => Avergae Acc: 81.52
+2026-09-08 15:19:16,334 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 85.79, 85.99, 86.62]
+2026-09-08 15:19:16,334 [trainer.py] => Avergae Acc: 86.95
+2026-09-08 15:19:16,334 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.82, 82.84]
+2026-09-08 15:19:16,334 [trainer.py] => Avergae Acc: 89.42
+2026-09-08 15:19:16,334 [trainer.py] => ================================================================================
+2026-09-08 15:19:16,334 [trainer.py] => ================================================================================
+2026-09-08 15:19:16,336 [base.py] => Task 5 learning on class 100-120
+2026-09-08 15:19:16,350 [toolkit.py] => Total params:     106,804,784
+2026-09-08 15:19:16,350 [toolkit.py] => Trainable params: 752,681
+2026-09-08 15:19:16,350 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 15:40:31,614 [sdlora_o.py] => Task 5, Epoch 50/50 => Loss 0.087, Train_accy 97.11
+2026-09-08 15:40:31,621 [trainer.py] => Training time: 0h 21m 15s
+2026-09-08 15:40:49,500 [trainer.py] => Evaluation time: 0h 0m 17s
+2026-09-08 15:40:49,500 [trainer.py] => Accuracy: {'total': 75.72, '00-19': 74.92, '20-39': 79.72, '40-59': 65.14, '60-79': 75.72, '80-99': 77.52, '100-119': 77.48, 'old': 75.4, 'new': 77.48}
+2026-09-08 15:40:49,500 [trainer.py] => (curve) top1 Acc: [87.77, 84.63, 80.08, 78.04, 77.08, 75.72]
+2026-09-08 15:40:49,500 [trainer.py] => Avergae Acc: 80.55
+2026-09-08 15:40:49,500 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 85.79, 85.99, 86.62, 86.02]
+2026-09-08 15:40:49,500 [trainer.py] => Avergae Acc: 86.80
+2026-09-08 15:40:49,500 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.82, 82.84, 81.23]
+2026-09-08 15:40:49,500 [trainer.py] => Avergae Acc: 88.05
+2026-09-08 15:40:49,500 [trainer.py] => ================================================================================
+2026-09-08 15:40:49,500 [trainer.py] => ================================================================================
+2026-09-08 15:40:49,502 [base.py] => Task 6 learning on class 120-140
+2026-09-08 15:40:49,518 [toolkit.py] => Total params:     106,804,784
+2026-09-08 15:40:49,518 [toolkit.py] => Trainable params: 752,681
+2026-09-08 15:40:49,518 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 16:03:45,441 [sdlora_o.py] => Task 6, Epoch 50/50 => Loss 0.094, Train_accy 97.36
+2026-09-08 16:03:45,448 [trainer.py] => Training time: 0h 22m 55s
+2026-09-08 16:04:06,994 [trainer.py] => Evaluation time: 0h 0m 21s
+2026-09-08 16:04:06,994 [trainer.py] => Accuracy: {'total': 73.63, '00-19': 74.61, '20-39': 77.78, '40-59': 66.28, '60-79': 73.85, '80-99': 76.53, '100-119': 73.51, '120-139': 69.19, 'old': 74.32, 'new': 69.19}
+2026-09-08 16:04:06,994 [trainer.py] => (curve) top1 Acc: [87.77, 84.63, 80.08, 78.04, 77.08, 75.72, 73.63]
+2026-09-08 16:04:06,994 [trainer.py] => Avergae Acc: 79.56
+2026-09-08 16:04:06,994 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 85.79, 85.99, 86.62, 86.02, 85.01]
+2026-09-08 16:04:06,994 [trainer.py] => Avergae Acc: 86.54
+2026-09-08 16:04:06,994 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.82, 82.84, 81.23, 78.71]
+2026-09-08 16:04:06,994 [trainer.py] => Avergae Acc: 86.72
+2026-09-08 16:04:06,995 [trainer.py] => ================================================================================
+2026-09-08 16:04:06,995 [trainer.py] => ================================================================================
+2026-09-08 16:04:06,996 [base.py] => Task 7 learning on class 140-160
+2026-09-08 16:04:07,011 [toolkit.py] => Total params:     106,804,784
+2026-09-08 16:04:07,011 [toolkit.py] => Trainable params: 752,681
+2026-09-08 16:04:07,011 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 16:23:26,749 [sdlora_o.py] => Task 7, Epoch 50/50 => Loss 0.098, Train_accy 96.71
+2026-09-08 16:23:26,756 [trainer.py] => Training time: 0h 19m 19s
+2026-09-08 16:23:51,939 [trainer.py] => Evaluation time: 0h 0m 25s
+2026-09-08 16:23:51,939 [trainer.py] => Accuracy: {'total': 72.52, '00-19': 72.29, '20-39': 76.25, '40-59': 66.06, '60-79': 73.34, '80-99': 77.1, '100-119': 72.97, '120-139': 65.32, '140-159': 73.46, 'old': 72.42, 'new': 73.46}
+2026-09-08 16:23:51,939 [trainer.py] => (curve) top1 Acc: [87.77, 84.63, 80.08, 78.04, 77.08, 75.72, 73.63, 72.52]
+2026-09-08 16:23:51,939 [trainer.py] => Avergae Acc: 78.68
+2026-09-08 16:23:51,939 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 85.79, 85.99, 86.62, 86.02, 85.01, 84.4]
+2026-09-08 16:23:51,939 [trainer.py] => Avergae Acc: 86.27
+2026-09-08 16:23:51,940 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.82, 82.84, 81.23, 78.71, 77.32]
+2026-09-08 16:23:51,940 [trainer.py] => Avergae Acc: 85.54
+2026-09-08 16:23:51,940 [trainer.py] => ================================================================================
+2026-09-08 16:23:51,940 [trainer.py] => ================================================================================
+2026-09-08 16:23:51,941 [base.py] => Task 8 learning on class 160-180
+2026-09-08 16:23:51,956 [toolkit.py] => Total params:     106,804,784
+2026-09-08 16:23:51,956 [toolkit.py] => Trainable params: 752,681
+2026-09-08 16:23:51,957 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 16:51:04,238 [sdlora_o.py] => Task 8, Epoch 50/50 => Loss 0.065, Train_accy 98.03
+2026-09-08 16:51:04,245 [trainer.py] => Training time: 0h 27m 12s
+2026-09-08 16:51:33,533 [trainer.py] => Evaluation time: 0h 0m 29s
+2026-09-08 16:51:33,533 [trainer.py] => Accuracy: {'total': 72.69, '00-19': 71.98, '20-39': 75.14, '40-59': 64.45, '60-79': 73.01, '80-99': 74.96, '100-119': 72.43, '120-139': 62.5, '140-159': 68.86, '160-179': 85.83, 'old': 70.94, 'new': 85.83}
+2026-09-08 16:51:33,533 [trainer.py] => (curve) top1 Acc: [87.77, 84.63, 80.08, 78.04, 77.08, 75.72, 73.63, 72.52, 72.69]
+2026-09-08 16:51:33,534 [trainer.py] => Avergae Acc: 78.02
+2026-09-08 16:51:33,534 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 85.79, 85.99, 86.62, 86.02, 85.01, 84.4, 85.29]
+2026-09-08 16:51:33,534 [trainer.py] => Avergae Acc: 86.16
+2026-09-08 16:51:33,534 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.82, 82.84, 81.23, 78.71, 77.32, 77.13]
+2026-09-08 16:51:33,534 [trainer.py] => Avergae Acc: 84.61
+2026-09-08 16:51:33,534 [trainer.py] => ================================================================================
+2026-09-08 16:51:33,534 [trainer.py] => ================================================================================
+2026-09-08 16:51:33,535 [base.py] => Task 9 learning on class 180-200
+2026-09-08 16:51:33,551 [toolkit.py] => Total params:     106,804,784
+2026-09-08 16:51:33,551 [toolkit.py] => Trainable params: 752,681
+2026-09-08 16:51:33,551 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-08 17:24:06,552 [sdlora_o.py] => Task 9, Epoch 50/50 => Loss 0.094, Train_accy 97.17
+2026-09-08 17:24:06,566 [trainer.py] => Training time: 0h 32m 33s
+2026-09-08 17:24:42,333 [trainer.py] => Evaluation time: 0h 0m 35s
+2026-09-08 17:24:42,334 [trainer.py] => Accuracy: {'total': 72.35, '00-19': 70.28, '20-39': 74.03, '40-59': 63.07, '60-79': 73.01, '80-99': 73.68, '100-119': 71.17, '120-139': 59.33, '140-159': 68.2, '160-179': 82.13, '180-199': 81.87, 'old': 71.08, 'new': 81.87}
+2026-09-08 17:24:42,334 [trainer.py] => (curve) top1 Acc: [87.77, 84.63, 80.08, 78.04, 77.08, 75.72, 73.63, 72.52, 72.69, 72.35]
+2026-09-08 17:24:42,334 [trainer.py] => Avergae Acc: 77.45
+2026-09-08 17:24:42,334 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 85.79, 85.99, 86.62, 86.02, 85.01, 84.4, 85.29, 85.53]
+2026-09-08 17:24:42,334 [trainer.py] => Avergae Acc: 86.10
+2026-09-08 17:24:42,334 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.82, 82.84, 81.23, 78.71, 77.32, 77.13, 76.33]
+2026-09-08 17:24:42,334 [trainer.py] => Avergae Acc: 83.78
+2026-09-08 17:24:42,334 [trainer.py] => ================================================================================
+2026-09-10 00:27:41,359 [toolkit.py] => config: configs/sdlora_ov4/imagenet-r_seed=1993_lo=0.000001_ls_0.000001_mu=0.000001.json
+2026-09-10 00:27:41,379 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-09-10 00:27:41,380 [toolkit.py] => debug: False
+2026-09-10 00:27:41,380 [toolkit.py] => save_ckp: False
+2026-09-10 00:27:41,380 [toolkit.py] => moe_list: None
+2026-09-10 00:27:41,380 [toolkit.py] => seed: 1997
+2026-09-10 00:27:41,380 [toolkit.py] => dataset: imagenet-r
+2026-09-10 00:27:41,380 [toolkit.py] => data_path: data/imagenet-r
+2026-09-10 00:27:41,380 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-09-10 00:27:41,380 [toolkit.py] => init_cls: 20
+2026-09-10 00:27:41,381 [toolkit.py] => increment: 20
+2026-09-10 00:27:41,381 [toolkit.py] => sessions: 10
+2026-09-10 00:27:41,381 [toolkit.py] => shuffle: False
+2026-09-10 00:27:41,381 [toolkit.py] => method: sdlora_o
+2026-09-10 00:27:41,381 [toolkit.py] => optimizer: adam
+2026-09-10 00:27:41,381 [toolkit.py] => scheduler: cosine
+2026-09-10 00:27:41,381 [toolkit.py] => epochs: 50
+2026-09-10 00:27:41,381 [toolkit.py] => lrate: 0.0005
+2026-09-10 00:27:41,381 [toolkit.py] => fc_lrate: 0.005
+2026-09-10 00:27:41,381 [toolkit.py] => weight_decay: 0.0
+2026-09-10 00:27:41,381 [toolkit.py] => batch_size: 128
+2026-09-10 00:27:41,381 [toolkit.py] => rank: 10
+2026-09-10 00:27:41,381 [toolkit.py] => num_workers: 16
+2026-09-10 00:27:41,381 [toolkit.py] => lrate_head: 0
+2026-09-10 00:27:41,381 [toolkit.py] => R: 0.5
+2026-09-10 00:27:41,381 [toolkit.py] => lambda_o: 1e-06
+2026-09-10 00:27:41,381 [toolkit.py] => lambda_s: 1e-06
+2026-09-10 00:27:41,381 [toolkit.py] => mu: 1e-06
+2026-09-10 00:27:41,381 [toolkit.py] => ortho_loss_typev2: True
+2026-09-10 00:27:41,381 [toolkit.py] => logdir: logs/sdlora_o/imagenet-r/t10
+2026-09-10 00:27:41,381 [toolkit.py] => logfilename: logs/sdlora_o/imagenet-r/t10/seed1997
+2026-09-10 00:27:41,462 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-09-10 00:27:43,758 [trainer.py] => ================================================================================
+2026-09-10 00:27:43,758 [trainer.py] => Dataset Information
+2026-09-10 00:27:43,758 [trainer.py] => ================================================================================
+2026-09-10 00:27:43,758 [trainer.py] =>   Dataset name     : imagenet-r
+2026-09-10 00:27:43,758 [trainer.py] =>   Data path        : data/imagenet-r
+2026-09-10 00:27:43,758 [trainer.py] =>   Total classes    : 200
+2026-09-10 00:27:43,758 [trainer.py] =>   Total tasks      : 10
+2026-09-10 00:27:43,758 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-09-10 00:27:43,758 [trainer.py] =>   Init classes     : 20
+2026-09-10 00:27:43,758 [trainer.py] =>   Increment per task: 20
+2026-09-10 00:27:43,759 [trainer.py] =>   Shuffle          : False
+2026-09-10 00:27:43,759 [trainer.py] =>   Seed             : 1997
+2026-09-10 00:27:43,759 [trainer.py] => --------------------------------------------------------------------------------
+2026-09-10 00:27:43,759 [trainer.py] => Task split:
+2026-09-10 00:27:43,760 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 2585 images (11 batches), Test: 646 images (3 batches)
+2026-09-10 00:27:43,761 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 2886 images (12 batches), Test: 720 images (3 batches)
+2026-09-10 00:27:43,763 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1739 images (7 batches), Test: 436 images (2 batches)
+2026-09-10 00:27:43,764 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 2344 images (10 batches), Test: 589 images (3 batches)
+2026-09-10 00:27:43,765 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 2816 images (11 batches), Test: 703 images (3 batches)
+2026-09-10 00:27:43,766 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 2215 images (9 batches), Test: 555 images (3 batches)
+2026-09-10 00:27:43,767 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 2274 images (9 batches), Test: 568 images (3 batches)
+2026-09-10 00:27:43,769 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 1821 images (8 batches), Test: 456 images (2 batches)
+2026-09-10 00:27:43,770 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 2489 images (10 batches), Test: 621 images (3 batches)
+2026-09-10 00:27:43,771 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 2831 images (12 batches), Test: 706 images (3 batches)
+2026-09-10 00:27:43,771 [trainer.py] => ================================================================================
+2026-09-10 00:27:43,771 [trainer.py] => ================================================================================
+2026-09-10 00:27:43,772 [base.py] => Task 0 learning on class 0-20
+2026-09-10 00:27:44,281 [toolkit.py] => Total params:     106,804,784
+2026-09-10 00:27:44,281 [toolkit.py] => Trainable params: 752,681
+2026-09-10 00:27:44,281 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 00:46:16,556 [sdlora_o.py] => Task 0, Epoch 50/50 => Loss 0.069, Train_accy 97.72
+2026-09-10 00:46:16,558 [trainer.py] => Training time: 0h 18m 32s
+2026-09-10 00:46:19,841 [trainer.py] => Evaluation time: 0h 0m 3s
+2026-09-10 00:46:19,841 [trainer.py] => Accuracy: {'total': 87.77, '00-19': 87.77, 'old': 0, 'new': 87.77}
+2026-09-10 00:46:19,842 [trainer.py] => (curve) top1 Acc: [87.77]
+2026-09-10 00:46:19,842 [trainer.py] => Avergae Acc: 87.77
+2026-09-10 00:46:19,842 [trainer.py] => (curve) top1 Acc with task: [87.77]
+2026-09-10 00:46:19,842 [trainer.py] => Avergae Acc: 87.77
+2026-09-10 00:46:19,842 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-09-10 00:46:19,842 [trainer.py] => Avergae Acc: 100.00
+2026-09-10 00:46:19,842 [trainer.py] => ================================================================================
+2026-09-10 00:46:19,842 [trainer.py] => ================================================================================
+2026-09-10 00:46:19,843 [base.py] => Task 1 learning on class 20-40
+2026-09-10 00:46:19,857 [toolkit.py] => Total params:     106,804,784
+2026-09-10 00:46:19,857 [toolkit.py] => Trainable params: 752,681
+2026-09-10 00:46:19,857 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 01:08:22,306 [sdlora_o.py] => Task 1, Epoch 50/50 => Loss 0.097, Train_accy 96.99
+2026-09-10 01:08:22,313 [trainer.py] => Training time: 0h 22m 2s
+2026-09-10 01:08:28,446 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-09-10 01:08:28,447 [trainer.py] => Accuracy: {'total': 84.85, '00-19': 82.66, '20-39': 86.81, 'old': 82.66, 'new': 86.81}
+2026-09-10 01:08:28,447 [trainer.py] => (curve) top1 Acc: [87.77, 84.85]
+2026-09-10 01:08:28,447 [trainer.py] => Avergae Acc: 86.31
+2026-09-10 01:08:28,447 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36]
+2026-09-10 01:08:28,447 [trainer.py] => Avergae Acc: 88.06
+2026-09-10 01:08:28,447 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87]
+2026-09-10 01:08:28,447 [trainer.py] => Avergae Acc: 95.94
+2026-09-10 01:08:28,447 [trainer.py] => ================================================================================
+2026-09-10 01:08:28,447 [trainer.py] => ================================================================================
+2026-09-10 01:08:28,448 [base.py] => Task 2 learning on class 40-60
+2026-09-10 01:08:28,462 [toolkit.py] => Total params:     106,804,784
+2026-09-10 01:08:28,462 [toolkit.py] => Trainable params: 752,681
+2026-09-10 01:08:28,462 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 01:22:58,926 [sdlora_o.py] => Task 2, Epoch 50/50 => Loss 0.090, Train_accy 97.12
+2026-09-10 01:22:58,932 [trainer.py] => Training time: 0h 14m 30s
+2026-09-10 01:23:07,163 [trainer.py] => Evaluation time: 0h 0m 8s
+2026-09-10 01:23:07,163 [trainer.py] => Accuracy: {'total': 79.8, '00-19': 81.73, '20-39': 83.61, '40-59': 70.64, 'old': 82.72, 'new': 70.64}
+2026-09-10 01:23:07,163 [trainer.py] => (curve) top1 Acc: [87.77, 84.85, 79.8]
+2026-09-10 01:23:07,163 [trainer.py] => Avergae Acc: 84.14
+2026-09-10 01:23:07,163 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36, 85.96]
+2026-09-10 01:23:07,163 [trainer.py] => Avergae Acc: 87.36
+2026-09-10 01:23:07,163 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87, 87.85]
+2026-09-10 01:23:07,163 [trainer.py] => Avergae Acc: 93.24
+2026-09-10 01:23:07,163 [trainer.py] => ================================================================================
+2026-09-10 01:23:07,163 [trainer.py] => ================================================================================
+2026-09-10 01:23:07,165 [base.py] => Task 3 learning on class 60-80
+2026-09-10 01:23:07,180 [toolkit.py] => Total params:     106,804,784
+2026-09-10 01:23:07,180 [toolkit.py] => Trainable params: 752,681
+2026-09-10 01:23:07,180 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 01:43:27,743 [sdlora_o.py] => Task 3, Epoch 50/50 => Loss 0.074, Train_accy 97.48
+2026-09-10 01:43:27,749 [trainer.py] => Training time: 0h 20m 20s
+2026-09-10 01:43:39,197 [trainer.py] => Evaluation time: 0h 0m 11s
+2026-09-10 01:43:39,198 [trainer.py] => Accuracy: {'total': 78.5, '00-19': 80.03, '20-39': 82.5, '40-59': 68.35, '60-79': 79.46, 'old': 78.19, 'new': 79.46}
+2026-09-10 01:43:39,198 [trainer.py] => (curve) top1 Acc: [87.77, 84.85, 79.8, 78.5]
+2026-09-10 01:43:39,198 [trainer.py] => Avergae Acc: 82.73
+2026-09-10 01:43:39,198 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36, 85.96, 86.28]
+2026-09-10 01:43:39,198 [trainer.py] => Avergae Acc: 87.09
+2026-09-10 01:43:39,198 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87, 87.85, 85.15]
+2026-09-10 01:43:39,198 [trainer.py] => Avergae Acc: 91.22
+2026-09-10 01:43:39,198 [trainer.py] => ================================================================================
+2026-09-10 01:43:39,198 [trainer.py] => ================================================================================
+2026-09-10 01:43:39,200 [base.py] => Task 4 learning on class 80-100
+2026-09-10 01:43:39,214 [toolkit.py] => Total params:     106,804,784
+2026-09-10 01:43:39,214 [toolkit.py] => Trainable params: 752,681
+2026-09-10 01:43:39,214 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 02:09:07,525 [sdlora_o.py] => Task 4, Epoch 50/50 => Loss 0.100, Train_accy 96.95
+2026-09-10 02:09:07,539 [trainer.py] => Training time: 0h 25m 28s
+2026-09-10 02:09:22,214 [trainer.py] => Evaluation time: 0h 0m 14s
+2026-09-10 02:09:22,214 [trainer.py] => Accuracy: {'total': 76.76, '00-19': 77.86, '20-39': 80.56, '40-59': 66.97, '60-79': 73.17, '80-99': 80.94, 'old': 75.53, 'new': 80.94}
+2026-09-10 02:09:22,214 [trainer.py] => (curve) top1 Acc: [87.77, 84.85, 79.8, 78.5, 76.76]
+2026-09-10 02:09:22,214 [trainer.py] => Avergae Acc: 81.54
+2026-09-10 02:09:22,214 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36, 85.96, 86.28, 86.81]
+2026-09-10 02:09:22,214 [trainer.py] => Avergae Acc: 87.04
+2026-09-10 02:09:22,214 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87, 87.85, 85.15, 82.71]
+2026-09-10 02:09:22,214 [trainer.py] => Avergae Acc: 89.52
+2026-09-10 02:09:22,214 [trainer.py] => ================================================================================
+2026-09-10 02:09:22,214 [trainer.py] => ================================================================================
+2026-09-10 02:09:22,216 [base.py] => Task 5 learning on class 100-120
+2026-09-10 02:09:22,233 [toolkit.py] => Total params:     106,804,784
+2026-09-10 02:09:22,233 [toolkit.py] => Trainable params: 752,681
+2026-09-10 02:09:22,233 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 02:30:42,746 [sdlora_o.py] => Task 5, Epoch 50/50 => Loss 0.085, Train_accy 97.11
+2026-09-10 02:30:42,753 [trainer.py] => Training time: 0h 21m 20s
+2026-09-10 02:31:00,737 [trainer.py] => Evaluation time: 0h 0m 17s
+2026-09-10 02:31:00,737 [trainer.py] => Accuracy: {'total': 75.77, '00-19': 75.39, '20-39': 79.72, '40-59': 66.51, '60-79': 75.55, '80-99': 77.24, '100-119': 76.76, 'old': 75.6, 'new': 76.76}
+2026-09-10 02:31:00,737 [trainer.py] => (curve) top1 Acc: [87.77, 84.85, 79.8, 78.5, 76.76, 75.77]
+2026-09-10 02:31:00,737 [trainer.py] => Avergae Acc: 80.58
+2026-09-10 02:31:00,737 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36, 85.96, 86.28, 86.81, 86.38]
+2026-09-10 02:31:00,737 [trainer.py] => Avergae Acc: 86.93
+2026-09-10 02:31:00,737 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87, 87.85, 85.15, 82.71, 81.04]
+2026-09-10 02:31:00,738 [trainer.py] => Avergae Acc: 88.10
+2026-09-10 02:31:00,738 [trainer.py] => ================================================================================
+2026-09-10 02:31:00,738 [trainer.py] => ================================================================================
+2026-09-10 02:31:00,739 [base.py] => Task 6 learning on class 120-140
+2026-09-10 02:31:00,755 [toolkit.py] => Total params:     106,804,784
+2026-09-10 02:31:00,755 [toolkit.py] => Trainable params: 752,681
+2026-09-10 02:31:00,755 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 02:53:58,153 [sdlora_o.py] => Task 6, Epoch 50/50 => Loss 0.091, Train_accy 97.41
+2026-09-10 02:53:58,162 [trainer.py] => Training time: 0h 22m 57s
+2026-09-10 02:54:19,727 [trainer.py] => Evaluation time: 0h 0m 21s
+2026-09-10 02:54:19,728 [trainer.py] => Accuracy: {'total': 73.39, '00-19': 73.84, '20-39': 77.08, '40-59': 65.6, '60-79': 73.51, '80-99': 76.81, '100-119': 73.87, '120-139': 69.37, 'old': 74.02, 'new': 69.37}
+2026-09-10 02:54:19,728 [trainer.py] => (curve) top1 Acc: [87.77, 84.85, 79.8, 78.5, 76.76, 75.77, 73.39]
+2026-09-10 02:54:19,728 [trainer.py] => Avergae Acc: 79.55
+2026-09-10 02:54:19,728 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36, 85.96, 86.28, 86.81, 86.38, 85.37]
+2026-09-10 02:54:19,728 [trainer.py] => Avergae Acc: 86.70
+2026-09-10 02:54:19,728 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87, 87.85, 85.15, 82.71, 81.04, 78.37]
+2026-09-10 02:54:19,728 [trainer.py] => Avergae Acc: 86.71
+2026-09-10 02:54:19,728 [trainer.py] => ================================================================================
+2026-09-10 02:54:19,728 [trainer.py] => ================================================================================
+2026-09-10 02:54:19,730 [base.py] => Task 7 learning on class 140-160
+2026-09-10 02:54:19,756 [toolkit.py] => Total params:     106,804,784
+2026-09-10 02:54:19,756 [toolkit.py] => Trainable params: 752,681
+2026-09-10 02:54:19,756 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 03:13:40,735 [sdlora_o.py] => Task 7, Epoch 50/50 => Loss 0.098, Train_accy 96.54
+2026-09-10 03:13:40,756 [trainer.py] => Training time: 0h 19m 21s
+2026-09-10 03:14:05,707 [trainer.py] => Evaluation time: 0h 0m 24s
+2026-09-10 03:14:05,708 [trainer.py] => Accuracy: {'total': 72.37, '00-19': 73.22, '20-39': 75.97, '40-59': 64.91, '60-79': 72.5, '80-99': 76.39, '100-119': 73.33, '120-139': 65.49, '140-159': 73.68, 'old': 72.23, 'new': 73.68}
+2026-09-10 03:14:05,708 [trainer.py] => (curve) top1 Acc: [87.77, 84.85, 79.8, 78.5, 76.76, 75.77, 73.39, 72.37]
+2026-09-10 03:14:05,708 [trainer.py] => Avergae Acc: 78.65
+2026-09-10 03:14:05,708 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36, 85.96, 86.28, 86.81, 86.38, 85.37, 84.66]
+2026-09-10 03:14:05,708 [trainer.py] => Avergae Acc: 86.45
+2026-09-10 03:14:05,708 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87, 87.85, 85.15, 82.71, 81.04, 78.37, 77.04]
+2026-09-10 03:14:05,708 [trainer.py] => Avergae Acc: 85.50
+2026-09-10 03:14:05,708 [trainer.py] => ================================================================================
+2026-09-10 03:14:05,708 [trainer.py] => ================================================================================
+2026-09-10 03:14:05,711 [base.py] => Task 8 learning on class 160-180
+2026-09-10 03:14:05,740 [toolkit.py] => Total params:     106,804,784
+2026-09-10 03:14:05,740 [toolkit.py] => Trainable params: 752,681
+2026-09-10 03:14:05,740 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 03:41:18,535 [sdlora_o.py] => Task 8, Epoch 50/50 => Loss 0.067, Train_accy 98.15
+2026-09-10 03:41:18,543 [trainer.py] => Training time: 0h 27m 12s
+2026-09-10 03:41:47,973 [trainer.py] => Evaluation time: 0h 0m 29s
+2026-09-10 03:41:47,973 [trainer.py] => Accuracy: {'total': 72.74, '00-19': 72.29, '20-39': 76.53, '40-59': 63.76, '60-79': 71.99, '80-99': 74.25, '100-119': 72.25, '120-139': 63.2, '140-159': 68.42, '160-179': 86.47, 'old': 70.92, 'new': 86.47}
+2026-09-10 03:41:47,973 [trainer.py] => (curve) top1 Acc: [87.77, 84.85, 79.8, 78.5, 76.76, 75.77, 73.39, 72.37, 72.74]
+2026-09-10 03:41:47,973 [trainer.py] => Avergae Acc: 77.99
+2026-09-10 03:41:47,973 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36, 85.96, 86.28, 86.81, 86.38, 85.37, 84.66, 85.04]
+2026-09-10 03:41:47,973 [trainer.py] => Avergae Acc: 86.29
+2026-09-10 03:41:47,973 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87, 87.85, 85.15, 82.71, 81.04, 78.37, 77.04, 77.31]
+2026-09-10 03:41:47,973 [trainer.py] => Avergae Acc: 84.59
+2026-09-10 03:41:47,973 [trainer.py] => ================================================================================
+2026-09-10 03:41:47,973 [trainer.py] => ================================================================================
+2026-09-10 03:41:47,975 [base.py] => Task 9 learning on class 180-200
+2026-09-10 03:41:47,992 [toolkit.py] => Total params:     106,804,784
+2026-09-10 03:41:47,992 [toolkit.py] => Trainable params: 752,681
+2026-09-10 03:41:47,993 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 04:13:56,936 [sdlora_o.py] => Task 9, Epoch 50/50 => Loss 0.090, Train_accy 97.67
+2026-09-10 04:13:56,943 [trainer.py] => Training time: 0h 32m 8s
+2026-09-10 04:14:31,857 [trainer.py] => Evaluation time: 0h 0m 34s
+2026-09-10 04:14:31,857 [trainer.py] => Accuracy: {'total': 72.47, '00-19': 70.74, '20-39': 75.83, '40-59': 62.16, '60-79': 73.01, '80-99': 73.26, '100-119': 70.63, '120-139': 60.21, '140-159': 67.54, '160-179': 82.29, '180-199': 81.59, 'old': 71.25, 'new': 81.59}
+2026-09-10 04:14:31,857 [trainer.py] => (curve) top1 Acc: [87.77, 84.85, 79.8, 78.5, 76.76, 75.77, 73.39, 72.37, 72.74, 72.47]
+2026-09-10 04:14:31,857 [trainer.py] => Avergae Acc: 77.44
+2026-09-10 04:14:31,857 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.36, 85.96, 86.28, 86.81, 86.38, 85.37, 84.66, 85.04, 85.63]
+2026-09-10 04:14:31,857 [trainer.py] => Avergae Acc: 86.23
+2026-09-10 04:14:31,857 [trainer.py] => (curve) top1 Acc task: [100.0, 91.87, 87.85, 85.15, 82.71, 81.04, 78.37, 77.04, 77.31, 76.75]
+2026-09-10 04:14:31,857 [trainer.py] => Avergae Acc: 83.81
+2026-09-10 04:14:31,858 [trainer.py] => ================================================================================
+2026-09-10 04:14:42,906 [toolkit.py] => config: configs/sdlora_ov4/imagenet-r_seed=1993_lo=0.0001_ls_0.0001_mu=0.0001.json
+2026-09-10 04:14:42,906 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-09-10 04:14:42,906 [toolkit.py] => debug: False
+2026-09-10 04:14:42,906 [toolkit.py] => save_ckp: False
+2026-09-10 04:14:42,906 [toolkit.py] => moe_list: None
+2026-09-10 04:14:42,906 [toolkit.py] => seed: 1997
+2026-09-10 04:14:42,906 [toolkit.py] => dataset: imagenet-r
+2026-09-10 04:14:42,906 [toolkit.py] => data_path: data/imagenet-r
+2026-09-10 04:14:42,906 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-09-10 04:14:42,906 [toolkit.py] => init_cls: 20
+2026-09-10 04:14:42,906 [toolkit.py] => increment: 20
+2026-09-10 04:14:42,906 [toolkit.py] => sessions: 10
+2026-09-10 04:14:42,906 [toolkit.py] => shuffle: False
+2026-09-10 04:14:42,906 [toolkit.py] => method: sdlora_o
+2026-09-10 04:14:42,906 [toolkit.py] => optimizer: adam
+2026-09-10 04:14:42,906 [toolkit.py] => scheduler: cosine
+2026-09-10 04:14:42,906 [toolkit.py] => epochs: 50
+2026-09-10 04:14:42,906 [toolkit.py] => lrate: 0.0005
+2026-09-10 04:14:42,906 [toolkit.py] => fc_lrate: 0.005
+2026-09-10 04:14:42,906 [toolkit.py] => weight_decay: 0.0
+2026-09-10 04:14:42,906 [toolkit.py] => batch_size: 128
+2026-09-10 04:14:42,906 [toolkit.py] => rank: 10
+2026-09-10 04:14:42,906 [toolkit.py] => num_workers: 16
+2026-09-10 04:14:42,906 [toolkit.py] => lrate_head: 0
+2026-09-10 04:14:42,906 [toolkit.py] => R: 0.5
+2026-09-10 04:14:42,906 [toolkit.py] => lambda_o: 0.0001
+2026-09-10 04:14:42,906 [toolkit.py] => lambda_s: 0.0001
+2026-09-10 04:14:42,906 [toolkit.py] => mu: 0.0001
+2026-09-10 04:14:42,906 [toolkit.py] => ortho_loss_typev2: True
+2026-09-10 04:14:42,906 [toolkit.py] => logdir: logs/sdlora_o/imagenet-r/t10
+2026-09-10 04:14:42,907 [toolkit.py] => logfilename: logs/sdlora_o/imagenet-r/t10/seed1997
+2026-09-10 04:14:43,022 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-09-10 04:14:45,385 [trainer.py] => ================================================================================
+2026-09-10 04:14:45,385 [trainer.py] => Dataset Information
+2026-09-10 04:14:45,385 [trainer.py] => ================================================================================
+2026-09-10 04:14:45,385 [trainer.py] =>   Dataset name     : imagenet-r
+2026-09-10 04:14:45,385 [trainer.py] =>   Data path        : data/imagenet-r
+2026-09-10 04:14:45,385 [trainer.py] =>   Total classes    : 200
+2026-09-10 04:14:45,385 [trainer.py] =>   Total tasks      : 10
+2026-09-10 04:14:45,385 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-09-10 04:14:45,385 [trainer.py] =>   Init classes     : 20
+2026-09-10 04:14:45,385 [trainer.py] =>   Increment per task: 20
+2026-09-10 04:14:45,385 [trainer.py] =>   Shuffle          : False
+2026-09-10 04:14:45,385 [trainer.py] =>   Seed             : 1997
+2026-09-10 04:14:45,385 [trainer.py] => --------------------------------------------------------------------------------
+2026-09-10 04:14:45,385 [trainer.py] => Task split:
+2026-09-10 04:14:45,387 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 2585 images (11 batches), Test: 646 images (3 batches)
+2026-09-10 04:14:45,389 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 2886 images (12 batches), Test: 720 images (3 batches)
+2026-09-10 04:14:45,390 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1739 images (7 batches), Test: 436 images (2 batches)
+2026-09-10 04:14:45,392 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 2344 images (10 batches), Test: 589 images (3 batches)
+2026-09-10 04:14:45,393 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 2816 images (11 batches), Test: 703 images (3 batches)
+2026-09-10 04:14:45,394 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 2215 images (9 batches), Test: 555 images (3 batches)
+2026-09-10 04:14:45,396 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 2274 images (9 batches), Test: 568 images (3 batches)
+2026-09-10 04:14:45,397 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 1821 images (8 batches), Test: 456 images (2 batches)
+2026-09-10 04:14:45,398 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 2489 images (10 batches), Test: 621 images (3 batches)
+2026-09-10 04:14:45,400 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 2831 images (12 batches), Test: 706 images (3 batches)
+2026-09-10 04:14:45,400 [trainer.py] => ================================================================================
+2026-09-10 04:14:45,400 [trainer.py] => ================================================================================
+2026-09-10 04:14:45,402 [base.py] => Task 0 learning on class 0-20
+2026-09-10 04:14:45,948 [toolkit.py] => Total params:     106,804,784
+2026-09-10 04:14:45,948 [toolkit.py] => Trainable params: 752,681
+2026-09-10 04:14:45,948 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 04:33:17,112 [sdlora_o.py] => Task 0, Epoch 50/50 => Loss 0.069, Train_accy 97.72
+2026-09-10 04:33:17,113 [trainer.py] => Training time: 0h 18m 31s
+2026-09-10 04:33:20,481 [trainer.py] => Evaluation time: 0h 0m 3s
+2026-09-10 04:33:20,481 [trainer.py] => Accuracy: {'total': 87.77, '00-19': 87.77, 'old': 0, 'new': 87.77}
+2026-09-10 04:33:20,481 [trainer.py] => (curve) top1 Acc: [87.77]
+2026-09-10 04:33:20,481 [trainer.py] => Avergae Acc: 87.77
+2026-09-10 04:33:20,481 [trainer.py] => (curve) top1 Acc with task: [87.77]
+2026-09-10 04:33:20,481 [trainer.py] => Avergae Acc: 87.77
+2026-09-10 04:33:20,481 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-09-10 04:33:20,481 [trainer.py] => Avergae Acc: 100.00
+2026-09-10 04:33:20,481 [trainer.py] => ================================================================================
+2026-09-10 04:33:20,481 [trainer.py] => ================================================================================
+2026-09-10 04:33:20,483 [base.py] => Task 1 learning on class 20-40
+2026-09-10 04:33:20,496 [toolkit.py] => Total params:     106,804,784
+2026-09-10 04:33:20,496 [toolkit.py] => Trainable params: 752,681
+2026-09-10 04:33:20,496 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 04:55:22,788 [sdlora_o.py] => Task 1, Epoch 50/50 => Loss 0.103, Train_accy 97.16
+2026-09-10 04:55:22,794 [trainer.py] => Training time: 0h 22m 2s
+2026-09-10 04:55:28,963 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-09-10 04:55:28,963 [trainer.py] => Accuracy: {'total': 84.92, '00-19': 82.66, '20-39': 86.94, 'old': 82.66, 'new': 86.94}
+2026-09-10 04:55:28,963 [trainer.py] => (curve) top1 Acc: [87.77, 84.92]
+2026-09-10 04:55:28,963 [trainer.py] => Avergae Acc: 86.34
+2026-09-10 04:55:28,963 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58]
+2026-09-10 04:55:28,963 [trainer.py] => Avergae Acc: 88.17
+2026-09-10 04:55:28,963 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95]
+2026-09-10 04:55:28,963 [trainer.py] => Avergae Acc: 95.97
+2026-09-10 04:55:28,963 [trainer.py] => ================================================================================
+2026-09-10 04:55:28,963 [trainer.py] => ================================================================================
+2026-09-10 04:55:28,965 [base.py] => Task 2 learning on class 40-60
+2026-09-10 04:55:28,980 [toolkit.py] => Total params:     106,804,784
+2026-09-10 04:55:28,980 [toolkit.py] => Trainable params: 752,681
+2026-09-10 04:55:28,980 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 05:09:59,728 [sdlora_o.py] => Task 2, Epoch 50/50 => Loss 0.098, Train_accy 97.30
+2026-09-10 05:09:59,734 [trainer.py] => Training time: 0h 14m 30s
+2026-09-10 05:10:08,082 [trainer.py] => Evaluation time: 0h 0m 8s
+2026-09-10 05:10:08,082 [trainer.py] => Accuracy: {'total': 80.47, '00-19': 81.58, '20-39': 84.03, '40-59': 72.94, 'old': 82.87, 'new': 72.94}
+2026-09-10 05:10:08,082 [trainer.py] => (curve) top1 Acc: [87.77, 84.92, 80.47]
+2026-09-10 05:10:08,082 [trainer.py] => Avergae Acc: 84.39
+2026-09-10 05:10:08,082 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 86.18]
+2026-09-10 05:10:08,082 [trainer.py] => Avergae Acc: 87.51
+2026-09-10 05:10:08,082 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95, 88.4]
+2026-09-10 05:10:08,082 [trainer.py] => Avergae Acc: 93.45
+2026-09-10 05:10:08,082 [trainer.py] => ================================================================================
+2026-09-10 05:10:08,082 [trainer.py] => ================================================================================
+2026-09-10 05:10:08,085 [base.py] => Task 3 learning on class 60-80
+2026-09-10 05:10:08,099 [toolkit.py] => Total params:     106,804,784
+2026-09-10 05:10:08,099 [toolkit.py] => Trainable params: 752,681
+2026-09-10 05:10:08,099 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 05:30:28,744 [sdlora_o.py] => Task 3, Epoch 50/50 => Loss 0.082, Train_accy 97.53
+2026-09-10 05:30:28,757 [trainer.py] => Training time: 0h 20m 20s
+2026-09-10 05:30:39,945 [trainer.py] => Evaluation time: 0h 0m 11s
+2026-09-10 05:30:39,945 [trainer.py] => Accuracy: {'total': 78.8, '00-19': 80.03, '20-39': 83.19, '40-59': 68.58, '60-79': 79.63, 'old': 78.52, 'new': 79.63}
+2026-09-10 05:30:39,945 [trainer.py] => (curve) top1 Acc: [87.77, 84.92, 80.47, 78.8]
+2026-09-10 05:30:39,945 [trainer.py] => Avergae Acc: 82.99
+2026-09-10 05:30:39,945 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 86.18, 86.49]
+2026-09-10 05:30:39,945 [trainer.py] => Avergae Acc: 87.25
+2026-09-10 05:30:39,945 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95, 88.4, 85.32]
+2026-09-10 05:30:39,945 [trainer.py] => Avergae Acc: 91.42
+2026-09-10 05:30:39,945 [trainer.py] => ================================================================================
+2026-09-10 05:30:39,945 [trainer.py] => ================================================================================
+2026-09-10 05:30:39,947 [base.py] => Task 4 learning on class 80-100
+2026-09-10 05:30:39,961 [toolkit.py] => Total params:     106,804,784
+2026-09-10 05:30:39,961 [toolkit.py] => Trainable params: 752,681
+2026-09-10 05:30:39,961 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 05:56:04,504 [sdlora_o.py] => Task 4, Epoch 50/50 => Loss 0.108, Train_accy 96.88
+2026-09-10 05:56:04,515 [trainer.py] => Training time: 0h 25m 24s
+2026-09-10 05:56:19,760 [trainer.py] => Evaluation time: 0h 0m 15s
+2026-09-10 05:56:19,760 [trainer.py] => Accuracy: {'total': 77.21, '00-19': 78.48, '20-39': 80.42, '40-59': 67.89, '60-79': 74.19, '80-99': 81.08, 'old': 76.08, 'new': 81.08}
+2026-09-10 05:56:19,760 [trainer.py] => (curve) top1 Acc: [87.77, 84.92, 80.47, 78.8, 77.21]
+2026-09-10 05:56:19,760 [trainer.py] => Avergae Acc: 81.83
+2026-09-10 05:56:19,760 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 86.18, 86.49, 86.62]
+2026-09-10 05:56:19,760 [trainer.py] => Avergae Acc: 87.13
+2026-09-10 05:56:19,760 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95, 88.4, 85.32, 83.26]
+2026-09-10 05:56:19,760 [trainer.py] => Avergae Acc: 89.79
+2026-09-10 05:56:19,760 [trainer.py] => ================================================================================
+2026-09-10 05:56:19,760 [trainer.py] => ================================================================================
+2026-09-10 05:56:19,762 [base.py] => Task 5 learning on class 100-120
+2026-09-10 05:56:19,776 [toolkit.py] => Total params:     106,804,784
+2026-09-10 05:56:19,776 [toolkit.py] => Trainable params: 752,681
+2026-09-10 05:56:19,776 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 06:17:38,768 [sdlora_o.py] => Task 5, Epoch 50/50 => Loss 0.094, Train_accy 97.16
+2026-09-10 06:17:38,775 [trainer.py] => Training time: 0h 21m 19s
+2026-09-10 06:17:56,746 [trainer.py] => Evaluation time: 0h 0m 17s
+2026-09-10 06:17:56,746 [trainer.py] => Accuracy: {'total': 75.97, '00-19': 75.08, '20-39': 79.31, '40-59': 66.51, '60-79': 75.89, '80-99': 77.81, '100-119': 77.84, 'old': 75.63, 'new': 77.84}
+2026-09-10 06:17:56,746 [trainer.py] => (curve) top1 Acc: [87.77, 84.92, 80.47, 78.8, 77.21, 75.97]
+2026-09-10 06:17:56,746 [trainer.py] => Avergae Acc: 80.86
+2026-09-10 06:17:56,746 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 86.18, 86.49, 86.62, 86.6]
+2026-09-10 06:17:56,746 [trainer.py] => Avergae Acc: 87.04
+2026-09-10 06:17:56,747 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95, 88.4, 85.32, 83.26, 81.42]
+2026-09-10 06:17:56,747 [trainer.py] => Avergae Acc: 88.39
+2026-09-10 06:17:56,747 [trainer.py] => ================================================================================
+2026-09-10 06:17:56,747 [trainer.py] => ================================================================================
+2026-09-10 06:17:56,749 [base.py] => Task 6 learning on class 120-140
+2026-09-10 06:17:56,764 [toolkit.py] => Total params:     106,804,784
+2026-09-10 06:17:56,764 [toolkit.py] => Trainable params: 752,681
+2026-09-10 06:17:56,764 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 06:40:51,017 [sdlora_o.py] => Task 6, Epoch 50/50 => Loss 0.100, Train_accy 97.19
+2026-09-10 06:40:51,025 [trainer.py] => Training time: 0h 22m 54s
+2026-09-10 06:41:12,482 [trainer.py] => Evaluation time: 0h 0m 21s
+2026-09-10 06:41:12,482 [trainer.py] => Accuracy: {'total': 73.56, '00-19': 73.99, '20-39': 76.94, '40-59': 65.83, '60-79': 74.7, '80-99': 77.24, '100-119': 74.05, '120-139': 68.49, 'old': 74.35, 'new': 68.49}
+2026-09-10 06:41:12,483 [trainer.py] => (curve) top1 Acc: [87.77, 84.92, 80.47, 78.8, 77.21, 75.97, 73.56]
+2026-09-10 06:41:12,483 [trainer.py] => Avergae Acc: 79.81
+2026-09-10 06:41:12,483 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 86.18, 86.49, 86.62, 86.6, 85.42]
+2026-09-10 06:41:12,483 [trainer.py] => Avergae Acc: 86.81
+2026-09-10 06:41:12,483 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95, 88.4, 85.32, 83.26, 81.42, 78.61]
+2026-09-10 06:41:12,483 [trainer.py] => Avergae Acc: 86.99
+2026-09-10 06:41:12,483 [trainer.py] => ================================================================================
+2026-09-10 06:41:12,483 [trainer.py] => ================================================================================
+2026-09-10 06:41:12,484 [base.py] => Task 7 learning on class 140-160
+2026-09-10 06:41:12,502 [toolkit.py] => Total params:     106,804,784
+2026-09-10 06:41:12,502 [toolkit.py] => Trainable params: 752,681
+2026-09-10 06:41:12,502 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 07:00:31,670 [sdlora_o.py] => Task 7, Epoch 50/50 => Loss 0.101, Train_accy 96.65
+2026-09-10 07:00:31,676 [trainer.py] => Training time: 0h 19m 19s
+2026-09-10 07:00:56,603 [trainer.py] => Evaluation time: 0h 0m 24s
+2026-09-10 07:00:56,604 [trainer.py] => Accuracy: {'total': 72.46, '00-19': 72.45, '20-39': 76.67, '40-59': 65.6, '60-79': 73.01, '80-99': 76.53, '100-119': 74.05, '120-139': 65.14, '140-159': 72.59, 'old': 72.44, 'new': 72.59}
+2026-09-10 07:00:56,604 [trainer.py] => (curve) top1 Acc: [87.77, 84.92, 80.47, 78.8, 77.21, 75.97, 73.56, 72.46]
+2026-09-10 07:00:56,604 [trainer.py] => Avergae Acc: 78.89
+2026-09-10 07:00:56,604 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 86.18, 86.49, 86.62, 86.6, 85.42, 85.04]
+2026-09-10 07:00:56,604 [trainer.py] => Avergae Acc: 86.59
+2026-09-10 07:00:56,604 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95, 88.4, 85.32, 83.26, 81.42, 78.61, 77.19]
+2026-09-10 07:00:56,604 [trainer.py] => Avergae Acc: 85.77
+2026-09-10 07:00:56,604 [trainer.py] => ================================================================================
+2026-09-10 07:00:56,604 [trainer.py] => ================================================================================
+2026-09-10 07:00:56,606 [base.py] => Task 8 learning on class 160-180
+2026-09-10 07:00:56,621 [toolkit.py] => Total params:     106,804,784
+2026-09-10 07:00:56,621 [toolkit.py] => Trainable params: 752,681
+2026-09-10 07:00:56,621 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 07:28:10,762 [sdlora_o.py] => Task 8, Epoch 50/50 => Loss 0.073, Train_accy 98.19
+2026-09-10 07:28:10,769 [trainer.py] => Training time: 0h 27m 14s
+2026-09-10 07:28:40,166 [trainer.py] => Evaluation time: 0h 0m 29s
+2026-09-10 07:28:40,166 [trainer.py] => Accuracy: {'total': 72.53, '00-19': 72.14, '20-39': 75.42, '40-59': 63.76, '60-79': 72.5, '80-99': 74.54, '100-119': 72.61, '120-139': 61.8, '140-159': 68.42, '160-179': 86.31, 'old': 70.7, 'new': 86.31}
+2026-09-10 07:28:40,166 [trainer.py] => (curve) top1 Acc: [87.77, 84.92, 80.47, 78.8, 77.21, 75.97, 73.56, 72.46, 72.53]
+2026-09-10 07:28:40,166 [trainer.py] => Avergae Acc: 78.19
+2026-09-10 07:28:40,166 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 86.18, 86.49, 86.62, 86.6, 85.42, 85.04, 85.34]
+2026-09-10 07:28:40,166 [trainer.py] => Avergae Acc: 86.45
+2026-09-10 07:28:40,166 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95, 88.4, 85.32, 83.26, 81.42, 78.61, 77.19, 76.92]
+2026-09-10 07:28:40,166 [trainer.py] => Avergae Acc: 84.79
+2026-09-10 07:28:40,166 [trainer.py] => ================================================================================
+2026-09-10 07:28:40,166 [trainer.py] => ================================================================================
+2026-09-10 07:28:40,168 [base.py] => Task 9 learning on class 180-200
+2026-09-10 07:28:40,184 [toolkit.py] => Total params:     106,804,784
+2026-09-10 07:28:40,184 [toolkit.py] => Trainable params: 752,681
+2026-09-10 07:28:40,184 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 08:00:49,299 [sdlora_o.py] => Task 9, Epoch 50/50 => Loss 0.096, Train_accy 97.42
+2026-09-10 08:00:49,311 [trainer.py] => Training time: 0h 32m 9s
+2026-09-10 08:01:23,860 [trainer.py] => Evaluation time: 0h 0m 34s
+2026-09-10 08:01:23,861 [trainer.py] => Accuracy: {'total': 72.72, '00-19': 69.97, '20-39': 75.56, '40-59': 64.22, '60-79': 72.33, '80-99': 73.97, '100-119': 72.61, '120-139': 60.04, '140-159': 66.45, '160-179': 82.61, '180-199': 82.29, 'old': 71.44, 'new': 82.29}
+2026-09-10 08:01:23,861 [trainer.py] => (curve) top1 Acc: [87.77, 84.92, 80.47, 78.8, 77.21, 75.97, 73.56, 72.46, 72.53, 72.72]
+2026-09-10 08:01:23,861 [trainer.py] => Avergae Acc: 77.64
+2026-09-10 08:01:23,861 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.58, 86.18, 86.49, 86.62, 86.6, 85.42, 85.04, 85.34, 85.72]
+2026-09-10 08:01:23,861 [trainer.py] => Avergae Acc: 86.38
+2026-09-10 08:01:23,861 [trainer.py] => (curve) top1 Acc task: [100.0, 91.95, 88.4, 85.32, 83.26, 81.42, 78.61, 77.19, 76.92, 76.63]
+2026-09-10 08:01:23,861 [trainer.py] => Avergae Acc: 83.97
+2026-09-10 08:01:23,861 [trainer.py] => ================================================================================
+2026-09-10 08:01:27,400 [toolkit.py] => config: configs/sdlora_ov4/imagenet-r_seed=1993_lo=0.001_ls_0.001_mu=0.001.json
+2026-09-10 08:01:27,400 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-09-10 08:01:27,400 [toolkit.py] => debug: False
+2026-09-10 08:01:27,400 [toolkit.py] => save_ckp: False
+2026-09-10 08:01:27,401 [toolkit.py] => moe_list: None
+2026-09-10 08:01:27,401 [toolkit.py] => seed: 1997
+2026-09-10 08:01:27,401 [toolkit.py] => dataset: imagenet-r
+2026-09-10 08:01:27,401 [toolkit.py] => data_path: data/imagenet-r
+2026-09-10 08:01:27,401 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-09-10 08:01:27,401 [toolkit.py] => init_cls: 20
+2026-09-10 08:01:27,401 [toolkit.py] => increment: 20
+2026-09-10 08:01:27,401 [toolkit.py] => sessions: 10
+2026-09-10 08:01:27,401 [toolkit.py] => shuffle: False
+2026-09-10 08:01:27,401 [toolkit.py] => method: sdlora_o
+2026-09-10 08:01:27,401 [toolkit.py] => optimizer: adam
+2026-09-10 08:01:27,401 [toolkit.py] => scheduler: cosine
+2026-09-10 08:01:27,401 [toolkit.py] => epochs: 50
+2026-09-10 08:01:27,401 [toolkit.py] => lrate: 0.0005
+2026-09-10 08:01:27,401 [toolkit.py] => fc_lrate: 0.005
+2026-09-10 08:01:27,401 [toolkit.py] => weight_decay: 0.0
+2026-09-10 08:01:27,401 [toolkit.py] => batch_size: 128
+2026-09-10 08:01:27,401 [toolkit.py] => rank: 10
+2026-09-10 08:01:27,401 [toolkit.py] => num_workers: 16
+2026-09-10 08:01:27,401 [toolkit.py] => lrate_head: 0
+2026-09-10 08:01:27,401 [toolkit.py] => R: 0.5
+2026-09-10 08:01:27,401 [toolkit.py] => lambda_o: 0.001
+2026-09-10 08:01:27,401 [toolkit.py] => lambda_s: 0.001
+2026-09-10 08:01:27,401 [toolkit.py] => mu: 0.001
+2026-09-10 08:01:27,401 [toolkit.py] => ortho_loss_typev2: True
+2026-09-10 08:01:27,401 [toolkit.py] => logdir: logs/sdlora_o/imagenet-r/t10
+2026-09-10 08:01:27,401 [toolkit.py] => logfilename: logs/sdlora_o/imagenet-r/t10/seed1997
+2026-09-10 08:01:27,481 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-09-10 08:01:29,622 [trainer.py] => ================================================================================
+2026-09-10 08:01:29,622 [trainer.py] => Dataset Information
+2026-09-10 08:01:29,622 [trainer.py] => ================================================================================
+2026-09-10 08:01:29,622 [trainer.py] =>   Dataset name     : imagenet-r
+2026-09-10 08:01:29,623 [trainer.py] =>   Data path        : data/imagenet-r
+2026-09-10 08:01:29,623 [trainer.py] =>   Total classes    : 200
+2026-09-10 08:01:29,623 [trainer.py] =>   Total tasks      : 10
+2026-09-10 08:01:29,623 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-09-10 08:01:29,623 [trainer.py] =>   Init classes     : 20
+2026-09-10 08:01:29,623 [trainer.py] =>   Increment per task: 20
+2026-09-10 08:01:29,623 [trainer.py] =>   Shuffle          : False
+2026-09-10 08:01:29,623 [trainer.py] =>   Seed             : 1997
+2026-09-10 08:01:29,623 [trainer.py] => --------------------------------------------------------------------------------
+2026-09-10 08:01:29,623 [trainer.py] => Task split:
+2026-09-10 08:01:29,624 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 2585 images (11 batches), Test: 646 images (3 batches)
+2026-09-10 08:01:29,626 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 2886 images (12 batches), Test: 720 images (3 batches)
+2026-09-10 08:01:29,627 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1739 images (7 batches), Test: 436 images (2 batches)
+2026-09-10 08:01:29,628 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 2344 images (10 batches), Test: 589 images (3 batches)
+2026-09-10 08:01:29,629 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 2816 images (11 batches), Test: 703 images (3 batches)
+2026-09-10 08:01:29,630 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 2215 images (9 batches), Test: 555 images (3 batches)
+2026-09-10 08:01:29,631 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 2274 images (9 batches), Test: 568 images (3 batches)
+2026-09-10 08:01:29,633 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 1821 images (8 batches), Test: 456 images (2 batches)
+2026-09-10 08:01:29,634 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 2489 images (10 batches), Test: 621 images (3 batches)
+2026-09-10 08:01:29,635 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 2831 images (12 batches), Test: 706 images (3 batches)
+2026-09-10 08:01:29,635 [trainer.py] => ================================================================================
+2026-09-10 08:01:29,635 [trainer.py] => ================================================================================
+2026-09-10 08:01:29,636 [base.py] => Task 0 learning on class 0-20
+2026-09-10 08:01:30,151 [toolkit.py] => Total params:     106,804,784
+2026-09-10 08:01:30,152 [toolkit.py] => Trainable params: 752,681
+2026-09-10 08:01:30,152 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 08:19:58,893 [sdlora_o.py] => Task 0, Epoch 50/50 => Loss 0.069, Train_accy 97.72
+2026-09-10 08:19:58,894 [trainer.py] => Training time: 0h 18m 29s
+2026-09-10 08:20:02,200 [trainer.py] => Evaluation time: 0h 0m 3s
+2026-09-10 08:20:02,201 [trainer.py] => Accuracy: {'total': 87.77, '00-19': 87.77, 'old': 0, 'new': 87.77}
+2026-09-10 08:20:02,201 [trainer.py] => (curve) top1 Acc: [87.77]
+2026-09-10 08:20:02,201 [trainer.py] => Avergae Acc: 87.77
+2026-09-10 08:20:02,201 [trainer.py] => (curve) top1 Acc with task: [87.77]
+2026-09-10 08:20:02,201 [trainer.py] => Avergae Acc: 87.77
+2026-09-10 08:20:02,201 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-09-10 08:20:02,201 [trainer.py] => Avergae Acc: 100.00
+2026-09-10 08:20:02,201 [trainer.py] => ================================================================================
+2026-09-10 08:20:02,201 [trainer.py] => ================================================================================
+2026-09-10 08:20:02,202 [base.py] => Task 1 learning on class 20-40
+2026-09-10 08:20:02,218 [toolkit.py] => Total params:     106,804,784
+2026-09-10 08:20:02,218 [toolkit.py] => Trainable params: 752,681
+2026-09-10 08:20:02,218 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 08:42:03,276 [sdlora_o.py] => Task 1, Epoch 50/50 => Loss 0.118, Train_accy 96.99
+2026-09-10 08:42:03,284 [trainer.py] => Training time: 0h 22m 1s
+2026-09-10 08:42:09,476 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-09-10 08:42:09,476 [trainer.py] => Accuracy: {'total': 84.41, '00-19': 83.28, '20-39': 85.42, 'old': 83.28, 'new': 85.42}
+2026-09-10 08:42:09,476 [trainer.py] => (curve) top1 Acc: [87.77, 84.41]
+2026-09-10 08:42:09,476 [trainer.py] => Avergae Acc: 86.09
+2026-09-10 08:42:09,476 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51]
+2026-09-10 08:42:09,476 [trainer.py] => Avergae Acc: 88.14
+2026-09-10 08:42:09,476 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58]
+2026-09-10 08:42:09,476 [trainer.py] => Avergae Acc: 95.79
+2026-09-10 08:42:09,476 [trainer.py] => ================================================================================
+2026-09-10 08:42:09,476 [trainer.py] => ================================================================================
+2026-09-10 08:42:09,478 [base.py] => Task 2 learning on class 40-60
+2026-09-10 08:42:09,491 [toolkit.py] => Total params:     106,804,784
+2026-09-10 08:42:09,491 [toolkit.py] => Trainable params: 752,681
+2026-09-10 08:42:09,491 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 08:56:38,983 [sdlora_o.py] => Task 2, Epoch 50/50 => Loss 0.112, Train_accy 97.01
+2026-09-10 08:56:38,988 [trainer.py] => Training time: 0h 14m 29s
+2026-09-10 08:56:47,202 [trainer.py] => Evaluation time: 0h 0m 8s
+2026-09-10 08:56:47,202 [trainer.py] => Accuracy: {'total': 79.86, '00-19': 81.58, '20-39': 84.17, '40-59': 70.18, 'old': 82.94, 'new': 70.18}
+2026-09-10 08:56:47,202 [trainer.py] => (curve) top1 Acc: [87.77, 84.41, 79.86]
+2026-09-10 08:56:47,202 [trainer.py] => Avergae Acc: 84.01
+2026-09-10 08:56:47,202 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51, 86.24]
+2026-09-10 08:56:47,202 [trainer.py] => Avergae Acc: 87.51
+2026-09-10 08:56:47,202 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85]
+2026-09-10 08:56:47,202 [trainer.py] => Avergae Acc: 93.14
+2026-09-10 08:56:47,202 [trainer.py] => ================================================================================
+2026-09-10 08:56:47,202 [trainer.py] => ================================================================================
+2026-09-10 08:56:47,204 [base.py] => Task 3 learning on class 60-80
+2026-09-10 08:56:47,218 [toolkit.py] => Total params:     106,804,784
+2026-09-10 08:56:47,218 [toolkit.py] => Trainable params: 752,681
+2026-09-10 08:56:47,218 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 09:17:03,179 [sdlora_o.py] => Task 3, Epoch 50/50 => Loss 0.092, Train_accy 97.44
+2026-09-10 09:17:03,185 [trainer.py] => Training time: 0h 20m 15s
+2026-09-10 09:17:14,156 [trainer.py] => Evaluation time: 0h 0m 10s
+2026-09-10 09:17:14,156 [trainer.py] => Accuracy: {'total': 78.29, '00-19': 79.88, '20-39': 82.5, '40-59': 69.04, '60-79': 78.27, 'old': 78.3, 'new': 78.27}
+2026-09-10 09:17:14,156 [trainer.py] => (curve) top1 Acc: [87.77, 84.41, 79.86, 78.29]
+2026-09-10 09:17:14,156 [trainer.py] => Avergae Acc: 82.58
+2026-09-10 09:17:14,156 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51, 86.24, 86.45]
+2026-09-10 09:17:14,156 [trainer.py] => Avergae Acc: 87.24
+2026-09-10 09:17:14,156 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.73]
+2026-09-10 09:17:14,156 [trainer.py] => Avergae Acc: 91.04
+2026-09-10 09:17:14,157 [trainer.py] => ================================================================================
+2026-09-10 09:17:14,157 [trainer.py] => ================================================================================
+2026-09-10 09:17:14,158 [base.py] => Task 4 learning on class 80-100
+2026-09-10 09:17:14,179 [toolkit.py] => Total params:     106,804,784
+2026-09-10 09:17:14,179 [toolkit.py] => Trainable params: 752,681
+2026-09-10 09:17:14,179 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 09:42:37,565 [sdlora_o.py] => Task 4, Epoch 50/50 => Loss 0.123, Train_accy 96.91
+2026-09-10 09:42:37,572 [trainer.py] => Training time: 0h 25m 23s
+2026-09-10 09:42:52,148 [trainer.py] => Evaluation time: 0h 0m 14s
+2026-09-10 09:42:52,148 [trainer.py] => Accuracy: {'total': 77.12, '00-19': 78.17, '20-39': 81.53, '40-59': 67.2, '60-79': 76.4, '80-99': 78.38, 'old': 76.75, 'new': 78.38}
+2026-09-10 09:42:52,148 [trainer.py] => (curve) top1 Acc: [87.77, 84.41, 79.86, 78.29, 77.12]
+2026-09-10 09:42:52,148 [trainer.py] => Avergae Acc: 81.49
+2026-09-10 09:42:52,148 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51, 86.24, 86.45, 86.36]
+2026-09-10 09:42:52,149 [trainer.py] => Avergae Acc: 87.07
+2026-09-10 09:42:52,149 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.73, 83.35]
+2026-09-10 09:42:52,149 [trainer.py] => Avergae Acc: 89.50
+2026-09-10 09:42:52,149 [trainer.py] => ================================================================================
+2026-09-10 09:42:52,149 [trainer.py] => ================================================================================
+2026-09-10 09:42:52,150 [base.py] => Task 5 learning on class 100-120
+2026-09-10 09:42:52,164 [toolkit.py] => Total params:     106,804,784
+2026-09-10 09:42:52,164 [toolkit.py] => Trainable params: 752,681
+2026-09-10 09:42:52,164 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 10:04:05,643 [sdlora_o.py] => Task 5, Epoch 50/50 => Loss 0.103, Train_accy 97.29
+2026-09-10 10:04:05,651 [trainer.py] => Training time: 0h 21m 13s
+2026-09-10 10:04:23,938 [trainer.py] => Evaluation time: 0h 0m 18s
+2026-09-10 10:04:23,939 [trainer.py] => Accuracy: {'total': 75.53, '00-19': 74.92, '20-39': 80.0, '40-59': 66.51, '60-79': 75.72, '80-99': 77.38, '100-119': 74.95, 'old': 75.63, 'new': 74.95}
+2026-09-10 10:04:23,939 [trainer.py] => (curve) top1 Acc: [87.77, 84.41, 79.86, 78.29, 77.12, 75.53]
+2026-09-10 10:04:23,939 [trainer.py] => Avergae Acc: 80.50
+2026-09-10 10:04:23,939 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51, 86.24, 86.45, 86.36, 86.6]
+2026-09-10 10:04:23,939 [trainer.py] => Avergae Acc: 86.99
+2026-09-10 10:04:23,939 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.73, 83.35, 80.87]
+2026-09-10 10:04:23,939 [trainer.py] => Avergae Acc: 88.06
+2026-09-10 10:04:23,939 [trainer.py] => ================================================================================
+2026-09-10 10:04:23,939 [trainer.py] => ================================================================================
+2026-09-10 10:04:23,941 [base.py] => Task 6 learning on class 120-140
+2026-09-10 10:04:23,955 [toolkit.py] => Total params:     106,804,784
+2026-09-10 10:04:23,955 [toolkit.py] => Trainable params: 752,681
+2026-09-10 10:04:23,955 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 10:27:15,279 [sdlora_o.py] => Task 6, Epoch 50/50 => Loss 0.116, Train_accy 97.05
+2026-09-10 10:27:15,285 [trainer.py] => Training time: 0h 22m 51s
+2026-09-10 10:27:36,789 [trainer.py] => Evaluation time: 0h 0m 21s
+2026-09-10 10:27:36,789 [trainer.py] => Accuracy: {'total': 73.77, '00-19': 73.99, '20-39': 78.89, '40-59': 66.97, '60-79': 74.36, '80-99': 77.1, '100-119': 74.59, '120-139': 66.73, 'old': 74.87, 'new': 66.73}
+2026-09-10 10:27:36,789 [trainer.py] => (curve) top1 Acc: [87.77, 84.41, 79.86, 78.29, 77.12, 75.53, 73.77]
+2026-09-10 10:27:36,789 [trainer.py] => Avergae Acc: 79.54
+2026-09-10 10:27:36,789 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51, 86.24, 86.45, 86.36, 86.6, 85.61]
+2026-09-10 10:27:36,790 [trainer.py] => Avergae Acc: 86.79
+2026-09-10 10:27:36,790 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.73, 83.35, 80.87, 78.75]
+2026-09-10 10:27:36,790 [trainer.py] => Avergae Acc: 86.73
+2026-09-10 10:27:36,790 [trainer.py] => ================================================================================
+2026-09-10 10:27:36,790 [trainer.py] => ================================================================================
+2026-09-10 10:27:36,791 [base.py] => Task 7 learning on class 140-160
+2026-09-10 10:27:36,807 [toolkit.py] => Total params:     106,804,784
+2026-09-10 10:27:36,807 [toolkit.py] => Trainable params: 752,681
+2026-09-10 10:27:36,807 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 10:46:54,285 [sdlora_o.py] => Task 7, Epoch 50/50 => Loss 0.115, Train_accy 96.43
+2026-09-10 10:46:54,291 [trainer.py] => Training time: 0h 19m 17s
+2026-09-10 10:47:19,111 [trainer.py] => Evaluation time: 0h 0m 24s
+2026-09-10 10:47:19,111 [trainer.py] => Accuracy: {'total': 72.29, '00-19': 71.36, '20-39': 77.64, '40-59': 63.99, '60-79': 73.17, '80-99': 76.53, '100-119': 74.23, '120-139': 66.37, '140-159': 70.39, 'old': 72.49, 'new': 70.39}
+2026-09-10 10:47:19,111 [trainer.py] => (curve) top1 Acc: [87.77, 84.41, 79.86, 78.29, 77.12, 75.53, 73.77, 72.29]
+2026-09-10 10:47:19,111 [trainer.py] => Avergae Acc: 78.63
+2026-09-10 10:47:19,111 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51, 86.24, 86.45, 86.36, 86.6, 85.61, 85.15]
+2026-09-10 10:47:19,112 [trainer.py] => Avergae Acc: 86.59
+2026-09-10 10:47:19,112 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.73, 83.35, 80.87, 78.75, 77.1]
+2026-09-10 10:47:19,112 [trainer.py] => Avergae Acc: 85.53
+2026-09-10 10:47:19,112 [trainer.py] => ================================================================================
+2026-09-10 10:47:19,112 [trainer.py] => ================================================================================
+2026-09-10 10:47:19,113 [base.py] => Task 8 learning on class 160-180
+2026-09-10 10:47:19,129 [toolkit.py] => Total params:     106,804,784
+2026-09-10 10:47:19,129 [toolkit.py] => Trainable params: 752,681
+2026-09-10 10:47:19,129 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 11:14:32,546 [sdlora_o.py] => Task 8, Epoch 50/50 => Loss 0.081, Train_accy 97.99
+2026-09-10 11:14:32,553 [trainer.py] => Training time: 0h 27m 13s
+2026-09-10 11:15:01,854 [trainer.py] => Evaluation time: 0h 0m 29s
+2026-09-10 11:15:01,855 [trainer.py] => Accuracy: {'total': 72.57, '00-19': 70.9, '20-39': 76.39, '40-59': 61.47, '60-79': 73.01, '80-99': 75.82, '100-119': 73.15, '120-139': 63.2, '140-159': 67.54, '160-179': 85.35, 'old': 70.88, 'new': 85.35}
+2026-09-10 11:15:01,855 [trainer.py] => (curve) top1 Acc: [87.77, 84.41, 79.86, 78.29, 77.12, 75.53, 73.77, 72.29, 72.57]
+2026-09-10 11:15:01,855 [trainer.py] => Avergae Acc: 77.96
+2026-09-10 11:15:01,855 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51, 86.24, 86.45, 86.36, 86.6, 85.61, 85.15, 85.27]
+2026-09-10 11:15:01,855 [trainer.py] => Avergae Acc: 86.44
+2026-09-10 11:15:01,855 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.73, 83.35, 80.87, 78.75, 77.1, 76.97]
+2026-09-10 11:15:01,855 [trainer.py] => Avergae Acc: 84.58
+2026-09-10 11:15:01,855 [trainer.py] => ================================================================================
+2026-09-10 11:15:01,855 [trainer.py] => ================================================================================
+2026-09-10 11:15:01,857 [base.py] => Task 9 learning on class 180-200
+2026-09-10 11:15:01,873 [toolkit.py] => Total params:     106,804,784
+2026-09-10 11:15:01,873 [toolkit.py] => Trainable params: 752,681
+2026-09-10 11:15:01,873 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 11:47:09,757 [sdlora_o.py] => Task 9, Epoch 50/50 => Loss 0.114, Train_accy 97.14
+2026-09-10 11:47:09,765 [trainer.py] => Training time: 0h 32m 7s
+2026-09-10 11:47:44,182 [trainer.py] => Evaluation time: 0h 0m 34s
+2026-09-10 11:47:44,183 [trainer.py] => Accuracy: {'total': 72.05, '00-19': 69.66, '20-39': 74.44, '40-59': 61.7, '60-79': 71.99, '80-99': 73.26, '100-119': 69.91, '120-139': 61.62, '140-159': 66.01, '160-179': 84.22, '180-199': 80.31, 'old': 70.95, 'new': 80.31}
+2026-09-10 11:47:44,183 [trainer.py] => (curve) top1 Acc: [87.77, 84.41, 79.86, 78.29, 77.12, 75.53, 73.77, 72.29, 72.57, 72.05]
+2026-09-10 11:47:44,183 [trainer.py] => Avergae Acc: 77.37
+2026-09-10 11:47:44,183 [trainer.py] => (curve) top1 Acc with task: [87.77, 88.51, 86.24, 86.45, 86.36, 86.6, 85.61, 85.15, 85.27, 85.63]
+2026-09-10 11:47:44,183 [trainer.py] => Avergae Acc: 86.36
+2026-09-10 11:47:44,183 [trainer.py] => (curve) top1 Acc task: [100.0, 91.58, 87.85, 84.73, 83.35, 80.87, 78.75, 77.1, 76.97, 76.2]
+2026-09-10 11:47:44,183 [trainer.py] => Avergae Acc: 83.74
+2026-09-10 11:47:44,183 [trainer.py] => ================================================================================
+2026-09-10 11:47:47,806 [toolkit.py] => config: configs/sdlora_ov4/imagenet-r_seed=1993_lo=0.01_ls_0.01_mu=0.01.json
+2026-09-10 11:47:47,806 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-09-10 11:47:47,807 [toolkit.py] => debug: False
+2026-09-10 11:47:47,807 [toolkit.py] => save_ckp: False
+2026-09-10 11:47:47,807 [toolkit.py] => moe_list: None
+2026-09-10 11:47:47,807 [toolkit.py] => seed: 1997
+2026-09-10 11:47:47,807 [toolkit.py] => dataset: imagenet-r
+2026-09-10 11:47:47,807 [toolkit.py] => data_path: data/imagenet-r
+2026-09-10 11:47:47,807 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-09-10 11:47:47,807 [toolkit.py] => init_cls: 20
+2026-09-10 11:47:47,807 [toolkit.py] => increment: 20
+2026-09-10 11:47:47,807 [toolkit.py] => sessions: 10
+2026-09-10 11:47:47,807 [toolkit.py] => shuffle: False
+2026-09-10 11:47:47,807 [toolkit.py] => method: sdlora_o
+2026-09-10 11:47:47,807 [toolkit.py] => optimizer: adam
+2026-09-10 11:47:47,807 [toolkit.py] => scheduler: cosine
+2026-09-10 11:47:47,807 [toolkit.py] => epochs: 50
+2026-09-10 11:47:47,807 [toolkit.py] => lrate: 0.0005
+2026-09-10 11:47:47,807 [toolkit.py] => fc_lrate: 0.005
+2026-09-10 11:47:47,807 [toolkit.py] => weight_decay: 0.0
+2026-09-10 11:47:47,807 [toolkit.py] => batch_size: 128
+2026-09-10 11:47:47,807 [toolkit.py] => rank: 10
+2026-09-10 11:47:47,807 [toolkit.py] => num_workers: 16
+2026-09-10 11:47:47,807 [toolkit.py] => lrate_head: 0
+2026-09-10 11:47:47,807 [toolkit.py] => R: 0.5
+2026-09-10 11:47:47,808 [toolkit.py] => lambda_o: 0.01
+2026-09-10 11:47:47,808 [toolkit.py] => lambda_s: 0.01
+2026-09-10 11:47:47,808 [toolkit.py] => mu: 0.01
+2026-09-10 11:47:47,808 [toolkit.py] => ortho_loss_typev2: True
+2026-09-10 11:47:47,808 [toolkit.py] => logdir: logs/sdlora_o/imagenet-r/t10
+2026-09-10 11:47:47,808 [toolkit.py] => logfilename: logs/sdlora_o/imagenet-r/t10/seed1997
+2026-09-10 11:47:47,953 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-09-10 11:47:50,343 [trainer.py] => ================================================================================
+2026-09-10 11:47:50,343 [trainer.py] => Dataset Information
+2026-09-10 11:47:50,343 [trainer.py] => ================================================================================
+2026-09-10 11:47:50,343 [trainer.py] =>   Dataset name     : imagenet-r
+2026-09-10 11:47:50,343 [trainer.py] =>   Data path        : data/imagenet-r
+2026-09-10 11:47:50,343 [trainer.py] =>   Total classes    : 200
+2026-09-10 11:47:50,343 [trainer.py] =>   Total tasks      : 10
+2026-09-10 11:47:50,343 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-09-10 11:47:50,343 [trainer.py] =>   Init classes     : 20
+2026-09-10 11:47:50,344 [trainer.py] =>   Increment per task: 20
+2026-09-10 11:47:50,344 [trainer.py] =>   Shuffle          : False
+2026-09-10 11:47:50,344 [trainer.py] =>   Seed             : 1997
+2026-09-10 11:47:50,344 [trainer.py] => --------------------------------------------------------------------------------
+2026-09-10 11:47:50,344 [trainer.py] => Task split:
+2026-09-10 11:47:50,345 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 2585 images (11 batches), Test: 646 images (3 batches)
+2026-09-10 11:47:50,346 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 2886 images (12 batches), Test: 720 images (3 batches)
+2026-09-10 11:47:50,348 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1739 images (7 batches), Test: 436 images (2 batches)
+2026-09-10 11:47:50,349 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 2344 images (10 batches), Test: 589 images (3 batches)
+2026-09-10 11:47:50,350 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 2816 images (11 batches), Test: 703 images (3 batches)
+2026-09-10 11:47:50,351 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 2215 images (9 batches), Test: 555 images (3 batches)
+2026-09-10 11:47:50,352 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 2274 images (9 batches), Test: 568 images (3 batches)
+2026-09-10 11:47:50,353 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 1821 images (8 batches), Test: 456 images (2 batches)
+2026-09-10 11:47:50,355 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 2489 images (10 batches), Test: 621 images (3 batches)
+2026-09-10 11:47:50,356 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 2831 images (12 batches), Test: 706 images (3 batches)
+2026-09-10 11:47:50,356 [trainer.py] => ================================================================================
+2026-09-10 11:47:50,356 [trainer.py] => ================================================================================
+2026-09-10 11:47:50,357 [base.py] => Task 0 learning on class 0-20
+2026-09-10 11:47:50,827 [toolkit.py] => Total params:     106,804,784
+2026-09-10 11:47:50,827 [toolkit.py] => Trainable params: 752,681
+2026-09-10 11:47:50,827 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 12:06:17,575 [sdlora_o.py] => Task 0, Epoch 50/50 => Loss 0.069, Train_accy 97.72
+2026-09-10 12:06:17,576 [trainer.py] => Training time: 0h 18m 27s
+2026-09-10 12:06:20,862 [trainer.py] => Evaluation time: 0h 0m 3s
+2026-09-10 12:06:20,862 [trainer.py] => Accuracy: {'total': 87.77, '00-19': 87.77, 'old': 0, 'new': 87.77}
+2026-09-10 12:06:20,862 [trainer.py] => (curve) top1 Acc: [87.77]
+2026-09-10 12:06:20,863 [trainer.py] => Avergae Acc: 87.77
+2026-09-10 12:06:20,863 [trainer.py] => (curve) top1 Acc with task: [87.77]
+2026-09-10 12:06:20,863 [trainer.py] => Avergae Acc: 87.77
+2026-09-10 12:06:20,863 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-09-10 12:06:20,863 [trainer.py] => Avergae Acc: 100.00
+2026-09-10 12:06:20,863 [trainer.py] => ================================================================================
+2026-09-10 12:06:20,863 [trainer.py] => ================================================================================
+2026-09-10 12:06:20,864 [base.py] => Task 1 learning on class 20-40
+2026-09-10 12:06:20,878 [toolkit.py] => Total params:     106,804,784
+2026-09-10 12:06:20,878 [toolkit.py] => Trainable params: 752,681
+2026-09-10 12:06:20,878 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 12:28:17,724 [sdlora_o.py] => Task 1, Epoch 50/50 => Loss 0.124, Train_accy 96.64
+2026-09-10 12:28:17,731 [trainer.py] => Training time: 0h 21m 56s
+2026-09-10 12:28:23,888 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-09-10 12:28:23,889 [trainer.py] => Accuracy: {'total': 83.67, '00-19': 83.13, '20-39': 84.17, 'old': 83.13, 'new': 84.17}
+2026-09-10 12:28:23,889 [trainer.py] => (curve) top1 Acc: [87.77, 83.67]
+2026-09-10 12:28:23,889 [trainer.py] => Avergae Acc: 85.72
+2026-09-10 12:28:23,889 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34]
+2026-09-10 12:28:23,889 [trainer.py] => Avergae Acc: 87.56
+2026-09-10 12:28:23,889 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43]
+2026-09-10 12:28:23,889 [trainer.py] => Avergae Acc: 95.72
+2026-09-10 12:28:23,889 [trainer.py] => ================================================================================
+2026-09-10 12:28:23,889 [trainer.py] => ================================================================================
+2026-09-10 12:28:23,892 [base.py] => Task 2 learning on class 40-60
+2026-09-10 12:28:23,916 [toolkit.py] => Total params:     106,804,784
+2026-09-10 12:28:23,916 [toolkit.py] => Trainable params: 752,681
+2026-09-10 12:28:23,916 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 12:42:52,030 [sdlora_o.py] => Task 2, Epoch 50/50 => Loss 0.120, Train_accy 96.84
+2026-09-10 12:42:52,036 [trainer.py] => Training time: 0h 14m 28s
+2026-09-10 12:43:00,274 [trainer.py] => Evaluation time: 0h 0m 8s
+2026-09-10 12:43:00,274 [trainer.py] => Accuracy: {'total': 79.47, '00-19': 82.04, '20-39': 83.89, '40-59': 68.35, 'old': 83.02, 'new': 68.35}
+2026-09-10 12:43:00,274 [trainer.py] => (curve) top1 Acc: [87.77, 83.67, 79.47]
+2026-09-10 12:43:00,275 [trainer.py] => Avergae Acc: 83.64
+2026-09-10 12:43:00,275 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34, 85.96]
+2026-09-10 12:43:00,275 [trainer.py] => Avergae Acc: 87.02
+2026-09-10 12:43:00,275 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43, 87.24]
+2026-09-10 12:43:00,275 [trainer.py] => Avergae Acc: 92.89
+2026-09-10 12:43:00,275 [trainer.py] => ================================================================================
+2026-09-10 12:43:00,275 [trainer.py] => ================================================================================
+2026-09-10 12:43:00,276 [base.py] => Task 3 learning on class 60-80
+2026-09-10 12:43:00,290 [toolkit.py] => Total params:     106,804,784
+2026-09-10 12:43:00,290 [toolkit.py] => Trainable params: 752,681
+2026-09-10 12:43:00,290 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 13:03:16,032 [sdlora_o.py] => Task 3, Epoch 50/50 => Loss 0.102, Train_accy 97.53
+2026-09-10 13:03:16,039 [trainer.py] => Training time: 0h 20m 15s
+2026-09-10 13:03:27,048 [trainer.py] => Evaluation time: 0h 0m 11s
+2026-09-10 13:03:27,048 [trainer.py] => Accuracy: {'total': 78.34, '00-19': 79.41, '20-39': 82.92, '40-59': 68.81, '60-79': 78.61, 'old': 78.25, 'new': 78.61}
+2026-09-10 13:03:27,048 [trainer.py] => (curve) top1 Acc: [87.77, 83.67, 79.47, 78.34]
+2026-09-10 13:03:27,048 [trainer.py] => Avergae Acc: 82.31
+2026-09-10 13:03:27,048 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34, 85.96, 86.03]
+2026-09-10 13:03:27,048 [trainer.py] => Avergae Acc: 86.78
+2026-09-10 13:03:27,048 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43, 87.24, 84.9]
+2026-09-10 13:03:27,048 [trainer.py] => Avergae Acc: 90.89
+2026-09-10 13:03:27,048 [trainer.py] => ================================================================================
+2026-09-10 13:03:27,048 [trainer.py] => ================================================================================
+2026-09-10 13:03:27,050 [base.py] => Task 4 learning on class 80-100
+2026-09-10 13:03:27,064 [toolkit.py] => Total params:     106,804,784
+2026-09-10 13:03:27,064 [toolkit.py] => Trainable params: 752,681
+2026-09-10 13:03:27,064 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 13:28:57,559 [sdlora_o.py] => Task 4, Epoch 50/50 => Loss 0.132, Train_accy 96.66
+2026-09-10 13:28:58,802 [trainer.py] => Training time: 0h 25m 31s
+2026-09-10 13:29:13,516 [trainer.py] => Evaluation time: 0h 0m 14s
+2026-09-10 13:29:13,516 [trainer.py] => Accuracy: {'total': 76.63, '00-19': 77.86, '20-39': 81.25, '40-59': 66.06, '60-79': 75.38, '80-99': 78.38, 'old': 76.12, 'new': 78.38}
+2026-09-10 13:29:13,516 [trainer.py] => (curve) top1 Acc: [87.77, 83.67, 79.47, 78.34, 76.63]
+2026-09-10 13:29:13,516 [trainer.py] => Avergae Acc: 81.18
+2026-09-10 13:29:13,516 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34, 85.96, 86.03, 86.62]
+2026-09-10 13:29:13,516 [trainer.py] => Avergae Acc: 86.74
+2026-09-10 13:29:13,517 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43, 87.24, 84.9, 82.58]
+2026-09-10 13:29:13,517 [trainer.py] => Avergae Acc: 89.23
+2026-09-10 13:29:13,517 [trainer.py] => ================================================================================
+2026-09-10 13:29:13,517 [trainer.py] => ================================================================================
+2026-09-10 13:29:13,518 [base.py] => Task 5 learning on class 100-120
+2026-09-10 13:29:13,535 [toolkit.py] => Total params:     106,804,784
+2026-09-10 13:29:13,535 [toolkit.py] => Trainable params: 752,681
+2026-09-10 13:29:13,535 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 13:50:32,684 [sdlora_o.py] => Task 5, Epoch 50/50 => Loss 0.114, Train_accy 96.93
+2026-09-10 13:50:32,693 [trainer.py] => Training time: 0h 21m 19s
+2026-09-10 13:50:50,823 [trainer.py] => Evaluation time: 0h 0m 18s
+2026-09-10 13:50:50,824 [trainer.py] => Accuracy: {'total': 75.8, '00-19': 76.32, '20-39': 81.25, '40-59': 65.6, '60-79': 75.04, '80-99': 77.38, '100-119': 74.95, 'old': 75.95, 'new': 74.95}
+2026-09-10 13:50:50,824 [trainer.py] => (curve) top1 Acc: [87.77, 83.67, 79.47, 78.34, 76.63, 75.8]
+2026-09-10 13:50:50,824 [trainer.py] => Avergae Acc: 80.28
+2026-09-10 13:50:50,824 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34, 85.96, 86.03, 86.62, 86.71]
+2026-09-10 13:50:50,824 [trainer.py] => Avergae Acc: 86.74
+2026-09-10 13:50:50,824 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43, 87.24, 84.9, 82.58, 80.82]
+2026-09-10 13:50:50,824 [trainer.py] => Avergae Acc: 87.83
+2026-09-10 13:50:50,824 [trainer.py] => ================================================================================
+2026-09-10 13:50:50,824 [trainer.py] => ================================================================================
+2026-09-10 13:50:50,826 [base.py] => Task 6 learning on class 120-140
+2026-09-10 13:50:50,841 [toolkit.py] => Total params:     106,804,784
+2026-09-10 13:50:50,841 [toolkit.py] => Trainable params: 752,681
+2026-09-10 13:50:50,841 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 14:13:43,832 [sdlora_o.py] => Task 6, Epoch 50/50 => Loss 0.132, Train_accy 96.53
+2026-09-10 14:13:43,839 [trainer.py] => Training time: 0h 22m 53s
+2026-09-10 14:14:05,472 [trainer.py] => Evaluation time: 0h 0m 21s
+2026-09-10 14:14:05,473 [trainer.py] => Accuracy: {'total': 73.84, '00-19': 74.15, '20-39': 79.17, '40-59': 65.6, '60-79': 75.04, '80-99': 77.24, '100-119': 75.5, '120-139': 66.02, 'old': 75.06, 'new': 66.02}
+2026-09-10 14:14:05,473 [trainer.py] => (curve) top1 Acc: [87.77, 83.67, 79.47, 78.34, 76.63, 75.8, 73.84]
+2026-09-10 14:14:05,473 [trainer.py] => Avergae Acc: 79.36
+2026-09-10 14:14:05,473 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34, 85.96, 86.03, 86.62, 86.71, 85.53]
+2026-09-10 14:14:05,473 [trainer.py] => Avergae Acc: 86.57
+2026-09-10 14:14:05,473 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43, 87.24, 84.9, 82.58, 80.82, 78.73]
+2026-09-10 14:14:05,473 [trainer.py] => Avergae Acc: 86.53
+2026-09-10 14:14:05,473 [trainer.py] => ================================================================================
+2026-09-10 14:14:05,473 [trainer.py] => ================================================================================
+2026-09-10 14:14:05,475 [base.py] => Task 7 learning on class 140-160
+2026-09-10 14:14:05,494 [toolkit.py] => Total params:     106,804,784
+2026-09-10 14:14:05,494 [toolkit.py] => Trainable params: 752,681
+2026-09-10 14:14:05,494 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 14:33:24,685 [sdlora_o.py] => Task 7, Epoch 50/50 => Loss 0.129, Train_accy 96.32
+2026-09-10 14:33:24,695 [trainer.py] => Training time: 0h 19m 19s
+2026-09-10 14:33:49,668 [trainer.py] => Evaluation time: 0h 0m 24s
+2026-09-10 14:33:49,668 [trainer.py] => Accuracy: {'total': 71.95, '00-19': 71.52, '20-39': 76.25, '40-59': 65.14, '60-79': 72.5, '80-99': 75.11, '100-119': 73.51, '120-139': 67.25, '140-159': 70.61, 'old': 72.09, 'new': 70.61}
+2026-09-10 14:33:49,668 [trainer.py] => (curve) top1 Acc: [87.77, 83.67, 79.47, 78.34, 76.63, 75.8, 73.84, 71.95]
+2026-09-10 14:33:49,668 [trainer.py] => Avergae Acc: 78.43
+2026-09-10 14:33:49,668 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34, 85.96, 86.03, 86.62, 86.71, 85.53, 84.72]
+2026-09-10 14:33:49,668 [trainer.py] => Avergae Acc: 86.34
+2026-09-10 14:33:49,669 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43, 87.24, 84.9, 82.58, 80.82, 78.73, 76.97]
+2026-09-10 14:33:49,669 [trainer.py] => Avergae Acc: 85.33
+2026-09-10 14:33:49,669 [trainer.py] => ================================================================================
+2026-09-10 14:33:49,669 [trainer.py] => ================================================================================
+2026-09-10 14:33:49,670 [base.py] => Task 8 learning on class 160-180
+2026-09-10 14:33:49,685 [toolkit.py] => Total params:     106,804,784
+2026-09-10 14:33:49,685 [toolkit.py] => Trainable params: 752,681
+2026-09-10 14:33:49,685 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 15:01:01,803 [sdlora_o.py] => Task 8, Epoch 50/50 => Loss 0.091, Train_accy 98.03
+2026-09-10 15:01:01,810 [trainer.py] => Training time: 0h 27m 12s
+2026-09-10 15:01:31,184 [trainer.py] => Evaluation time: 0h 0m 29s
+2026-09-10 15:01:31,184 [trainer.py] => Accuracy: {'total': 72.65, '00-19': 72.14, '20-39': 76.25, '40-59': 62.84, '60-79': 71.14, '80-99': 74.68, '100-119': 73.33, '120-139': 64.96, '140-159': 69.08, '160-179': 84.06, 'old': 71.13, 'new': 84.06}
+2026-09-10 15:01:31,184 [trainer.py] => (curve) top1 Acc: [87.77, 83.67, 79.47, 78.34, 76.63, 75.8, 73.84, 71.95, 72.65]
+2026-09-10 15:01:31,184 [trainer.py] => Avergae Acc: 77.79
+2026-09-10 15:01:31,184 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34, 85.96, 86.03, 86.62, 86.71, 85.53, 84.72, 85.51]
+2026-09-10 15:01:31,184 [trainer.py] => Avergae Acc: 86.24
+2026-09-10 15:01:31,184 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43, 87.24, 84.9, 82.58, 80.82, 78.73, 76.97, 77.2]
+2026-09-10 15:01:31,184 [trainer.py] => Avergae Acc: 84.43
+2026-09-10 15:01:31,184 [trainer.py] => ================================================================================
+2026-09-10 15:01:31,184 [trainer.py] => ================================================================================
+2026-09-10 15:01:31,186 [base.py] => Task 9 learning on class 180-200
+2026-09-10 15:01:31,202 [toolkit.py] => Total params:     106,804,784
+2026-09-10 15:01:31,202 [toolkit.py] => Trainable params: 752,681
+2026-09-10 15:01:31,202 [toolkit.py] => Trainable ratio:  0.7047%
+2026-09-10 15:33:43,505 [sdlora_o.py] => Task 9, Epoch 50/50 => Loss 0.124, Train_accy 97.32
+2026-09-10 15:33:43,517 [trainer.py] => Training time: 0h 32m 12s
+2026-09-10 15:34:17,946 [trainer.py] => Evaluation time: 0h 0m 34s
+2026-09-10 15:34:17,946 [trainer.py] => Accuracy: {'total': 71.75, '00-19': 70.9, '20-39': 73.75, '40-59': 61.01, '60-79': 71.99, '80-99': 72.83, '100-119': 71.17, '120-139': 61.27, '140-159': 66.45, '160-179': 83.25, '180-199': 78.05, 'old': 70.91, 'new': 78.05}
+2026-09-10 15:34:17,946 [trainer.py] => (curve) top1 Acc: [87.77, 83.67, 79.47, 78.34, 76.63, 75.8, 73.84, 71.95, 72.65, 71.75]
+2026-09-10 15:34:17,946 [trainer.py] => Avergae Acc: 77.19
+2026-09-10 15:34:17,946 [trainer.py] => (curve) top1 Acc with task: [87.77, 87.34, 85.96, 86.03, 86.62, 86.71, 85.53, 84.72, 85.51, 85.23]
+2026-09-10 15:34:17,946 [trainer.py] => Avergae Acc: 86.14
+2026-09-10 15:34:17,946 [trainer.py] => (curve) top1 Acc task: [100.0, 91.43, 87.24, 84.9, 82.58, 80.82, 78.73, 76.97, 77.2, 76.05]
+2026-09-10 15:34:17,946 [trainer.py] => Avergae Acc: 83.59
+2026-09-10 15:34:17,946 [trainer.py] => ================================================================================

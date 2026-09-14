@@ -1,0 +1,113 @@
+# Baseline
+
+def get_model(method, args):
+    method = method.lower()
+
+    if method == 'baseline':
+        from methods.baseline import Baseline
+        return Baseline(args)
+    elif method == 'inflora':
+        from methods.inflora import InfLoRA  # https://arxiv.org/pdf/2404.00228
+        return InfLoRA(args)
+
+    elif method == "inflora_e":
+        from methods.inflora_e import InfLoRAe
+        return InfLoRAe(args)
+    elif method == "inflorao":
+        from methods.inflora_o import InfLoRAo
+        return InfLoRAo(args)
+    elif method == 'sdlora':
+        from methods.sdlora import SDLoRA    # https://arxiv.org/pdf/2501.13198
+        return SDLoRA(args)
+    elif method == "sdlora_e":
+        from methods.sdlora_e import SDLoRAe
+        return SDLoRAe(args)
+
+    elif method == "sdlora_o":
+        from methods.sdlora_o import SDLoRAo
+        return SDLoRAo(args)
+    
+    elif method == 'cllora':
+        from methods.cllora import CLLoRA    # https://arxiv.org/pdf/2505.24816
+        return CLLoRA(args)
+    elif method == 'cllora_e':
+        from methods.cllora_e import CLLoRAe
+        return CLLoRAe(args)
+    elif method == 'cllora_o':
+        from methods.cllora_o import CLLoRAo
+        return CLLoRAo(args)
+    elif method == 'ewclora':
+        from methods.ewclora import EWCLoRA  # https://arxiv.org/abs/2602.17559
+        return EWCLoRA(args)
+    elif method == 'ewclora_e':
+        from methods.ewclora_e import EWCLoRAe  # https://arxiv.org/abs/2602.17559
+        return EWCLoRAe(args)
+    elif method == 'ewclora_o':
+        from methods.ewclora_o import EWCLoRAo  # https://arxiv.org/abs/2602.17559
+        return EWCLoRAo(args)
+    
+    elif method == 'splitlora':
+        from methods.splitlora import SplitLoRA
+        return SplitLoRA(args)
+    elif method == 'lorasub_drs':
+        from methods.lorasub_drs import LoRAsub_DRS
+        return LoRAsub_DRS(args)
+    
+    elif method == 'lorasub_drs_e':
+        from methods.lorasub_drs_e import LoRAsub_DRS_e
+        return LoRAsub_DRS_e(args)
+    
+    elif method == 'splitlorav1':
+        from methods.splitlorav1 import SplitLoRAV1
+        return SplitLoRAV1(args)
+    elif method == 'splitlorav2':
+        from methods.splitlorav2 import SplitLoRAV2
+        return SplitLoRAV2(args)
+    elif method == "sdlora_moe":
+        from methods.sdlora_moe import SDLoRA_MOE
+        return SDLoRA_MOE(args)
+    elif method == 'splitlorav3':
+        from methods.splitlorav3 import SplitLoRAV3
+        return SplitLoRAV3(args)
+    elif method == 'splitlorav4':
+        from methods.splitlorav4 import SplitLoRAV4
+        return SplitLoRAV4(args)
+    elif method == 'splitlorav5':
+        from methods.splitlorav5 import SplitLoRAV5
+        return SplitLoRAV5(args)
+    elif method =="care":
+        from methods.care import Learner
+        return Learner(args)
+    elif method == "bilora":
+        from methods.bilora import BiLoRA
+        return BiLoRA(args)
+    elif method == "bilora_e":
+        from methods.bilora_e import BiLoRAe
+        return BiLoRAe(args)   
+    elif method == 'splitlorav6':
+        from methods.splitlorav6 import SplitLoRAV6
+        return SplitLoRAV6(args)    
+    elif method == 'splitlorav7':
+        from methods.splitlorav7 import SplitLoRAV7
+        return SplitLoRAV7(args)    
+    elif method == 'splitlorav8':
+        from methods.splitlorav8 import SplitLoRAV8
+    elif method == 'splitlorav9':
+        from methods.splitlorav9 import SplitLoRAV9
+        return SplitLoRAV9(args)   
+    elif method == 'keeplora':
+        from methods.keeplora import Keeplora
+        return Keeplora(args)           
+    elif method == "splitlorav16":
+        from methods.splitlorav16 import SplitLoRAV6
+        return SplitLoRAV6(args)   
+    elif method == "splitlorav16":
+        from methods.splitlorav16 import SplitLoRAV6
+        return SplitLoRAV6(args)   
+
+    else:
+        raise ValueError(f"Unknown method: {method}")
+
+
+
+

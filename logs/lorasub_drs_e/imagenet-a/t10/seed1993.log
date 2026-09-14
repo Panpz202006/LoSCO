@@ -1,0 +1,959 @@
+2026-08-29 18:14:44,312 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 18:14:44,312 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-08-29 18:14:44,312 [toolkit.py] => debug: False
+2026-08-29 18:14:44,312 [toolkit.py] => save_ckp: False
+2026-08-29 18:14:44,312 [toolkit.py] => moe_list: None
+2026-08-29 18:14:44,312 [toolkit.py] => prefix: reproduce
+2026-08-29 18:14:44,312 [toolkit.py] => dataset: imagenet-a
+2026-08-29 18:14:44,312 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 18:14:44,312 [toolkit.py] => memory_size: 0
+2026-08-29 18:14:44,312 [toolkit.py] => memory_per_class: 0
+2026-08-29 18:14:44,313 [toolkit.py] => fixed_memory: True
+2026-08-29 18:14:44,313 [toolkit.py] => shuffle: False
+2026-08-29 18:14:44,313 [toolkit.py] => seed: 1993
+2026-08-29 18:14:44,313 [toolkit.py] => init_cls: 20
+2026-08-29 18:14:44,313 [toolkit.py] => increment: 20
+2026-08-29 18:14:44,313 [toolkit.py] => total_sessions: 10
+2026-08-29 18:14:44,313 [toolkit.py] => sessions: 10
+2026-08-29 18:14:44,313 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 18:14:44,313 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 18:14:44,313 [toolkit.py] => net_type: sip
+2026-08-29 18:14:44,313 [toolkit.py] => embd_dim: 768
+2026-08-29 18:14:44,313 [toolkit.py] => num_heads: 12
+2026-08-29 18:14:44,313 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 18:14:44,313 [toolkit.py] => init_epoch: 10
+2026-08-29 18:14:44,313 [toolkit.py] => optim: Adam
+2026-08-29 18:14:44,313 [toolkit.py] => optimizer: Adam
+2026-08-29 18:14:44,313 [toolkit.py] => init_lr: 0.0005
+2026-08-29 18:14:44,313 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 18:14:44,313 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 18:14:44,313 [toolkit.py] => epochs: 10
+2026-08-29 18:14:44,313 [toolkit.py] => lrate_head: 0.01
+2026-08-29 18:14:44,313 [toolkit.py] => scheduler: steplr
+2026-08-29 18:14:44,313 [toolkit.py] => eval: false
+2026-08-29 18:14:44,313 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 18:14:44,313 [toolkit.py] => lrate: 0.0005
+2026-08-29 18:14:44,313 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 18:14:44,313 [toolkit.py] => batch_size: 128
+2026-08-29 18:14:44,313 [toolkit.py] => weight_decay: 0.0
+2026-08-29 18:14:44,313 [toolkit.py] => rank: 10
+2026-08-29 18:14:44,313 [toolkit.py] => margin_inter: 2.0
+2026-08-29 18:14:44,313 [toolkit.py] => lambada: 0.2
+2026-08-29 18:14:44,313 [toolkit.py] => num_workers: 16
+2026-08-29 18:14:44,313 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 18:14:44,313 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 18:14:44,340 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 18:14:46,991 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 18:14:47,149 [trainer.py] => ================================================================================
+2026-08-29 18:14:47,149 [trainer.py] => Dataset Information
+2026-08-29 18:14:47,149 [trainer.py] => ================================================================================
+2026-08-29 18:14:47,149 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 18:14:47,149 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 18:14:47,149 [trainer.py] =>   Total classes    : 200
+2026-08-29 18:14:47,149 [trainer.py] =>   Total tasks      : 10
+2026-08-29 18:14:47,149 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 18:14:47,149 [trainer.py] =>   Init classes     : 20
+2026-08-29 18:14:47,149 [trainer.py] =>   Increment per task: 20
+2026-08-29 18:14:47,149 [trainer.py] =>   Shuffle          : False
+2026-08-29 18:14:47,149 [trainer.py] =>   Seed             : 1993
+2026-08-29 18:14:47,149 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 18:14:47,149 [trainer.py] => Task split:
+2026-08-29 18:14:47,151 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 18:14:47,152 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 18:14:47,152 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 18:14:47,153 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 18:14:47,154 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 18:14:47,154 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 18:14:47,155 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 18:14:47,155 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 18:14:47,156 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 18:14:47,156 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 18:14:47,156 [trainer.py] => ================================================================================
+2026-08-29 18:14:47,156 [trainer.py] => ================================================================================
+2026-08-29 18:14:47,157 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 18:14:47,730 [toolkit.py] => Total params:     111,717,091
+2026-08-29 18:14:47,730 [toolkit.py] => Trainable params: 384,020
+2026-08-29 18:14:47,730 [toolkit.py] => Trainable ratio:  0.3437%
+2026-08-29 18:22:39,644 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 18:22:39,644 [toolkit.py] => device: [device(type='cuda', index=0)]
+2026-08-29 18:22:39,644 [toolkit.py] => debug: False
+2026-08-29 18:22:39,644 [toolkit.py] => save_ckp: False
+2026-08-29 18:22:39,644 [toolkit.py] => moe_list: None
+2026-08-29 18:22:39,644 [toolkit.py] => prefix: reproduce
+2026-08-29 18:22:39,644 [toolkit.py] => dataset: imagenet-a
+2026-08-29 18:22:39,644 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 18:22:39,644 [toolkit.py] => memory_size: 0
+2026-08-29 18:22:39,644 [toolkit.py] => memory_per_class: 0
+2026-08-29 18:22:39,644 [toolkit.py] => fixed_memory: True
+2026-08-29 18:22:39,644 [toolkit.py] => shuffle: False
+2026-08-29 18:22:39,644 [toolkit.py] => seed: 1993
+2026-08-29 18:22:39,644 [toolkit.py] => init_cls: 20
+2026-08-29 18:22:39,644 [toolkit.py] => increment: 20
+2026-08-29 18:22:39,644 [toolkit.py] => total_sessions: 10
+2026-08-29 18:22:39,644 [toolkit.py] => sessions: 10
+2026-08-29 18:22:39,644 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 18:22:39,644 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 18:22:39,644 [toolkit.py] => net_type: sip
+2026-08-29 18:22:39,644 [toolkit.py] => embd_dim: 768
+2026-08-29 18:22:39,644 [toolkit.py] => num_heads: 12
+2026-08-29 18:22:39,644 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 18:22:39,644 [toolkit.py] => init_epoch: 10
+2026-08-29 18:22:39,645 [toolkit.py] => optim: Adam
+2026-08-29 18:22:39,645 [toolkit.py] => optimizer: Adam
+2026-08-29 18:22:39,645 [toolkit.py] => init_lr: 0.0005
+2026-08-29 18:22:39,645 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 18:22:39,645 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 18:22:39,645 [toolkit.py] => epochs: 10
+2026-08-29 18:22:39,645 [toolkit.py] => lrate_head: 0.01
+2026-08-29 18:22:39,645 [toolkit.py] => scheduler: steplr
+2026-08-29 18:22:39,645 [toolkit.py] => eval: false
+2026-08-29 18:22:39,645 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 18:22:39,645 [toolkit.py] => lrate: 0.0005
+2026-08-29 18:22:39,645 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 18:22:39,645 [toolkit.py] => batch_size: 128
+2026-08-29 18:22:39,645 [toolkit.py] => weight_decay: 0.0
+2026-08-29 18:22:39,645 [toolkit.py] => rank: 10
+2026-08-29 18:22:39,645 [toolkit.py] => margin_inter: 2.0
+2026-08-29 18:22:39,645 [toolkit.py] => lambada: 0.2
+2026-08-29 18:22:39,645 [toolkit.py] => num_workers: 16
+2026-08-29 18:22:39,645 [toolkit.py] => R: 0.5
+2026-08-29 18:22:39,645 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 18:22:39,645 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 18:22:39,671 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 18:22:42,239 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 18:22:42,342 [trainer.py] => ================================================================================
+2026-08-29 18:22:42,342 [trainer.py] => Dataset Information
+2026-08-29 18:22:42,342 [trainer.py] => ================================================================================
+2026-08-29 18:22:42,342 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 18:22:42,342 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 18:22:42,342 [trainer.py] =>   Total classes    : 200
+2026-08-29 18:22:42,343 [trainer.py] =>   Total tasks      : 10
+2026-08-29 18:22:42,343 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 18:22:42,343 [trainer.py] =>   Init classes     : 20
+2026-08-29 18:22:42,343 [trainer.py] =>   Increment per task: 20
+2026-08-29 18:22:42,343 [trainer.py] =>   Shuffle          : False
+2026-08-29 18:22:42,343 [trainer.py] =>   Seed             : 1993
+2026-08-29 18:22:42,343 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 18:22:42,343 [trainer.py] => Task split:
+2026-08-29 18:22:42,344 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 18:22:42,345 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 18:22:42,345 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 18:22:42,346 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 18:22:42,347 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 18:22:42,347 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 18:22:42,348 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 18:22:42,348 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 18:22:42,349 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 18:22:42,349 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 18:22:42,349 [trainer.py] => ================================================================================
+2026-08-29 18:22:42,350 [trainer.py] => ================================================================================
+2026-08-29 18:22:42,350 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 18:22:43,300 [toolkit.py] => Total params:     111,717,091
+2026-08-29 18:22:43,300 [toolkit.py] => Trainable params: 384,020
+2026-08-29 18:22:43,300 [toolkit.py] => Trainable ratio:  0.3437%
+2026-08-29 18:29:36,486 [lorasub_drs_e.py] => Task 0, Epoch 10/10 => Loss 0.966, Train_accy 84.92
+2026-08-29 18:29:36,489 [trainer.py] => Training time: 0h 6m 54s
+2026-08-29 18:29:39,673 [trainer.py] => Evaluation time: 0h 0m 3s
+2026-08-29 18:29:39,673 [trainer.py] => Accuracy: {'total': 86.26, '00-19': 86.26, 'old': 0, 'new': 86.26}
+2026-08-29 18:29:39,673 [trainer.py] => (curve) top1 Acc: [86.26]
+2026-08-29 18:29:39,673 [trainer.py] => Avergae Acc: 86.26
+2026-08-29 18:29:39,673 [trainer.py] => (curve) top1 Acc with task: [86.26]
+2026-08-29 18:29:39,673 [trainer.py] => Avergae Acc: 86.26
+2026-08-29 18:29:39,673 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-08-29 18:29:39,673 [trainer.py] => Avergae Acc: 100.00
+2026-08-29 18:29:39,673 [trainer.py] => ================================================================================
+2026-08-29 18:29:39,673 [trainer.py] => ================================================================================
+2026-08-29 18:29:39,675 [lorasub_drs_e.py] => Task 1 learning on class 20-40
+2026-08-29 18:29:46,903 [toolkit.py] => Total params:     111,717,091
+2026-08-29 18:29:46,903 [toolkit.py] => Trainable params: 384,020
+2026-08-29 18:29:46,903 [toolkit.py] => Trainable ratio:  0.3437%
+2026-08-29 18:36:34,313 [lorasub_drs_e.py] => Task 1, Epoch 10/10 => Loss 1.071, Train_accy 81.90
+2026-08-29 18:36:34,319 [trainer.py] => Training time: 0h 6m 54s
+2026-08-29 18:36:38,994 [trainer.py] => Evaluation time: 0h 0m 4s
+2026-08-29 18:36:38,995 [trainer.py] => Accuracy: {'total': 75.0, '00-19': 83.07, '20-39': 64.94, 'old': 83.07, 'new': 64.94}
+2026-08-29 18:36:38,995 [trainer.py] => (curve) top1 Acc: [86.26, 75.0]
+2026-08-29 18:36:38,995 [trainer.py] => Avergae Acc: 80.63
+2026-08-29 18:36:38,995 [trainer.py] => (curve) top1 Acc with task: [86.26, 86.17]
+2026-08-29 18:36:38,995 [trainer.py] => Avergae Acc: 86.22
+2026-08-29 18:36:38,995 [trainer.py] => (curve) top1 Acc task: [100.0, 84.4]
+2026-08-29 18:36:38,995 [trainer.py] => Avergae Acc: 92.20
+2026-08-29 18:36:38,995 [trainer.py] => ================================================================================
+2026-08-29 18:36:38,995 [trainer.py] => ================================================================================
+2026-08-29 18:36:38,997 [lorasub_drs_e.py] => Task 2 learning on class 40-60
+2026-08-29 18:36:49,132 [toolkit.py] => Total params:     111,717,091
+2026-08-29 18:36:49,133 [toolkit.py] => Trainable params: 384,020
+2026-08-29 18:36:49,133 [toolkit.py] => Trainable ratio:  0.3437%
+2026-08-29 18:44:40,673 [lorasub_drs_e.py] => Task 2, Epoch 10/10 => Loss 1.240, Train_accy 77.10
+2026-08-29 18:44:40,678 [trainer.py] => Training time: 0h 8m 1s
+2026-08-29 18:44:46,561 [trainer.py] => Evaluation time: 0h 0m 5s
+2026-08-29 18:44:46,561 [trainer.py] => Accuracy: {'total': 66.38, '00-19': 82.75, '20-39': 62.95, '40-59': 49.4, 'old': 73.94, 'new': 49.4}
+2026-08-29 18:44:46,561 [trainer.py] => (curve) top1 Acc: [86.26, 75.0, 66.38]
+2026-08-29 18:44:46,562 [trainer.py] => Avergae Acc: 75.88
+2026-08-29 18:44:46,562 [trainer.py] => (curve) top1 Acc with task: [86.26, 86.17, 82.58]
+2026-08-29 18:44:46,562 [trainer.py] => Avergae Acc: 85.00
+2026-08-29 18:44:46,562 [trainer.py] => (curve) top1 Acc task: [100.0, 84.4, 74.6]
+2026-08-29 18:44:46,562 [trainer.py] => Avergae Acc: 86.33
+2026-08-29 18:44:46,562 [trainer.py] => ================================================================================
+2026-08-29 18:44:46,562 [trainer.py] => ================================================================================
+2026-08-29 18:44:46,564 [lorasub_drs_e.py] => Task 3 learning on class 60-80
+2026-08-29 18:44:51,781 [toolkit.py] => Total params:     111,717,091
+2026-08-29 18:44:51,781 [toolkit.py] => Trainable params: 384,020
+2026-08-29 18:44:51,782 [toolkit.py] => Trainable ratio:  0.3437%
+2026-08-29 18:50:30,885 [lorasub_drs_e.py] => Task 3, Epoch 10/10 => Loss 1.178, Train_accy 78.52
+2026-08-29 18:50:30,893 [trainer.py] => Training time: 0h 5m 44s
+2026-08-29 18:50:37,856 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-08-29 18:50:37,856 [trainer.py] => Accuracy: {'total': 62.73, '00-19': 82.11, '20-39': 62.15, '40-59': 48.61, '60-79': 47.02, 'old': 65.64, 'new': 47.02}
+2026-08-29 18:50:37,856 [trainer.py] => (curve) top1 Acc: [86.26, 75.0, 66.38, 62.73]
+2026-08-29 18:50:37,857 [trainer.py] => Avergae Acc: 72.59
+2026-08-29 18:50:37,857 [trainer.py] => (curve) top1 Acc with task: [86.26, 86.17, 82.58, 81.68]
+2026-08-29 18:50:37,857 [trainer.py] => Avergae Acc: 84.17
+2026-08-29 18:50:37,857 [trainer.py] => (curve) top1 Acc task: [100.0, 84.4, 74.6, 69.98]
+2026-08-29 18:50:37,857 [trainer.py] => Avergae Acc: 82.25
+2026-08-29 18:50:37,857 [trainer.py] => ================================================================================
+2026-08-29 18:50:37,857 [trainer.py] => ================================================================================
+2026-08-29 18:50:37,859 [lorasub_drs_e.py] => Task 4 learning on class 80-100
+2026-08-29 18:50:41,801 [toolkit.py] => Total params:     111,717,091
+2026-08-29 18:50:41,802 [toolkit.py] => Trainable params: 384,020
+2026-08-29 18:50:41,802 [toolkit.py] => Trainable ratio:  0.3437%
+2026-08-29 18:58:56,275 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 18:58:56,276 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-08-29 18:58:56,276 [toolkit.py] => debug: False
+2026-08-29 18:58:56,276 [toolkit.py] => save_ckp: False
+2026-08-29 18:58:56,276 [toolkit.py] => moe_list: None
+2026-08-29 18:58:56,276 [toolkit.py] => prefix: reproduce
+2026-08-29 18:58:56,276 [toolkit.py] => dataset: imagenet-a
+2026-08-29 18:58:56,276 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 18:58:56,276 [toolkit.py] => memory_size: 0
+2026-08-29 18:58:56,276 [toolkit.py] => memory_per_class: 0
+2026-08-29 18:58:56,276 [toolkit.py] => fixed_memory: True
+2026-08-29 18:58:56,276 [toolkit.py] => shuffle: False
+2026-08-29 18:58:56,276 [toolkit.py] => seed: 1993
+2026-08-29 18:58:56,276 [toolkit.py] => init_cls: 20
+2026-08-29 18:58:56,276 [toolkit.py] => increment: 20
+2026-08-29 18:58:56,276 [toolkit.py] => total_sessions: 10
+2026-08-29 18:58:56,276 [toolkit.py] => sessions: 10
+2026-08-29 18:58:56,276 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 18:58:56,276 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 18:58:56,276 [toolkit.py] => net_type: sip
+2026-08-29 18:58:56,276 [toolkit.py] => embd_dim: 768
+2026-08-29 18:58:56,276 [toolkit.py] => num_heads: 12
+2026-08-29 18:58:56,276 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 18:58:56,276 [toolkit.py] => init_epoch: 10
+2026-08-29 18:58:56,276 [toolkit.py] => optim: Adam
+2026-08-29 18:58:56,276 [toolkit.py] => optimizer: Adam
+2026-08-29 18:58:56,276 [toolkit.py] => init_lr: 0.0005
+2026-08-29 18:58:56,276 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 18:58:56,276 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 18:58:56,276 [toolkit.py] => epochs: 10
+2026-08-29 18:58:56,276 [toolkit.py] => lrate_head: 0.01
+2026-08-29 18:58:56,277 [toolkit.py] => scheduler: steplr
+2026-08-29 18:58:56,277 [toolkit.py] => eval: false
+2026-08-29 18:58:56,277 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 18:58:56,277 [toolkit.py] => lrate: 0.0005
+2026-08-29 18:58:56,277 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 18:58:56,277 [toolkit.py] => batch_size: 128
+2026-08-29 18:58:56,277 [toolkit.py] => weight_decay: 0.0
+2026-08-29 18:58:56,277 [toolkit.py] => rank: 10
+2026-08-29 18:58:56,277 [toolkit.py] => margin_inter: 2.0
+2026-08-29 18:58:56,277 [toolkit.py] => lambada: 0.2
+2026-08-29 18:58:56,277 [toolkit.py] => num_workers: 16
+2026-08-29 18:58:56,277 [toolkit.py] => R: 0.5
+2026-08-29 18:58:56,277 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 18:58:56,277 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 18:58:56,304 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 18:58:59,030 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 18:58:59,132 [trainer.py] => ================================================================================
+2026-08-29 18:58:59,132 [trainer.py] => Dataset Information
+2026-08-29 18:58:59,132 [trainer.py] => ================================================================================
+2026-08-29 18:58:59,132 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 18:58:59,132 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 18:58:59,132 [trainer.py] =>   Total classes    : 200
+2026-08-29 18:58:59,132 [trainer.py] =>   Total tasks      : 10
+2026-08-29 18:58:59,132 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 18:58:59,132 [trainer.py] =>   Init classes     : 20
+2026-08-29 18:58:59,132 [trainer.py] =>   Increment per task: 20
+2026-08-29 18:58:59,132 [trainer.py] =>   Shuffle          : False
+2026-08-29 18:58:59,132 [trainer.py] =>   Seed             : 1993
+2026-08-29 18:58:59,132 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 18:58:59,132 [trainer.py] => Task split:
+2026-08-29 18:58:59,133 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 18:58:59,134 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 18:58:59,135 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 18:58:59,135 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 18:58:59,136 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 18:58:59,136 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 18:58:59,137 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 18:58:59,137 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 18:58:59,138 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 18:58:59,138 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 18:58:59,138 [trainer.py] => ================================================================================
+2026-08-29 18:58:59,139 [trainer.py] => ================================================================================
+2026-08-29 18:58:59,140 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 18:59:00,357 [toolkit.py] => Total params:     111,717,091
+2026-08-29 18:59:00,357 [toolkit.py] => Trainable params: 752,660
+2026-08-29 18:59:00,357 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:02:09,054 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 19:02:09,054 [toolkit.py] => device: [device(type='cuda', index=2)]
+2026-08-29 19:02:09,054 [toolkit.py] => debug: False
+2026-08-29 19:02:09,054 [toolkit.py] => save_ckp: False
+2026-08-29 19:02:09,054 [toolkit.py] => moe_list: None
+2026-08-29 19:02:09,054 [toolkit.py] => prefix: reproduce
+2026-08-29 19:02:09,054 [toolkit.py] => dataset: imagenet-a
+2026-08-29 19:02:09,054 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 19:02:09,054 [toolkit.py] => memory_size: 0
+2026-08-29 19:02:09,054 [toolkit.py] => memory_per_class: 0
+2026-08-29 19:02:09,054 [toolkit.py] => fixed_memory: True
+2026-08-29 19:02:09,054 [toolkit.py] => shuffle: False
+2026-08-29 19:02:09,054 [toolkit.py] => seed: 1993
+2026-08-29 19:02:09,054 [toolkit.py] => init_cls: 20
+2026-08-29 19:02:09,054 [toolkit.py] => increment: 20
+2026-08-29 19:02:09,054 [toolkit.py] => total_sessions: 10
+2026-08-29 19:02:09,054 [toolkit.py] => sessions: 10
+2026-08-29 19:02:09,054 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 19:02:09,054 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 19:02:09,054 [toolkit.py] => net_type: sip
+2026-08-29 19:02:09,054 [toolkit.py] => embd_dim: 768
+2026-08-29 19:02:09,055 [toolkit.py] => num_heads: 12
+2026-08-29 19:02:09,055 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 19:02:09,055 [toolkit.py] => init_epoch: 10
+2026-08-29 19:02:09,055 [toolkit.py] => optim: Adam
+2026-08-29 19:02:09,055 [toolkit.py] => optimizer: Adam
+2026-08-29 19:02:09,055 [toolkit.py] => init_lr: 0.0005
+2026-08-29 19:02:09,055 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 19:02:09,055 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 19:02:09,058 [toolkit.py] => epochs: 10
+2026-08-29 19:02:09,058 [toolkit.py] => lrate_head: 0.01
+2026-08-29 19:02:09,058 [toolkit.py] => scheduler: steplr
+2026-08-29 19:02:09,058 [toolkit.py] => eval: false
+2026-08-29 19:02:09,058 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 19:02:09,058 [toolkit.py] => lrate: 0.0005
+2026-08-29 19:02:09,058 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 19:02:09,058 [toolkit.py] => batch_size: 128
+2026-08-29 19:02:09,058 [toolkit.py] => weight_decay: 0.0
+2026-08-29 19:02:09,059 [toolkit.py] => rank: 10
+2026-08-29 19:02:09,059 [toolkit.py] => margin_inter: 2.0
+2026-08-29 19:02:09,059 [toolkit.py] => lambada: 0.2
+2026-08-29 19:02:09,059 [toolkit.py] => num_workers: 16
+2026-08-29 19:02:09,059 [toolkit.py] => R: 0.5
+2026-08-29 19:02:09,059 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 19:02:09,059 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 19:02:09,087 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:02:11,822 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:02:11,924 [trainer.py] => ================================================================================
+2026-08-29 19:02:11,924 [trainer.py] => Dataset Information
+2026-08-29 19:02:11,924 [trainer.py] => ================================================================================
+2026-08-29 19:02:11,924 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 19:02:11,924 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 19:02:11,924 [trainer.py] =>   Total classes    : 200
+2026-08-29 19:02:11,924 [trainer.py] =>   Total tasks      : 10
+2026-08-29 19:02:11,924 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 19:02:11,924 [trainer.py] =>   Init classes     : 20
+2026-08-29 19:02:11,924 [trainer.py] =>   Increment per task: 20
+2026-08-29 19:02:11,924 [trainer.py] =>   Shuffle          : False
+2026-08-29 19:02:11,925 [trainer.py] =>   Seed             : 1993
+2026-08-29 19:02:11,925 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 19:02:11,925 [trainer.py] => Task split:
+2026-08-29 19:02:11,926 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 19:02:11,927 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:02:11,928 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:02:11,929 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 19:02:11,930 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 19:02:11,931 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 19:02:11,931 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 19:02:11,932 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 19:02:11,933 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:02:11,934 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:02:11,934 [trainer.py] => ================================================================================
+2026-08-29 19:02:11,934 [trainer.py] => ================================================================================
+2026-08-29 19:02:11,935 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 19:02:12,530 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:02:12,530 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:02:12,530 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:03:09,604 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 19:03:09,604 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-08-29 19:03:09,604 [toolkit.py] => debug: False
+2026-08-29 19:03:09,604 [toolkit.py] => save_ckp: False
+2026-08-29 19:03:09,604 [toolkit.py] => moe_list: None
+2026-08-29 19:03:09,604 [toolkit.py] => prefix: reproduce
+2026-08-29 19:03:09,604 [toolkit.py] => dataset: imagenet-a
+2026-08-29 19:03:09,604 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 19:03:09,604 [toolkit.py] => memory_size: 0
+2026-08-29 19:03:09,604 [toolkit.py] => memory_per_class: 0
+2026-08-29 19:03:09,604 [toolkit.py] => fixed_memory: True
+2026-08-29 19:03:09,604 [toolkit.py] => shuffle: False
+2026-08-29 19:03:09,604 [toolkit.py] => seed: 1993
+2026-08-29 19:03:09,604 [toolkit.py] => init_cls: 20
+2026-08-29 19:03:09,604 [toolkit.py] => increment: 20
+2026-08-29 19:03:09,604 [toolkit.py] => total_sessions: 10
+2026-08-29 19:03:09,604 [toolkit.py] => sessions: 10
+2026-08-29 19:03:09,604 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 19:03:09,604 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 19:03:09,604 [toolkit.py] => net_type: sip
+2026-08-29 19:03:09,604 [toolkit.py] => embd_dim: 768
+2026-08-29 19:03:09,604 [toolkit.py] => num_heads: 12
+2026-08-29 19:03:09,604 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 19:03:09,604 [toolkit.py] => init_epoch: 10
+2026-08-29 19:03:09,605 [toolkit.py] => optim: Adam
+2026-08-29 19:03:09,605 [toolkit.py] => optimizer: Adam
+2026-08-29 19:03:09,605 [toolkit.py] => init_lr: 0.0005
+2026-08-29 19:03:09,605 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 19:03:09,605 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 19:03:09,605 [toolkit.py] => epochs: 10
+2026-08-29 19:03:09,605 [toolkit.py] => lrate_head: 0.01
+2026-08-29 19:03:09,605 [toolkit.py] => scheduler: steplr
+2026-08-29 19:03:09,605 [toolkit.py] => eval: false
+2026-08-29 19:03:09,605 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 19:03:09,605 [toolkit.py] => lrate: 0.0005
+2026-08-29 19:03:09,605 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 19:03:09,605 [toolkit.py] => batch_size: 128
+2026-08-29 19:03:09,605 [toolkit.py] => weight_decay: 0.0
+2026-08-29 19:03:09,605 [toolkit.py] => rank: 10
+2026-08-29 19:03:09,605 [toolkit.py] => margin_inter: 2.0
+2026-08-29 19:03:09,605 [toolkit.py] => lambada: 0.2
+2026-08-29 19:03:09,605 [toolkit.py] => num_workers: 16
+2026-08-29 19:03:09,605 [toolkit.py] => R: 0.5
+2026-08-29 19:03:09,605 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 19:03:09,605 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 19:03:09,631 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:03:12,083 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:03:12,187 [trainer.py] => ================================================================================
+2026-08-29 19:03:12,187 [trainer.py] => Dataset Information
+2026-08-29 19:03:12,187 [trainer.py] => ================================================================================
+2026-08-29 19:03:12,187 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 19:03:12,187 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 19:03:12,187 [trainer.py] =>   Total classes    : 200
+2026-08-29 19:03:12,187 [trainer.py] =>   Total tasks      : 10
+2026-08-29 19:03:12,187 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 19:03:12,187 [trainer.py] =>   Init classes     : 20
+2026-08-29 19:03:12,187 [trainer.py] =>   Increment per task: 20
+2026-08-29 19:03:12,188 [trainer.py] =>   Shuffle          : False
+2026-08-29 19:03:12,188 [trainer.py] =>   Seed             : 1993
+2026-08-29 19:03:12,188 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 19:03:12,188 [trainer.py] => Task split:
+2026-08-29 19:03:12,189 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 19:03:12,189 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:03:12,190 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:03:12,190 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 19:03:12,191 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 19:03:12,191 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 19:03:12,192 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 19:03:12,192 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 19:03:12,193 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:03:12,193 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:03:12,194 [trainer.py] => ================================================================================
+2026-08-29 19:03:12,194 [trainer.py] => ================================================================================
+2026-08-29 19:03:12,194 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 19:03:12,808 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:03:12,808 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:03:12,808 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:07:24,105 [lorasub_drs_e.py] => Task 0, Epoch 10/10 => Loss 0.917, Train_accy 85.63
+2026-08-29 19:07:24,108 [trainer.py] => Training time: 0h 4m 11s
+2026-08-29 19:07:26,553 [trainer.py] => Evaluation time: 0h 0m 2s
+2026-08-29 19:07:26,553 [trainer.py] => Accuracy: {'total': 87.54, '00-19': 87.54, 'old': 0, 'new': 87.54}
+2026-08-29 19:07:26,553 [trainer.py] => (curve) top1 Acc: [87.54]
+2026-08-29 19:07:26,553 [trainer.py] => Avergae Acc: 87.54
+2026-08-29 19:07:26,553 [trainer.py] => (curve) top1 Acc with task: [87.54]
+2026-08-29 19:07:26,553 [trainer.py] => Avergae Acc: 87.54
+2026-08-29 19:07:26,553 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-08-29 19:07:26,554 [trainer.py] => Avergae Acc: 100.00
+2026-08-29 19:07:26,554 [trainer.py] => ================================================================================
+2026-08-29 19:07:26,554 [trainer.py] => ================================================================================
+2026-08-29 19:07:26,555 [lorasub_drs_e.py] => Task 1 learning on class 20-40
+2026-08-29 19:07:31,445 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:07:31,446 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:07:31,446 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:21:41,589 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 19:21:41,589 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-08-29 19:21:41,589 [toolkit.py] => debug: False
+2026-08-29 19:21:41,589 [toolkit.py] => save_ckp: False
+2026-08-29 19:21:41,589 [toolkit.py] => moe_list: None
+2026-08-29 19:21:41,589 [toolkit.py] => prefix: reproduce
+2026-08-29 19:21:41,589 [toolkit.py] => dataset: imagenet-a
+2026-08-29 19:21:41,589 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 19:21:41,589 [toolkit.py] => memory_size: 0
+2026-08-29 19:21:41,589 [toolkit.py] => memory_per_class: 0
+2026-08-29 19:21:41,589 [toolkit.py] => fixed_memory: True
+2026-08-29 19:21:41,589 [toolkit.py] => shuffle: False
+2026-08-29 19:21:41,589 [toolkit.py] => seed: 1993
+2026-08-29 19:21:41,589 [toolkit.py] => init_cls: 20
+2026-08-29 19:21:41,589 [toolkit.py] => increment: 20
+2026-08-29 19:21:41,589 [toolkit.py] => total_sessions: 10
+2026-08-29 19:21:41,589 [toolkit.py] => sessions: 10
+2026-08-29 19:21:41,589 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 19:21:41,589 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 19:21:41,589 [toolkit.py] => net_type: sip
+2026-08-29 19:21:41,589 [toolkit.py] => embd_dim: 768
+2026-08-29 19:21:41,590 [toolkit.py] => num_heads: 12
+2026-08-29 19:21:41,590 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 19:21:41,590 [toolkit.py] => init_epoch: 10
+2026-08-29 19:21:41,590 [toolkit.py] => optim: Adam
+2026-08-29 19:21:41,590 [toolkit.py] => optimizer: Adam
+2026-08-29 19:21:41,590 [toolkit.py] => init_lr: 0.0005
+2026-08-29 19:21:41,590 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 19:21:41,590 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 19:21:41,590 [toolkit.py] => epochs: 1
+2026-08-29 19:21:41,590 [toolkit.py] => lrate_head: 0.01
+2026-08-29 19:21:41,590 [toolkit.py] => scheduler: steplr
+2026-08-29 19:21:41,590 [toolkit.py] => eval: false
+2026-08-29 19:21:41,590 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 19:21:41,590 [toolkit.py] => lrate: 0.0005
+2026-08-29 19:21:41,590 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 19:21:41,590 [toolkit.py] => batch_size: 128
+2026-08-29 19:21:41,590 [toolkit.py] => weight_decay: 0.0
+2026-08-29 19:21:41,590 [toolkit.py] => rank: 10
+2026-08-29 19:21:41,590 [toolkit.py] => margin_inter: 2.0
+2026-08-29 19:21:41,590 [toolkit.py] => lambada: 0.2
+2026-08-29 19:21:41,590 [toolkit.py] => num_workers: 16
+2026-08-29 19:21:41,590 [toolkit.py] => R: 0.5
+2026-08-29 19:21:41,590 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 19:21:41,590 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 19:21:41,617 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:21:44,302 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:21:44,405 [trainer.py] => ================================================================================
+2026-08-29 19:21:44,405 [trainer.py] => Dataset Information
+2026-08-29 19:21:44,405 [trainer.py] => ================================================================================
+2026-08-29 19:21:44,405 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 19:21:44,405 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 19:21:44,405 [trainer.py] =>   Total classes    : 200
+2026-08-29 19:21:44,405 [trainer.py] =>   Total tasks      : 10
+2026-08-29 19:21:44,405 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 19:21:44,405 [trainer.py] =>   Init classes     : 20
+2026-08-29 19:21:44,405 [trainer.py] =>   Increment per task: 20
+2026-08-29 19:21:44,405 [trainer.py] =>   Shuffle          : False
+2026-08-29 19:21:44,405 [trainer.py] =>   Seed             : 1993
+2026-08-29 19:21:44,405 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 19:21:44,405 [trainer.py] => Task split:
+2026-08-29 19:21:44,406 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 19:21:44,407 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:21:44,408 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:21:44,408 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 19:21:44,409 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 19:21:44,409 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 19:21:44,410 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 19:21:44,410 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 19:21:44,411 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:21:44,411 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:21:44,411 [trainer.py] => ================================================================================
+2026-08-29 19:21:44,411 [trainer.py] => ================================================================================
+2026-08-29 19:21:44,412 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 19:21:44,900 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:21:44,900 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:21:44,900 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:25:14,769 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 19:25:14,769 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-08-29 19:25:14,769 [toolkit.py] => debug: False
+2026-08-29 19:25:14,769 [toolkit.py] => save_ckp: False
+2026-08-29 19:25:14,769 [toolkit.py] => moe_list: None
+2026-08-29 19:25:14,769 [toolkit.py] => prefix: reproduce
+2026-08-29 19:25:14,769 [toolkit.py] => dataset: imagenet-a
+2026-08-29 19:25:14,769 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 19:25:14,769 [toolkit.py] => memory_size: 0
+2026-08-29 19:25:14,769 [toolkit.py] => memory_per_class: 0
+2026-08-29 19:25:14,769 [toolkit.py] => fixed_memory: True
+2026-08-29 19:25:14,769 [toolkit.py] => shuffle: False
+2026-08-29 19:25:14,769 [toolkit.py] => seed: 1993
+2026-08-29 19:25:14,769 [toolkit.py] => init_cls: 20
+2026-08-29 19:25:14,769 [toolkit.py] => increment: 20
+2026-08-29 19:25:14,769 [toolkit.py] => total_sessions: 10
+2026-08-29 19:25:14,769 [toolkit.py] => sessions: 10
+2026-08-29 19:25:14,769 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 19:25:14,769 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 19:25:14,769 [toolkit.py] => net_type: sip
+2026-08-29 19:25:14,769 [toolkit.py] => embd_dim: 768
+2026-08-29 19:25:14,769 [toolkit.py] => num_heads: 12
+2026-08-29 19:25:14,769 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 19:25:14,769 [toolkit.py] => init_epoch: 10
+2026-08-29 19:25:14,769 [toolkit.py] => optim: Adam
+2026-08-29 19:25:14,769 [toolkit.py] => optimizer: Adam
+2026-08-29 19:25:14,770 [toolkit.py] => init_lr: 0.0005
+2026-08-29 19:25:14,770 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 19:25:14,770 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 19:25:14,770 [toolkit.py] => epochs: 1
+2026-08-29 19:25:14,770 [toolkit.py] => lrate_head: 0.01
+2026-08-29 19:25:14,770 [toolkit.py] => scheduler: steplr
+2026-08-29 19:25:14,770 [toolkit.py] => eval: false
+2026-08-29 19:25:14,770 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 19:25:14,772 [toolkit.py] => lrate: 0.0005
+2026-08-29 19:25:14,772 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 19:25:14,772 [toolkit.py] => batch_size: 128
+2026-08-29 19:25:14,772 [toolkit.py] => weight_decay: 0.0
+2026-08-29 19:25:14,772 [toolkit.py] => rank: 10
+2026-08-29 19:25:14,772 [toolkit.py] => margin_inter: 2.0
+2026-08-29 19:25:14,772 [toolkit.py] => lambada: 0.2
+2026-08-29 19:25:14,772 [toolkit.py] => num_workers: 16
+2026-08-29 19:25:14,772 [toolkit.py] => R: 0.5
+2026-08-29 19:25:14,772 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 19:25:14,772 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 19:25:14,798 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:25:17,350 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:25:17,455 [trainer.py] => ================================================================================
+2026-08-29 19:25:17,456 [trainer.py] => Dataset Information
+2026-08-29 19:25:17,456 [trainer.py] => ================================================================================
+2026-08-29 19:25:17,456 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 19:25:17,456 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 19:25:17,456 [trainer.py] =>   Total classes    : 200
+2026-08-29 19:25:17,456 [trainer.py] =>   Total tasks      : 10
+2026-08-29 19:25:17,456 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 19:25:17,456 [trainer.py] =>   Init classes     : 20
+2026-08-29 19:25:17,456 [trainer.py] =>   Increment per task: 20
+2026-08-29 19:25:17,456 [trainer.py] =>   Shuffle          : False
+2026-08-29 19:25:17,456 [trainer.py] =>   Seed             : 1993
+2026-08-29 19:25:17,456 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 19:25:17,456 [trainer.py] => Task split:
+2026-08-29 19:25:17,457 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 19:25:17,458 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:25:17,458 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:25:17,459 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 19:25:17,459 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 19:25:17,460 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 19:25:17,460 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 19:25:17,461 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 19:25:17,462 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:25:17,462 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:25:17,462 [trainer.py] => ================================================================================
+2026-08-29 19:25:17,462 [trainer.py] => ================================================================================
+2026-08-29 19:25:17,463 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 19:25:18,101 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:25:18,101 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:25:18,101 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:29:07,031 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 19:29:07,031 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-08-29 19:29:07,031 [toolkit.py] => debug: False
+2026-08-29 19:29:07,031 [toolkit.py] => save_ckp: False
+2026-08-29 19:29:07,031 [toolkit.py] => moe_list: None
+2026-08-29 19:29:07,031 [toolkit.py] => prefix: reproduce
+2026-08-29 19:29:07,031 [toolkit.py] => dataset: imagenet-a
+2026-08-29 19:29:07,031 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 19:29:07,031 [toolkit.py] => memory_size: 0
+2026-08-29 19:29:07,031 [toolkit.py] => memory_per_class: 0
+2026-08-29 19:29:07,031 [toolkit.py] => fixed_memory: True
+2026-08-29 19:29:07,031 [toolkit.py] => shuffle: False
+2026-08-29 19:29:07,031 [toolkit.py] => seed: 1993
+2026-08-29 19:29:07,031 [toolkit.py] => init_cls: 20
+2026-08-29 19:29:07,031 [toolkit.py] => increment: 20
+2026-08-29 19:29:07,031 [toolkit.py] => total_sessions: 10
+2026-08-29 19:29:07,032 [toolkit.py] => sessions: 10
+2026-08-29 19:29:07,032 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 19:29:07,032 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 19:29:07,032 [toolkit.py] => net_type: sip
+2026-08-29 19:29:07,032 [toolkit.py] => embd_dim: 768
+2026-08-29 19:29:07,032 [toolkit.py] => num_heads: 12
+2026-08-29 19:29:07,032 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 19:29:07,032 [toolkit.py] => init_epoch: 10
+2026-08-29 19:29:07,032 [toolkit.py] => optim: Adam
+2026-08-29 19:29:07,032 [toolkit.py] => optimizer: Adam
+2026-08-29 19:29:07,032 [toolkit.py] => init_lr: 0.0005
+2026-08-29 19:29:07,032 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 19:29:07,032 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 19:29:07,032 [toolkit.py] => epochs: 2
+2026-08-29 19:29:07,032 [toolkit.py] => lrate_head: 0.01
+2026-08-29 19:29:07,032 [toolkit.py] => scheduler: steplr
+2026-08-29 19:29:07,032 [toolkit.py] => eval: false
+2026-08-29 19:29:07,032 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 19:29:07,032 [toolkit.py] => lrate: 0.0005
+2026-08-29 19:29:07,032 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 19:29:07,032 [toolkit.py] => batch_size: 128
+2026-08-29 19:29:07,032 [toolkit.py] => weight_decay: 0.0
+2026-08-29 19:29:07,032 [toolkit.py] => rank: 10
+2026-08-29 19:29:07,032 [toolkit.py] => margin_inter: 2.0
+2026-08-29 19:29:07,032 [toolkit.py] => lambada: 0.2
+2026-08-29 19:29:07,032 [toolkit.py] => num_workers: 16
+2026-08-29 19:29:07,032 [toolkit.py] => R: 0.5
+2026-08-29 19:29:07,032 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 19:29:07,032 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 19:29:07,066 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:29:09,821 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:29:09,927 [trainer.py] => ================================================================================
+2026-08-29 19:29:09,927 [trainer.py] => Dataset Information
+2026-08-29 19:29:09,928 [trainer.py] => ================================================================================
+2026-08-29 19:29:09,928 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 19:29:09,928 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 19:29:09,928 [trainer.py] =>   Total classes    : 200
+2026-08-29 19:29:09,928 [trainer.py] =>   Total tasks      : 10
+2026-08-29 19:29:09,928 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 19:29:09,928 [trainer.py] =>   Init classes     : 20
+2026-08-29 19:29:09,928 [trainer.py] =>   Increment per task: 20
+2026-08-29 19:29:09,928 [trainer.py] =>   Shuffle          : False
+2026-08-29 19:29:09,928 [trainer.py] =>   Seed             : 1993
+2026-08-29 19:29:09,928 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 19:29:09,928 [trainer.py] => Task split:
+2026-08-29 19:29:09,929 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 19:29:09,930 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:29:09,931 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:29:09,932 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 19:29:09,932 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 19:29:09,933 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 19:29:09,933 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 19:29:09,934 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 19:29:09,934 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:29:09,935 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:29:09,935 [trainer.py] => ================================================================================
+2026-08-29 19:29:09,935 [trainer.py] => ================================================================================
+2026-08-29 19:29:09,936 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 19:29:10,589 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:29:10,590 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:29:10,590 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:30:13,574 [lorasub_drs_e.py] => Task 0, Epoch 2/2 => Loss 2.626, Train_accy 39.35
+2026-08-29 19:30:13,577 [trainer.py] => Training time: 0h 1m 3s
+2026-08-29 19:30:16,078 [trainer.py] => Evaluation time: 0h 0m 2s
+2026-08-29 19:30:16,079 [trainer.py] => Accuracy: {'total': 55.91, '00-19': 55.91, 'old': 0, 'new': 55.91}
+2026-08-29 19:30:16,079 [trainer.py] => (curve) top1 Acc: [55.91]
+2026-08-29 19:30:16,079 [trainer.py] => Avergae Acc: 55.91
+2026-08-29 19:30:16,079 [trainer.py] => (curve) top1 Acc with task: [55.91]
+2026-08-29 19:30:16,079 [trainer.py] => Avergae Acc: 55.91
+2026-08-29 19:30:16,079 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-08-29 19:30:16,079 [trainer.py] => Avergae Acc: 100.00
+2026-08-29 19:30:16,079 [trainer.py] => ================================================================================
+2026-08-29 19:30:16,079 [trainer.py] => ================================================================================
+2026-08-29 19:30:16,081 [lorasub_drs_e.py] => Task 1 learning on class 20-40
+2026-08-29 19:30:21,093 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:30:21,094 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:30:21,094 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:31:19,232 [lorasub_drs_e.py] => Task 1, Epoch 2/2 => Loss 2.376, Train_accy 47.00
+2026-08-29 19:31:19,238 [trainer.py] => Training time: 0h 1m 3s
+2026-08-29 19:31:22,615 [trainer.py] => Evaluation time: 0h 0m 3s
+2026-08-29 19:31:22,615 [trainer.py] => Accuracy: {'total': 46.99, '00-19': 49.84, '20-39': 43.43, 'old': 49.84, 'new': 43.43}
+2026-08-29 19:31:22,615 [trainer.py] => (curve) top1 Acc: [55.91, 46.99]
+2026-08-29 19:31:22,615 [trainer.py] => Avergae Acc: 51.45
+2026-08-29 19:31:22,615 [trainer.py] => (curve) top1 Acc with task: [55.91, 59.57]
+2026-08-29 19:31:22,615 [trainer.py] => Avergae Acc: 57.74
+2026-08-29 19:31:22,615 [trainer.py] => (curve) top1 Acc task: [100.0, 71.1]
+2026-08-29 19:31:22,615 [trainer.py] => Avergae Acc: 85.55
+2026-08-29 19:31:22,615 [trainer.py] => ================================================================================
+2026-08-29 19:31:22,615 [trainer.py] => ================================================================================
+2026-08-29 19:31:22,617 [lorasub_drs_e.py] => Task 2 learning on class 40-60
+2026-08-29 19:31:27,608 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:31:27,609 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:31:27,609 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:31:52,512 [toolkit.py] => config: configs/lorasub_drs_e/imageneta.json
+2026-08-29 19:31:52,512 [toolkit.py] => device: [device(type='cuda', index=5)]
+2026-08-29 19:31:52,512 [toolkit.py] => debug: False
+2026-08-29 19:31:52,512 [toolkit.py] => save_ckp: False
+2026-08-29 19:31:52,512 [toolkit.py] => moe_list: None
+2026-08-29 19:31:52,512 [toolkit.py] => prefix: reproduce
+2026-08-29 19:31:52,512 [toolkit.py] => dataset: imagenet-a
+2026-08-29 19:31:52,512 [toolkit.py] => data_path: data/imagenet-a
+2026-08-29 19:31:52,512 [toolkit.py] => memory_size: 0
+2026-08-29 19:31:52,512 [toolkit.py] => memory_per_class: 0
+2026-08-29 19:31:52,512 [toolkit.py] => fixed_memory: True
+2026-08-29 19:31:52,512 [toolkit.py] => shuffle: False
+2026-08-29 19:31:52,512 [toolkit.py] => seed: 1993
+2026-08-29 19:31:52,512 [toolkit.py] => init_cls: 20
+2026-08-29 19:31:52,512 [toolkit.py] => increment: 20
+2026-08-29 19:31:52,512 [toolkit.py] => total_sessions: 10
+2026-08-29 19:31:52,512 [toolkit.py] => sessions: 10
+2026-08-29 19:31:52,512 [toolkit.py] => model_name: lorasub_drs_e
+2026-08-29 19:31:52,512 [toolkit.py] => method: lorasub_drs_e
+2026-08-29 19:31:52,512 [toolkit.py] => net_type: sip
+2026-08-29 19:31:52,512 [toolkit.py] => embd_dim: 768
+2026-08-29 19:31:52,512 [toolkit.py] => num_heads: 12
+2026-08-29 19:31:52,513 [toolkit.py] => EPSILON: 1e-08
+2026-08-29 19:31:52,513 [toolkit.py] => init_epoch: 10
+2026-08-29 19:31:52,513 [toolkit.py] => optim: Adam
+2026-08-29 19:31:52,513 [toolkit.py] => optimizer: Adam
+2026-08-29 19:31:52,513 [toolkit.py] => init_lr: 0.0005
+2026-08-29 19:31:52,513 [toolkit.py] => init_lr_decay: 0.1
+2026-08-29 19:31:52,513 [toolkit.py] => init_weight_decay: 0.0
+2026-08-29 19:31:52,513 [toolkit.py] => epochs: 10
+2026-08-29 19:31:52,513 [toolkit.py] => lrate_head: 0.01
+2026-08-29 19:31:52,513 [toolkit.py] => scheduler: steplr
+2026-08-29 19:31:52,513 [toolkit.py] => eval: false
+2026-08-29 19:31:52,513 [toolkit.py] => fc_lrate: 0.0005
+2026-08-29 19:31:52,513 [toolkit.py] => lrate: 0.0005
+2026-08-29 19:31:52,513 [toolkit.py] => lrate_decay: 0.1
+2026-08-29 19:31:52,513 [toolkit.py] => batch_size: 128
+2026-08-29 19:31:52,513 [toolkit.py] => weight_decay: 0.0
+2026-08-29 19:31:52,513 [toolkit.py] => rank: 10
+2026-08-29 19:31:52,513 [toolkit.py] => margin_inter: 2.0
+2026-08-29 19:31:52,513 [toolkit.py] => lambada: 0.2
+2026-08-29 19:31:52,513 [toolkit.py] => num_workers: 16
+2026-08-29 19:31:52,513 [toolkit.py] => R: 0.5
+2026-08-29 19:31:52,513 [toolkit.py] => logdir: logs/lorasub_drs_e/imagenet-a/t10
+2026-08-29 19:31:52,513 [toolkit.py] => logfilename: logs/lorasub_drs_e/imagenet-a/t10/seed1993
+2026-08-29 19:31:52,540 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:31:55,126 [data_manager.py] => Class index order: 0, 1, 2, 3, 4, ..., 195, 196, 197, 198, 199
+2026-08-29 19:31:55,230 [trainer.py] => ================================================================================
+2026-08-29 19:31:55,230 [trainer.py] => Dataset Information
+2026-08-29 19:31:55,230 [trainer.py] => ================================================================================
+2026-08-29 19:31:55,230 [trainer.py] =>   Dataset name     : imagenet-a
+2026-08-29 19:31:55,230 [trainer.py] =>   Data path        : data/imagenet-a
+2026-08-29 19:31:55,230 [trainer.py] =>   Total classes    : 200
+2026-08-29 19:31:55,230 [trainer.py] =>   Total tasks      : 10
+2026-08-29 19:31:55,230 [trainer.py] =>   Task increments  : [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+2026-08-29 19:31:55,230 [trainer.py] =>   Init classes     : 20
+2026-08-29 19:31:55,230 [trainer.py] =>   Increment per task: 20
+2026-08-29 19:31:55,230 [trainer.py] =>   Shuffle          : False
+2026-08-29 19:31:55,230 [trainer.py] =>   Seed             : 1993
+2026-08-29 19:31:55,230 [trainer.py] => --------------------------------------------------------------------------------
+2026-08-29 19:31:55,231 [trainer.py] => Task split:
+2026-08-29 19:31:55,232 [trainer.py] =>   Task 0: classes 0-19 (20 classes) | Train: 1253 images (5 batches), Test: 313 images (2 batches)
+2026-08-29 19:31:55,233 [trainer.py] =>   Task 1: classes 20-39 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:31:55,234 [trainer.py] =>   Task 2: classes 40-59 (20 classes) | Train: 1000 images (4 batches), Test: 251 images (1 batches)
+2026-08-29 19:31:55,236 [trainer.py] =>   Task 3: classes 60-79 (20 classes) | Train: 610 images (3 batches), Test: 151 images (1 batches)
+2026-08-29 19:31:55,237 [trainer.py] =>   Task 4: classes 80-99 (20 classes) | Train: 426 images (2 batches), Test: 102 images (1 batches)
+2026-08-29 19:31:55,237 [trainer.py] =>   Task 5: classes 100-119 (20 classes) | Train: 263 images (2 batches), Test: 68 images (1 batches)
+2026-08-29 19:31:55,238 [trainer.py] =>   Task 6: classes 120-139 (20 classes) | Train: 351 images (2 batches), Test: 89 images (1 batches)
+2026-08-29 19:31:55,239 [trainer.py] =>   Task 7: classes 140-159 (20 classes) | Train: 321 images (2 batches), Test: 81 images (1 batches)
+2026-08-29 19:31:55,240 [trainer.py] =>   Task 8: classes 160-179 (20 classes) | Train: 391 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:31:55,240 [trainer.py] =>   Task 9: classes 180-199 (20 classes) | Train: 385 images (2 batches), Test: 97 images (1 batches)
+2026-08-29 19:31:55,240 [trainer.py] => ================================================================================
+2026-08-29 19:31:55,240 [trainer.py] => ================================================================================
+2026-08-29 19:31:55,241 [lorasub_drs_e.py] => Task 0 learning on class 0-20
+2026-08-29 19:31:55,876 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:31:55,877 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:31:55,877 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:36:10,716 [lorasub_drs_e.py] => Task 0, Epoch 10/10 => Loss 0.917, Train_accy 85.63
+2026-08-29 19:36:10,720 [trainer.py] => Training time: 0h 4m 15s
+2026-08-29 19:36:13,328 [trainer.py] => Evaluation time: 0h 0m 2s
+2026-08-29 19:36:13,328 [trainer.py] => Accuracy: {'total': 87.54, '00-19': 87.54, 'old': 0, 'new': 87.54}
+2026-08-29 19:36:13,328 [trainer.py] => (curve) top1 Acc: [87.54]
+2026-08-29 19:36:13,329 [trainer.py] => Avergae Acc: 87.54
+2026-08-29 19:36:13,329 [trainer.py] => (curve) top1 Acc with task: [87.54]
+2026-08-29 19:36:13,329 [trainer.py] => Avergae Acc: 87.54
+2026-08-29 19:36:13,329 [trainer.py] => (curve) top1 Acc task: [100.0]
+2026-08-29 19:36:13,329 [trainer.py] => Avergae Acc: 100.00
+2026-08-29 19:36:13,329 [trainer.py] => ================================================================================
+2026-08-29 19:36:13,329 [trainer.py] => ================================================================================
+2026-08-29 19:36:13,330 [lorasub_drs_e.py] => Task 1 learning on class 20-40
+2026-08-29 19:36:18,532 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:36:18,532 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:36:18,532 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:40:04,299 [lorasub_drs_e.py] => Task 1, Epoch 10/10 => Loss 0.932, Train_accy 85.70
+2026-08-29 19:40:04,305 [trainer.py] => Training time: 0h 3m 50s
+2026-08-29 19:40:07,766 [trainer.py] => Evaluation time: 0h 0m 3s
+2026-08-29 19:40:07,766 [trainer.py] => Accuracy: {'total': 75.18, '00-19': 85.62, '20-39': 62.15, 'old': 85.62, 'new': 62.15}
+2026-08-29 19:40:07,766 [trainer.py] => (curve) top1 Acc: [87.54, 75.18]
+2026-08-29 19:40:07,767 [trainer.py] => Avergae Acc: 81.36
+2026-08-29 19:40:07,767 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41]
+2026-08-29 19:40:07,767 [trainer.py] => Avergae Acc: 87.47
+2026-08-29 19:40:07,767 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45]
+2026-08-29 19:40:07,767 [trainer.py] => Avergae Acc: 91.22
+2026-08-29 19:40:07,767 [trainer.py] => ================================================================================
+2026-08-29 19:40:07,767 [trainer.py] => ================================================================================
+2026-08-29 19:40:07,770 [lorasub_drs_e.py] => Task 2 learning on class 40-60
+2026-08-29 19:40:13,059 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:40:13,059 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:40:13,059 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:44:16,925 [lorasub_drs_e.py] => Task 2, Epoch 10/10 => Loss 1.057, Train_accy 81.90
+2026-08-29 19:44:16,933 [trainer.py] => Training time: 0h 4m 9s
+2026-08-29 19:44:21,361 [trainer.py] => Evaluation time: 0h 0m 4s
+2026-08-29 19:44:21,361 [trainer.py] => Accuracy: {'total': 68.47, '00-19': 85.94, '20-39': 59.36, '40-59': 55.78, 'old': 74.11, 'new': 55.78}
+2026-08-29 19:44:21,361 [trainer.py] => (curve) top1 Acc: [87.54, 75.18, 68.47]
+2026-08-29 19:44:21,361 [trainer.py] => Avergae Acc: 77.06
+2026-08-29 19:44:21,361 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41, 84.79]
+2026-08-29 19:44:21,361 [trainer.py] => Avergae Acc: 86.58
+2026-08-29 19:44:21,361 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45, 75.58]
+2026-08-29 19:44:21,362 [trainer.py] => Avergae Acc: 86.01
+2026-08-29 19:44:21,362 [trainer.py] => ================================================================================
+2026-08-29 19:44:21,362 [trainer.py] => ================================================================================
+2026-08-29 19:44:21,364 [lorasub_drs_e.py] => Task 3 learning on class 60-80
+2026-08-29 19:44:24,959 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:44:24,959 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:44:24,959 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:47:09,343 [lorasub_drs_e.py] => Task 3, Epoch 10/10 => Loss 0.957, Train_accy 85.41
+2026-08-29 19:47:09,350 [trainer.py] => Training time: 0h 2m 47s
+2026-08-29 19:47:14,318 [trainer.py] => Evaluation time: 0h 0m 4s
+2026-08-29 19:47:14,318 [trainer.py] => Accuracy: {'total': 63.56, '00-19': 84.35, '20-39': 55.78, '40-59': 55.78, '60-79': 46.36, 'old': 66.75, 'new': 46.36}
+2026-08-29 19:47:14,318 [trainer.py] => (curve) top1 Acc: [87.54, 75.18, 68.47, 63.56]
+2026-08-29 19:47:14,318 [trainer.py] => Avergae Acc: 73.69
+2026-08-29 19:47:14,318 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41, 84.79, 84.47]
+2026-08-29 19:47:14,318 [trainer.py] => Avergae Acc: 86.05
+2026-08-29 19:47:14,318 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45, 75.58, 70.19]
+2026-08-29 19:47:14,318 [trainer.py] => Avergae Acc: 82.05
+2026-08-29 19:47:14,318 [trainer.py] => ================================================================================
+2026-08-29 19:47:14,319 [trainer.py] => ================================================================================
+2026-08-29 19:47:14,321 [lorasub_drs_e.py] => Task 4 learning on class 80-100
+2026-08-29 19:47:17,185 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:47:17,185 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:47:17,185 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:49:24,380 [lorasub_drs_e.py] => Task 4, Epoch 10/10 => Loss 1.633, Train_accy 69.25
+2026-08-29 19:49:24,385 [trainer.py] => Training time: 0h 2m 10s
+2026-08-29 19:49:29,765 [trainer.py] => Evaluation time: 0h 0m 5s
+2026-08-29 19:49:29,765 [trainer.py] => Accuracy: {'total': 58.24, '00-19': 82.11, '20-39': 54.58, '40-59': 56.97, '60-79': 47.02, '80-99': 13.73, 'old': 62.94, 'new': 13.73}
+2026-08-29 19:49:29,765 [trainer.py] => (curve) top1 Acc: [87.54, 75.18, 68.47, 63.56, 58.24]
+2026-08-29 19:49:29,765 [trainer.py] => Avergae Acc: 70.60
+2026-08-29 19:49:29,765 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41, 84.79, 84.47, 79.59]
+2026-08-29 19:49:29,765 [trainer.py] => Avergae Acc: 84.76
+2026-08-29 19:49:29,765 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45, 75.58, 70.19, 64.89]
+2026-08-29 19:49:29,765 [trainer.py] => Avergae Acc: 78.62
+2026-08-29 19:49:29,765 [trainer.py] => ================================================================================
+2026-08-29 19:49:29,765 [trainer.py] => ================================================================================
+2026-08-29 19:49:29,768 [lorasub_drs_e.py] => Task 5 learning on class 100-120
+2026-08-29 19:49:32,031 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:49:32,031 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:49:32,032 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:51:02,196 [lorasub_drs_e.py] => Task 5, Epoch 10/10 => Loss 2.155, Train_accy 56.27
+2026-08-29 19:51:02,201 [trainer.py] => Training time: 0h 1m 32s
+2026-08-29 19:51:07,813 [trainer.py] => Evaluation time: 0h 0m 5s
+2026-08-29 19:51:07,813 [trainer.py] => Accuracy: {'total': 54.58, '00-19': 82.11, '20-39': 54.18, '40-59': 54.98, '60-79': 49.67, '80-99': 11.76, '100-119': 2.94, 'old': 57.87, 'new': 2.94}
+2026-08-29 19:51:07,813 [trainer.py] => (curve) top1 Acc: [87.54, 75.18, 68.47, 63.56, 58.24, 54.58]
+2026-08-29 19:51:07,813 [trainer.py] => Avergae Acc: 67.93
+2026-08-29 19:51:07,813 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41, 84.79, 84.47, 79.59, 75.26]
+2026-08-29 19:51:07,813 [trainer.py] => Avergae Acc: 83.18
+2026-08-29 19:51:07,813 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45, 75.58, 70.19, 64.89, 60.92]
+2026-08-29 19:51:07,813 [trainer.py] => Avergae Acc: 75.67
+2026-08-29 19:51:07,813 [trainer.py] => ================================================================================
+2026-08-29 19:51:07,813 [trainer.py] => ================================================================================
+2026-08-29 19:51:07,816 [lorasub_drs_e.py] => Task 6 learning on class 120-140
+2026-08-29 19:51:10,366 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:51:10,366 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:51:10,366 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:53:09,937 [lorasub_drs_e.py] => Task 6, Epoch 10/10 => Loss 1.814, Train_accy 61.82
+2026-08-29 19:53:09,945 [trainer.py] => Training time: 0h 2m 2s
+2026-08-29 19:53:15,964 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-08-29 19:53:15,964 [trainer.py] => Accuracy: {'total': 49.47, '00-19': 80.83, '20-39': 51.39, '40-59': 53.39, '60-79': 47.68, '80-99': 9.8, '100-119': 1.47, '120-139': 7.87, 'old': 52.73, 'new': 7.87}
+2026-08-29 19:53:15,964 [trainer.py] => (curve) top1 Acc: [87.54, 75.18, 68.47, 63.56, 58.24, 54.58, 49.47]
+2026-08-29 19:53:15,964 [trainer.py] => Avergae Acc: 65.29
+2026-08-29 19:53:15,964 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41, 84.79, 84.47, 79.59, 75.26, 71.84]
+2026-08-29 19:53:15,964 [trainer.py] => Avergae Acc: 81.56
+2026-08-29 19:53:15,964 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45, 75.58, 70.19, 64.89, 60.92, 56.0]
+2026-08-29 19:53:15,964 [trainer.py] => Avergae Acc: 72.86
+2026-08-29 19:53:15,964 [trainer.py] => ================================================================================
+2026-08-29 19:53:15,964 [trainer.py] => ================================================================================
+2026-08-29 19:53:15,968 [lorasub_drs_e.py] => Task 7 learning on class 140-160
+2026-08-29 19:53:18,533 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:53:18,533 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:53:18,534 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:55:13,795 [lorasub_drs_e.py] => Task 7, Epoch 10/10 => Loss 1.749, Train_accy 64.80
+2026-08-29 19:55:13,801 [trainer.py] => Training time: 0h 1m 57s
+2026-08-29 19:55:20,095 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-08-29 19:55:20,095 [trainer.py] => Accuracy: {'total': 47.24, '00-19': 81.15, '20-39': 49.4, '40-59': 52.59, '60-79': 47.02, '80-99': 9.8, '100-119': 1.47, '120-139': 8.99, '140-159': 20.99, 'old': 48.98, 'new': 20.99}
+2026-08-29 19:55:20,095 [trainer.py] => (curve) top1 Acc: [87.54, 75.18, 68.47, 63.56, 58.24, 54.58, 49.47, 47.24]
+2026-08-29 19:55:20,095 [trainer.py] => Avergae Acc: 63.03
+2026-08-29 19:55:20,095 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41, 84.79, 84.47, 79.59, 75.26, 71.84, 69.6]
+2026-08-29 19:55:20,095 [trainer.py] => Avergae Acc: 80.06
+2026-08-29 19:55:20,095 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45, 75.58, 70.19, 64.89, 60.92, 56.0, 53.45]
+2026-08-29 19:55:20,095 [trainer.py] => Avergae Acc: 70.44
+2026-08-29 19:55:20,095 [trainer.py] => ================================================================================
+2026-08-29 19:55:20,095 [trainer.py] => ================================================================================
+2026-08-29 19:55:20,099 [lorasub_drs_e.py] => Task 8 learning on class 160-180
+2026-08-29 19:55:22,906 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:55:22,907 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:55:22,907 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 19:57:46,511 [lorasub_drs_e.py] => Task 8, Epoch 10/10 => Loss 1.795, Train_accy 59.85
+2026-08-29 19:57:46,515 [trainer.py] => Training time: 0h 2m 26s
+2026-08-29 19:57:53,284 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-08-29 19:57:53,284 [trainer.py] => Accuracy: {'total': 43.69, '00-19': 78.27, '20-39': 49.4, '40-59': 51.39, '60-79': 45.7, '80-99': 9.8, '100-119': 1.47, '120-139': 8.99, '140-159': 20.99, '160-179': 10.31, 'old': 46.17, 'new': 10.31}
+2026-08-29 19:57:53,284 [trainer.py] => (curve) top1 Acc: [87.54, 75.18, 68.47, 63.56, 58.24, 54.58, 49.47, 47.24, 43.69]
+2026-08-29 19:57:53,284 [trainer.py] => Avergae Acc: 60.89
+2026-08-29 19:57:53,284 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41, 84.79, 84.47, 79.59, 75.26, 71.84, 69.6, 67.14]
+2026-08-29 19:57:53,284 [trainer.py] => Avergae Acc: 78.63
+2026-08-29 19:57:53,284 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45, 75.58, 70.19, 64.89, 60.92, 56.0, 53.45, 49.96]
+2026-08-29 19:57:53,284 [trainer.py] => Avergae Acc: 68.16
+2026-08-29 19:57:53,284 [trainer.py] => ================================================================================
+2026-08-29 19:57:53,284 [trainer.py] => ================================================================================
+2026-08-29 19:57:53,288 [lorasub_drs_e.py] => Task 9 learning on class 180-200
+2026-08-29 19:57:56,137 [toolkit.py] => Total params:     111,717,091
+2026-08-29 19:57:56,137 [toolkit.py] => Trainable params: 752,660
+2026-08-29 19:57:56,137 [toolkit.py] => Trainable ratio:  0.6737%
+2026-08-29 20:00:26,427 [lorasub_drs_e.py] => Task 9, Epoch 10/10 => Loss 2.075, Train_accy 64.42
+2026-08-29 20:00:26,431 [trainer.py] => Training time: 0h 2m 33s
+2026-08-29 20:00:33,413 [trainer.py] => Evaluation time: 0h 0m 6s
+2026-08-29 20:00:33,413 [trainer.py] => Accuracy: {'total': 39.33, '00-19': 75.08, '20-39': 46.61, '40-59': 47.01, '60-79': 44.37, '80-99': 9.8, '100-119': 1.47, '120-139': 7.87, '140-159': 19.75, '160-179': 10.31, '180-199': 9.28, 'old': 41.41, 'new': 9.28}
+2026-08-29 20:00:33,413 [trainer.py] => (curve) top1 Acc: [87.54, 75.18, 68.47, 63.56, 58.24, 54.58, 49.47, 47.24, 43.69, 39.33]
+2026-08-29 20:00:33,413 [trainer.py] => Avergae Acc: 58.73
+2026-08-29 20:00:33,413 [trainer.py] => (curve) top1 Acc with task: [87.54, 87.41, 84.79, 84.47, 79.59, 75.26, 71.84, 69.6, 67.14, 64.27]
+2026-08-29 20:00:33,413 [trainer.py] => Avergae Acc: 77.19
+2026-08-29 20:00:33,413 [trainer.py] => (curve) top1 Acc task: [100.0, 82.45, 75.58, 70.19, 64.89, 60.92, 56.0, 53.45, 49.96, 45.47]
+2026-08-29 20:00:33,413 [trainer.py] => Avergae Acc: 65.89
+2026-08-29 20:00:33,413 [trainer.py] => ================================================================================

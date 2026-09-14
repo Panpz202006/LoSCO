@@ -1,0 +1,53 @@
+2026-09-02 19:53:22,749 [toolkit.py] => config: configs/sdlora_o/imagenet-r_seed=1993_ro=0.13.json
+2026-09-02 19:53:22,750 [toolkit.py] => device: [device(type='cuda', index=0)]
+2026-09-02 19:53:22,750 [toolkit.py] => debug: False
+2026-09-02 19:53:22,750 [toolkit.py] => save_ckp: False
+2026-09-02 19:53:22,750 [toolkit.py] => moe_list: None
+2026-09-02 19:53:22,750 [toolkit.py] => seed: 1993
+2026-09-02 19:53:22,750 [toolkit.py] => dataset: imagenet-r
+2026-09-02 19:53:22,750 [toolkit.py] => data_path: data/imagenet-r
+2026-09-02 19:53:22,750 [toolkit.py] => load: vit_base_patch16_224_in21k
+2026-09-02 19:53:22,750 [toolkit.py] => init_cls: 20
+2026-09-02 19:53:22,750 [toolkit.py] => increment: 20
+2026-09-02 19:53:22,750 [toolkit.py] => sessions: 10
+2026-09-02 19:53:22,750 [toolkit.py] => shuffle: False
+2026-09-02 19:53:22,750 [toolkit.py] => method: sdlora_o
+2026-09-02 19:53:22,750 [toolkit.py] => optimizer: adam
+2026-09-02 19:53:22,750 [toolkit.py] => scheduler: cosine
+2026-09-02 19:53:22,750 [toolkit.py] => epochs: 50
+2026-09-02 19:53:22,750 [toolkit.py] => lrate: 0.0005
+2026-09-02 19:53:22,750 [toolkit.py] => fc_lrate: 0.005
+2026-09-02 19:53:22,750 [toolkit.py] => weight_decay: 0.0
+2026-09-02 19:53:22,750 [toolkit.py] => batch_size: 128
+2026-09-02 19:53:22,750 [toolkit.py] => rank: 10
+2026-09-02 19:53:22,750 [toolkit.py] => num_workers: 16
+2026-09-02 19:53:22,750 [toolkit.py] => lrate_head: 0
+2026-09-02 19:53:22,750 [toolkit.py] => R: 0.5
+2026-09-02 19:53:22,750 [toolkit.py] => ortho_loss_type: True
+2026-09-02 19:53:22,750 [toolkit.py] => ortho_loss_weight: 0.13
+2026-09-02 19:53:22,750 [toolkit.py] => logdir: logs/sdlora_o/imagenet-r/t10
+2026-09-02 19:53:22,750 [toolkit.py] => logfilename: logs/sdlora_o/imagenet-r/t10/seed1993
+Traceback (most recent call last):
+  File "/home/zll2025/low-rank-cl-main/main.py", line 57, in <module>
+    main()
+  File "/home/zll2025/low-rank-cl-main/main.py", line 30, in main
+    start(args)
+  File "/home/zll2025/low-rank-cl-main/trainer.py", line 14, in start
+    data_manager, model = initialize(args)
+  File "/home/zll2025/low-rank-cl-main/trainer.py", line 29, in initialize
+    data_manager = DataManager(args['dataset'], args['shuffle'], args['seed'], args['init_cls'], 
+  File "/home/zll2025/low-rank-cl-main/dataloaders/data_manager.py", line 34, in __init__
+    self._setup_data(dataset_name, shuffle, seed)
+  File "/home/zll2025/low-rank-cl-main/dataloaders/data_manager.py", line 66, in _setup_data
+    idata.download_data()
+  File "/home/zll2025/low-rank-cl-main/dataloaders/data.py", line 127, in download_data
+    self.dataset = datasets.ImageFolder(self.args['data_path'], transform=None)
+  File "/home/zll2025/anaconda3/envs/low-rank-cl/lib/python3.9/site-packages/torchvision/datasets/folder.py", line 328, in __init__
+    super().__init__(
+  File "/home/zll2025/anaconda3/envs/low-rank-cl/lib/python3.9/site-packages/torchvision/datasets/folder.py", line 149, in __init__
+    classes, class_to_idx = self.find_classes(self.root)
+  File "/home/zll2025/anaconda3/envs/low-rank-cl/lib/python3.9/site-packages/torchvision/datasets/folder.py", line 234, in find_classes
+    return find_classes(directory)
+  File "/home/zll2025/anaconda3/envs/low-rank-cl/lib/python3.9/site-packages/torchvision/datasets/folder.py", line 41, in find_classes
+    classes = sorted(entry.name for entry in os.scandir(directory) if entry.is_dir())
+FileNotFoundError: [Errno 2] No such file or directory: 'data/imagenet-r'
